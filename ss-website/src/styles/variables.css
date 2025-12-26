@@ -1,0 +1,31 @@
+:root {
+  /* Foundational Colors */
+  --color-taupe: #C4A57B;
+  --color-cream: #F5F3EE;
+  --color-charcoal: #2C3E50;
+  --color-sage: #9CAF88;
+  --color-burgundy: #6B3E3A;
+  --color-gold: #D4AF37;
+  --color-white: #FFFFFF;
+  
+  /* Text Colors */
+  --text-primary: var(--color-charcoal);
+  --text-secondary: #555555;
+  --text-light: #777777;
+  --text-inverse: var(--color-cream);
+
+  /* Backgrounds */
+  --bg-primary: var(--color-cream);
+  --bg-secondary: #F9F9F9;
+  --bg-dark: var(--color-charcoal);
+  --bg-accent: var(--color-taupe);
+
+  /* UI Elements */
+  --border-color: #DDDDDD;
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+  --shadow-md: 0 6px 16px rgba(0,0,0,0.12);
+  
+  /* Typography */
+  --font-heading: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'Inter', 'Open Sans', system-ui, sans-serif;
+}

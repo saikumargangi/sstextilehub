@@ -1,0 +1,249 @@
+.pageContainer {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* Banner Section */
+.banner {
+    position: relative;
+    height: 60vh;
+    min-height: 400px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.bannerImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    opacity: 0.55;
+    animation: zoomIn 20s infinite alternate;
+}
+
+@keyframes zoomIn {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.1);
+    }
+}
+
+.bannerOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.4);
+    z-index: 1;
+}
+
+.bannerContent {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.bannerTitle {
+    font-size: 4.5rem;
+    font-weight: 800;
+    color: var(--color-charcoal);
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.9);
+    letter-spacing: -2px;
+}
+
+.bannerSubtitle {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--color-charcoal);
+    max-width: 800px;
+    margin: 0 auto;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+/* Content Section */
+.contentSection {
+    padding: 6rem 20px 4rem;
+    background-color: var(--color-white);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.descriptionBox {
+    max-width: 900px;
+    margin: 0 auto 5rem;
+    text-align: center;
+}
+
+.descriptionBox h2 {
+    font-size: 2.5rem;
+    color: var(--color-charcoal);
+    margin-bottom: 2rem;
+    position: relative;
+    display: inline-block;
+}
+
+.descriptionBox h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: var(--color-taupe);
+}
+
+.descriptionBox p {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+/* Products Gallery Section */
+.gallerySection {
+    padding: 0 20px 8rem;
+    background-color: #fcfcfc;
+}
+
+.sectionTitle {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--color-charcoal);
+    margin-bottom: 3rem;
+    font-weight: 700;
+}
+
+.productGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+}
+
+.productCard {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.productCard:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.imageContainer {
+    width: 100%;
+    aspect-ratio: 4/5;
+    /* Portrait aspect ratio as per common ecommerce */
+    overflow: hidden;
+    background-color: #f0f0f0;
+}
+
+.productImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.productCard:hover .productImage {
+    transform: scale(1.1);
+}
+
+.productInfo {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.productTitle {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--color-charcoal);
+    margin-bottom: 0.5rem;
+}
+
+.productDesc {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* Industries / Highlights */
+.highlightsSection {
+    padding-bottom: 6rem;
+}
+
+.highlightsGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+
+.highlightItem {
+    padding: 2.5rem;
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    border-bottom: 4px solid var(--color-taupe);
+}
+
+.highlightItem:hover {
+    transform: translateY(-5px);
+}
+
+.highlightItem h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-charcoal);
+}
+
+.highlightItem p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .productGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+
+    .highlightsGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .bannerTitle {
+        font-size: 2.5rem;
+    }
+
+    .productGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .highlightsGrid {
+        grid-template-columns: 1fr;
+    }
+}

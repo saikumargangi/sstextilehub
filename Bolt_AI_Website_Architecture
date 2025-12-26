@@ -1,0 +1,2140 @@
+# SS GARMENTS & HOMETEXTILES - BOLT.AI WEBSITE ARCHITECTURE
+## Complete Technical Specifications & Implementation Guide
+
+**Document Type**: Bolt.ai Ready Architecture Specification  
+**Company**: SS Garments & Hometextiles by Sri Sai Exports  
+**Date**: December 2025  
+**Purpose**: Direct implementation guide for Bolt.ai website builder
+
+---
+
+## TABLE OF CONTENTS
+1. Design System & Color Tokens
+2. Typography System
+3. Page Structure & Information Architecture
+4. Component Library
+5. Homepage Layout Specification
+6. Product Category Pages
+7. Content Templates
+8. Navigation & Routing
+9. Forms & Lead Capture
+10. Integration Points
+11. SEO Meta Data Structure
+12. Mobile Responsiveness Guidelines
+
+---
+
+## SECTION 1: DESIGN SYSTEM & COLOR TOKENS
+
+### **Primary Color Palette (Global)**
+
+```
+FOUNDATIONAL COLORS:
+- Warm Taupe: #C4A57B (Primary background, luxury)
+- Cream/Off-White: #F5F3EE (Secondary background, clean space)
+- Charcoal Grey: #2C3E50 (Text, headers, dark accents)
+- Soft Sage: #9CAF88 (Accent, nature-inspired)
+- Deep Burgundy: #6B3E3A (Jewel tone, warmth)
+- Gold: #D4AF37 (Premium accents, metallic)
+- Pale Blue: #B5D6E8 (Organic/soft accent)
+- Forest Green: #355C3D (Nature trend, earth tone)
+- Mocha Mousse: #8B6F47 (Pantone 2025 trend)
+- Navy: #2C4563 (Classic, contemporary)
+
+NEUTRAL GRAYS:
+- Light Gray (text secondary): #555555
+- Border Gray: #DDDDDD
+- Light Gray BG: #F9F9F9
+```
+
+---
+
+### **Market-Specific Color Schemas**
+
+#### **UK Market**
+```
+Primary: Sage Green (#9CAF88)
+Secondary: Navy (#2C4563)
+Accent: Gold (#D4AF37)
+Background: Cream (#F5F3EE)
+Text: Charcoal (#2C3E50)
+
+CTA Button Primary: Gold (#D4AF37) text Charcoal
+CTA Button Hover: Deep Burgundy (#6B3E3A) text Cream
+Links: Sage Green (#9CAF88)
+```
+
+#### **Hong Kong Market**
+```
+Primary: Warm Taupe (#C4A57B)
+Secondary: Deep Burgundy (#6B3E3A)
+Accent: Gold (#D4AF37)
+Background: Cream (#F5F3EE)
+Text: Charcoal (#2C3E50)
+
+CTA Button Primary: Gold (#D4AF37)
+CTA Button Hover: Deep Burgundy (#6B3E3A)
+Links: Warm Taupe (#C4A57B)
+```
+
+#### **New Zealand Market**
+```
+Primary: Soft Sage (#9CAF88)
+Secondary: Pale Blue (#B5D6E8)
+Accent: Gold (#D4AF37)
+Background: Cream (#F5F3EE)
+Text: Charcoal (#2C3E50)
+
+CTA Button Primary: Soft Sage (#9CAF88)
+CTA Button Hover: Charcoal (#2C3E50)
+Links: Soft Sage (#9CAF88)
+Certification Badge: Sage background, cream text
+```
+
+#### **Poland Market**
+```
+Primary: Mocha Mousse (#8B6F47)
+Secondary: Forest Green (#355C3D)
+Accent: Gold (#D4AF37)
+Background: Cream (#F5F3EE)
+Text: Charcoal (#2C3E50)
+
+CTA Button Primary: Mocha Mousse (#8B6F47) text Cream
+CTA Button Hover: Forest Green (#355C3D) text Cream
+Links: Mocha Mousse (#8B6F47)
+```
+
+#### **Spain Market**
+```
+Primary: Warm Taupe (#C4A57B)
+Secondary: Soft Sage (#9CAF88)
+Tertiary: Navy (#2C4563) / Deep Burgundy (#6B3E3A)
+Accent: Gold (#D4AF37)
+Background: Cream (#F5F3EE)
+Text: Charcoal (#2C3E50)
+
+CTA Button Primary: Gold (#D4AF37)
+CTA Button Hover: Warm Taupe (#C4A57B)
+Links: Warm Taupe (#C4A57B)
+```
+
+---
+
+## SECTION 2: TYPOGRAPHY SYSTEM
+
+### **Font Stack**
+
+```
+Primary Font (Headings, UI): 
+- Font Family: "Inter", "Segoe UI", sans-serif
+- Fallback: System fonts
+
+Secondary Font (Body):
+- Font Family: "Inter", "Open Sans", sans-serif
+- Fallback: System fonts
+
+Monospace (Code, specs):
+- Font Family: "Monaco", "Courier New", monospace
+```
+
+### **Typography Scale**
+
+```
+H1 (Page Headlines):
+- Font Size: 48px (desktop) / 32px (mobile)
+- Font Weight: 700 (bold)
+- Line Height: 1.2
+- Letter Spacing: -0.01em
+- Color: Charcoal (#2C3E50)
+
+H2 (Section Headers):
+- Font Size: 36px (desktop) / 24px (mobile)
+- Font Weight: 600 (semibold)
+- Line Height: 1.3
+- Color: Charcoal (#2C3E50)
+
+H3 (Subsection Headers):
+- Font Size: 28px (desktop) / 20px (mobile)
+- Font Weight: 600 (semibold)
+- Line Height: 1.4
+- Color: Charcoal (#2C3E50)
+
+H4 (Card Headers):
+- Font Size: 20px (desktop) / 16px (mobile)
+- Font Weight: 600
+- Line Height: 1.4
+- Color: Charcoal (#2C3E50)
+
+Body Text:
+- Font Size: 16px (desktop) / 14px (mobile)
+- Font Weight: 400
+- Line Height: 1.6
+- Letter Spacing: 0
+- Color: #555555
+
+Small Text (Labels, meta):
+- Font Size: 14px (desktop) / 12px (mobile)
+- Font Weight: 400
+- Line Height: 1.5
+- Color: #777777
+
+Button Text:
+- Font Size: 16px
+- Font Weight: 600
+- Line Height: 1.4
+- Text Transform: None (natural case)
+```
+
+---
+
+## SECTION 3: PAGE STRUCTURE & INFORMATION ARCHITECTURE
+
+### **Site Map**
+
+```
+ROOT (/)
+├── Homepage (index.html)
+├── /products/
+│   ├── /bed-linen/
+│   │   ├── index (category overview)
+│   │   ├── /uk/ (market variant)
+│   │   ├── /hk/ (market variant)
+│   │   ├── /nz/ (market variant)
+│   │   ├── /poland/ (market variant)
+│   │   └── /spain/ (market variant)
+│   ├── /bath-linen/
+│   │   ├── index
+│   │   ├── /uk/
+│   │   ├── /hk/
+│   │   ├── /nz/
+│   │   ├── /poland/
+│   │   └── /spain/
+│   ├── /kitchen-linen/
+│   │   └── [Same market variants]
+│   └── /soft-furnishings/
+│       └── [Same market variants]
+├── /market-specific/
+│   ├── /uk/
+│   ├── /hong-kong/
+│   ├── /new-zealand/
+│   ├── /poland/
+│   └── /spain/
+├── /blog/
+│   ├── /index (blog overview)
+│   └── /[individual-posts]/
+├── /about/
+├── /certifications/
+├── /sustainability/
+├── /contact/
+└── /faq/
+```
+
+---
+
+## SECTION 4: COMPONENT LIBRARY
+
+### **4.1 HEADER COMPONENT**
+
+```
+HEADER STRUCTURE:
+├── Logo Section (Left)
+│   ├── Logo Image (100px width)
+│   ├── Company Name: "SS Garments"
+│   └── Tagline: "Premium Home Textiles"
+├── Navigation Menu (Center)
+│   ├── Products (Dropdown)
+│   │   ├── Bed Linen
+│   │   ├── Bath Linen
+│   │   ├── Kitchen Linen
+│   │   └── Soft Furnishings
+│   ├── Market-Specific (Dynamic)
+│   ├── Blog
+│   ├── Sustainability
+│   └── About
+└── Right Section
+    ├── Language Selector (Dropdown)
+    │   ├── English
+    │   ├── Spanish (for Spain)
+    │   └── Polish (for Poland)
+    └── Contact CTA Button
+        └── "Request Quote" / "Contact Us"
+
+MOBILE VERSION:
+├── Logo (left)
+├── Hamburger Menu (right)
+└── Expanded Menu (full-width overlay on click)
+
+STICKY BEHAVIOR:
+- Background: Semi-transparent Cream (#F5F3EE with 95% opacity)
+- Shadow: Subtle drop shadow
+- Remains visible on scroll
+- Mobile: Sticky only on desktop view (not mobile)
+
+RESPONSIVE BREAKPOINTS:
+- Desktop: >1024px (full horizontal menu)
+- Tablet: 768px-1024px (condensed menu)
+- Mobile: <768px (hamburger menu)
+```
+
+---
+
+### **4.2 HERO SECTION COMPONENT**
+
+```
+STRUCTURE:
+├── Background Layer
+│   ├── Primary Color (Market-specific, 70% opacity)
+│   └── Product Image Overlay (30% opacity, right side)
+├── Content Container (left side, 50% width)
+│   ├── Headline
+│   │   └── Font: H1, Charcoal, dynamic per market
+│   ├── Subheadline
+│   │   └── Font: H3, #555555, market-specific copy
+│   ├── Spacer (20px)
+│   ├── Supporting Text
+│   │   └── Font: Body, #555555, 2-3 lines max
+│   ├── Spacer (30px)
+│   └── CTA Buttons (Side-by-side)
+│       ├── Primary: "Explore Collections"
+│       │   └── Style: Solid background (market primary color)
+│       └── Secondary: "Request Quote"
+│           └── Style: Outline, border market primary color
+└── Right Background Image
+    └── Product hero image (high-res, 800x600px)
+
+SIZING:
+- Height: 500px (desktop) / 300px (mobile)
+- Padding: 60px horizontal (desktop) / 20px (mobile)
+- Max-width container: 1400px
+
+RESPONSIVE:
+- Mobile: Stack vertically (image on top, content below)
+- Tablet: Side-by-side with adjusted proportions
+- Desktop: Full hero layout as specified
+```
+
+---
+
+### **4.3 PRODUCT CARD COMPONENT**
+
+```
+STRUCTURE (for product grid):
+┌─────────────────────────────────┐
+│                                 │
+│     [PRODUCT IMAGE 300x400]     │ (Aspect ratio: 3:4)
+│     (Hover: Subtle zoom effect)  │
+├─────────────────────────────────┤
+│ Product Name (H4)               │
+├─────────────────────────────────┤
+│ Short Description (Small text)   │
+├─────────────────────────────────┤
+│ Material: 100% Cotton            │
+│ GSM: 220-250                    │
+│ Size: 68x45cm                   │
+├─────────────────────────────────┤
+│ COLORS:                          │
+│ [■] [■] [■] [■] (color swatches)│
+├─────────────────────────────────┤
+│ Price: £4.50-5.50 per piece     │
+│ (Market-specific currency)       │
+├─────────────────────────────────┤
+│ [REQUEST QUOTE] [VIEW DETAILS]  │
+└─────────────────────────────────┘
+
+CARD STYLING:
+- Background: Cream (#F5F3EE)
+- Border: 1px solid #DDDDDD
+- Border Radius: 8px
+- Box Shadow: 0 2px 8px rgba(0,0,0,0.08)
+- Hover: Shadow increases to 0 6px 16px rgba(0,0,0,0.12), slight lift
+
+COLOR SWATCH STYLING:
+- Size: 20px x 20px circles
+- Border: 1px solid #DDDDDD
+- Spacing: 8px between each
+- Hover: Outline becomes primary color, cursor pointer
+
+RESPONSIVE:
+- Desktop: 4 columns (width: calc(25% - 15px))
+- Tablet: 3 columns
+- Mobile: 2 columns (1 column on very small)
+- Gutter: 20px
+```
+
+---
+
+### **4.4 BUTTON COMPONENT LIBRARY**
+
+```
+PRIMARY CTA BUTTON (Large)
+┌─────────────────────────────────┐
+│   REQUEST WHOLESALE QUOTE       │
+└─────────────────────────────────┘
+
+Styles:
+- Default: Background market-primary color, text Cream, 16px font weight 600
+- Hover: Background darker shade (opacity 0.9), cursor pointer
+- Active: Border 2px solid market-primary color, background lighter
+- Disabled: Opacity 0.5, cursor not-allowed
+
+Sizing:
+- Padding: 16px 32px (desktop) / 12px 20px (mobile)
+- Min-width: 200px
+- Border-radius: 6px
+- Transition: all 0.3s ease
+
+SECONDARY CTA BUTTON
+Styles:
+- Default: Background transparent, border 2px solid market-primary color, text market-primary
+- Hover: Background market-primary with 0.1 opacity
+- Size: Same as primary
+
+TEXT LINK
+Styles:
+- Color: Market-primary color
+- Text-decoration: none
+- Border-bottom: 1px dotted market-primary on hover
+- Transition: all 0.2s ease
+
+SMALL BUTTON (for product cards)
+- Padding: 8px 16px
+- Font-size: 14px
+- Min-width: auto
+```
+
+---
+
+### **4.5 TRUST SECTION COMPONENT**
+
+```
+STRUCTURE:
+┌──────────────────────────────────────────────────────────┐
+│                                                          │
+│  ✓ 40+ Years    ✓ 100+ Workforce    ✓ 15+ Countries   │
+│  Excellence        Skilled             Exported         │
+│                                                          │
+│  ✓ OEKO-TEX      ✓ GOTS Certified    ✓ Government      │
+│  Certified        Organic             Recognized        │
+│                                                          │
+└──────────────────────────────────────────────────────────┘
+
+ITEMS:
+- 6 trust indicators (3 rows x 2 columns on desktop)
+- Each item: Icon + Text
+- Icons: SVG or icon font (20px)
+- Text: Body text, Charcoal color
+
+SIZING:
+- Max-width: 1200px
+- Padding: 40px horizontal (desktop) / 20px (mobile)
+- Item spacing: 30px horizontal, 25px vertical
+- Background: Transparent
+- Border-top/bottom: 1px solid #DDDDDD (optional, subtle separation)
+
+RESPONSIVE:
+- Desktop: 3 columns per row
+- Tablet: 2 columns per row
+- Mobile: 1 column (full width)
+```
+
+---
+
+### **4.6 FORM COMPONENT**
+
+```
+FORM STRUCTURE: "Request Wholesale Quote"
+
+┌──────────────────────────────────────────┐
+│    REQUEST WHOLESALE QUOTE               │
+├──────────────────────────────────────────┤
+│ COMPANY NAME *                           │
+│ [__________________________________]    │
+├──────────────────────────────────────────┤
+│ YOUR NAME *                              │
+│ [__________________________________]    │
+├──────────────────────────────────────────┤
+│ EMAIL ADDRESS *                          │
+│ [__________________________________]    │
+├──────────────────────────────────────────┤
+│ WHATSAPP/PHONE *                         │
+│ [+91_____________________________]      │
+├──────────────────────────────────────────┤
+│ COUNTRY *                                │
+│ [Select dropdown ▼]                      │
+├──────────────────────────────────────────┤
+│ PRODUCT CATEGORY *                       │
+│ [Select: Bed Linen, Bath, Kitchen...]   │
+├──────────────────────────────────────────┤
+│ ESTIMATED MONTHLY VOLUME                 │
+│ [Select: 0-100 units, 100-500...]       │
+├──────────────────────────────────────────┤
+│ MESSAGE (OPTIONAL)                       │
+│ [__________________________________]    │
+│ [__________________________________]    │
+├──────────────────────────────────────────┤
+│  [    SUBMIT INQUIRY    ]                │
+│                                          │
+│ Your data is secure. We respond within   │
+│ 24 hours via email + WhatsApp            │
+└──────────────────────────────────────────┘
+
+FORM STYLING:
+- Background: Cream (#F5F3EE)
+- Border: 1px solid #DDDDDD
+- Border-radius: 8px
+- Padding: 40px (desktop) / 20px (mobile)
+- Max-width: 600px
+- Box-shadow: 0 2px 8px rgba(0,0,0,0.08)
+
+INPUT FIELDS:
+- Font-size: 16px
+- Padding: 12px 16px
+- Border: 1px solid #DDDDDD
+- Border-radius: 6px
+- Background: White
+- Focus: Border becomes market-primary color, shadow: 0 0 0 3px rgba(primary, 0.2)
+- Placeholder color: #AAAAAA
+
+LABELS:
+- Font-size: 14px
+- Font-weight: 600
+- Color: Charcoal (#2C3E50)
+- Margin-bottom: 8px
+
+SUBMIT BUTTON:
+- See Button Component above (Primary CTA style)
+
+FORM VALIDATION:
+- Required fields marked with *
+- Show error message below field if validation fails (red text #E74C3C)
+- Success message: "Thank you! We'll contact you within 24 hours"
+- Auto-response email sent to user
+
+FORM DESTINATION:
+- Tool/Service: Formspree, Basin, or Netlify Forms
+- Email recipient: office@sstextilehub.com
+- Auto-response: Custom thank you message with WhatsApp number
+```
+
+---
+
+### **4.7 FOOTER COMPONENT**
+
+```
+STRUCTURE (3 columns on desktop):
+
+┌────────────────────────────────────────────────────┐
+│                                                    │
+│  COLUMN 1: COMPANY                                 │
+│  ├─ SS Garments & Hometextiles                     │
+│  ├─ Premium Home Textiles Manufacturer             │
+│  └─ Narsapur, Andhra Pradesh, India                │
+│                                                    │
+│  COLUMN 2: QUICK LINKS                             │
+│  ├─ Products                                       │
+│  ├─ Blog                                           │
+│  ├─ Certifications                                 │
+│  ├─ Sustainability                                 │
+│  ├─ About Us                                       │
+│  └─ FAQ                                            │
+│                                                    │
+│  COLUMN 3: CONTACT & FOLLOW                        │
+│  ├─ Email: office@sstextilehub.com                │
+│  ├─ WhatsApp: +91 7200033566                      │
+│  ├─ Social: [Icons] LinkedIn, Instagram            │
+│  └─ Newsletter: [Email input] Subscribe            │
+│                                                    │
+├────────────────────────────────────────────────────┤
+│  Copyright © 2025 SS Garments. All rights reserved │
+│  Privacy Policy | Terms of Service                 │
+└────────────────────────────────────────────────────┘
+
+FOOTER STYLING:
+- Background: Charcoal (#2C3E50)
+- Text color: Cream (#F5F3EE)
+- Link color: Gold (#D4AF37)
+- Padding: 60px horizontal, 40px vertical (desktop) / 20px (mobile)
+- Border-top: 2px solid market-primary color
+
+RESPONSIVE:
+- Desktop: 3 columns
+- Tablet: 2 columns
+- Mobile: 1 column (stacked)
+
+NEWSLETTER:
+- Email input with Submit button
+- Placeholder: "Your email address"
+- Success message: "Thanks for subscribing!"
+```
+
+---
+
+## SECTION 5: HOMEPAGE LAYOUT SPECIFICATION
+
+### **5.1 HOMEPAGE STRUCTURE (Complete Page Layout)**
+
+```
+┌──────────────────────────────────────────┐
+│         HEADER (Fixed/Sticky)            │
+├──────────────────────────────────────────┤
+│                                          │
+│     HERO SECTION                         │ (See 4.2)
+│     (Market-specific color scheme)       │
+│                                          │
+├──────────────────────────────────────────┤
+│                                          │
+│     TRUST SECTION                        │ (See 4.5)
+│     40+ Years | 100+ Workforce, etc.     │
+│                                          │
+├──────────────────────────────────────────┤
+│                                          │
+│   MARKET-SPECIFIC PROMISE SECTION        │
+│   (Different copy for each market)       │
+│                                          │
+├──────────────────────────────────────────┤
+│                                          │
+│   PRODUCT CATEGORIES GRID                │
+│   (4 main categories with icons)         │
+│                                          │
+├──────────────────────────────────────────┤
+│                                          │
+│   "WHY CHOOSE SS GARMENTS" SECTION       │
+│   (5 value propositions)                 │
+│                                          │
+├──────────────────────────────────────────┤
+│                                          │
+│   FEATURED PRODUCTS CAROUSEL             │
+│   (4-5 hero products, scrollable)        │
+│                                          │
+├──────────────────────────────────────────┤
+│                                          │
+│   TESTIMONIALS SECTION                   │
+│   (3 buyer quotes, rotatable)            │
+│                                          │
+├──────────────────────────────────────────┤
+│                                          │
+│   CERTIFICATIONS SHOWCASE                │
+│   (OEKO-TEX, GOTS, badges)              │
+│                                          │
+├──────────────────────────────────────────┤
+│                                          │
+│   MARKET-SPECIFIC BENEFITS TABLE         │
+│   (Different table per market)           │
+│                                          │
+├──────────────────────────────────────────┤
+│                                          │
+│   PRIVATE-LABEL OPPORTUNITY              │
+│   (For B2B buyers)                       │
+│                                          │
+├──────────────────────────────────────────┤
+│                                          │
+│   CONTACT CTA SECTION                    │
+│   (Large form or phone/WhatsApp)        │
+│                                          │
+├──────────────────────────────────────────┤
+│         FOOTER (See 4.7)                 │
+└──────────────────────────────────────────┘
+```
+
+---
+
+### **5.2 DETAILED SECTION SPECIFICATIONS**
+
+#### **5.2.1 Market-Specific Promise Section**
+
+```
+LAYOUT: Full-width section with colored background
+
+DESKTOP LAYOUT:
+┌──────────────────────────────────────────┐
+│ Background: Market-primary color (20%)   │
+├──────────────────────────────────────────┤
+│                                          │
+│     HEADLINE (Market-specific)           │
+│                                          │
+│     SUBHEADLINE (Market-specific)        │
+│                                          │
+│     BODY TEXT (2-3 sentences)            │
+│                                          │
+│     [REQUEST QUOTE] [LEARN MORE]         │
+│                                          │
+└──────────────────────────────────────────┘
+
+CONTENT EXAMPLES:
+
+UK VERSION:
+- Headline: "Premium Egyptian Cotton for UK Retail Excellence"
+- Body: "Designed for UK retailers seeking contemporary design with luxury quality..."
+
+HK VERSION:
+- Headline: "Japandi Minimalist Design Meets Luxury Quality"
+- Body: "Perfect for design-conscious HK importers seeking ultra-premium positioning..."
+
+NZ VERSION:
+- Headline: "GOTS Certified Organic - Ethical Manufacturing You Can Trust"
+- Body: "Our GOTS & OEKO-TEX certified collections feature complete supply chain transparency..."
+
+STYLING:
+- Padding: 80px horizontal, 60px vertical (desktop) / 40px/30px (mobile)
+- Text align: Center
+- Background color: Market-primary color at 10% opacity
+- Max-width: 1200px
+
+RESPONSIVE:
+- Mobile: Full-width padding, increased top/bottom padding
+```
+
+---
+
+#### **5.2.2 Product Categories Grid**
+
+```
+STRUCTURE: 4-5 category cards in grid
+
+┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐
+│                  │  │                  │  │                  │
+│   [Icon/Image]   │  │   [Icon/Image]   │  │   [Icon/Image]   │
+│   Bed Linen      │  │   Bath Linen     │  │   Kitchen Linen  │
+│                  │  │                  │  │                  │
+│   View Products  │  │   View Products  │  │   View Products  │
+│   [→]            │  │   [→]            │  │   [→]            │
+│                  │  │                  │  │                  │
+└──────────────────┘  └──────────────────┘  └──────────────────┘
+
+┌──────────────────┐  ┌──────────────────┐
+│                  │  │                  │
+│   [Icon/Image]   │  │   [Icon/Image]   │
+│   Soft           │  │   Ready-Made     │
+│   Furnishings    │  │   Garments       │
+│                  │  │                  │
+│   View Products  │  │   View Products  │
+│   [→]            │  │   [→]            │
+│                  │  │                  │
+└──────────────────┘  └──────────────────┘
+
+CARD DETAILS:
+- Grid: 3 columns (desktop) / 2 columns (tablet) / 1 column (mobile)
+- Width: calc(33.333% - 15px)
+- Aspect ratio: 1:1.1
+- Background: Cream (#F5F3EE)
+- Border: 2px solid market-primary color
+- Border-radius: 8px
+- Padding: 30px
+- Hover: Slight lift (transform: translateY(-4px)), shadow increases
+- Image/Icon size: 120x120px (centered)
+- Category name: H4, centered below icon
+- Link text: "View Products →" with arrow icon
+
+CONTAINER:
+- Padding: 60px horizontal, 40px vertical (desktop)
+- Max-width: 1200px
+- Gutter between cards: 20px
+```
+
+---
+
+#### **5.2.3 Why Choose SS Garments Section**
+
+```
+LAYOUT: 5 value propositions in 2-column grid (1 column mobile)
+
+┌─────────────────────────────────────┐
+│ ✓ HERITAGE MEETS TREND              │
+│   40+ years of excellence combined  │
+│   with 2025 design trends...        │
+│                                     │
+│ ✓ EGYPTIAN COTTON QUALITY           │
+│   Authentic long-staple fiber       │
+│   for luxury positioning...         │
+│                                     │
+│ ✓ PRIVATE-LABEL SPECIALIST          │
+│   Complete customization for        │
+│   retail differentiation...         │
+│                                     │
+│ ✓ SUSTAINABILITY COMMITTED          │
+│   OEKO-TEX & GOTS certified...      │
+│                                     │
+│ ✓ DESIGN-FORWARD COLLECTIONS        │
+│   Japandi, earth tones,             │
+│   Scandinavian aesthetic...         │
+└─────────────────────────────────────┘
+
+EACH ITEM:
+- Checkmark icon (20px, market-primary color)
+- Title: H4, bold
+- Description: Body text, 2 lines max
+- Background: White
+- Padding: 20px
+- Border-left: 4px solid market-primary color
+- Hover: Subtle background color change
+
+CONTAINER:
+- Padding: 60px (desktop) / 30px (mobile)
+- Max-width: 1200px
+- Grid: 2 columns (desktop) / 1 column (mobile)
+- Gap: 30px
+- Background: Transparent (or very light #F9F9F9)
+```
+
+---
+
+#### **5.2.4 Featured Products Carousel**
+
+```
+LAYOUT: Horizontal scrollable carousel (or slider)
+
+[← PREVIOUS]  [Product 1]  [Product 2]  [Product 3]  [Product 4]  [NEXT →]
+
+Each product uses PRODUCT CARD COMPONENT (See 4.3)
+
+CONTAINER:
+- Height: 500px (products only, no scroll bars visible)
+- Overflow-x: auto (scrollable)
+- Overflow-y: hidden
+- Padding: 20px
+- Background: Cream (#F5F3EE)
+
+CAROUSEL CONTROLS:
+- Previous/Next buttons: 40px x 40px, circular, centered vertically
+- Icons: Chevron left/right (SVG, 20px, white on market-primary)
+- Position: Fixed on left/right edges
+- Opacity: 0.8 by default, 1.0 on hover
+- Mobile: Hidden (touch swipe only, or full-width scroll)
+
+PRODUCTS SHOWN:
+- 4 products initially visible on desktop
+- 2 on tablet
+- 1 on mobile
+
+SPACING:
+- Gap between cards: 20px
+- Padding left/right container: 40px (desktop) / 20px (mobile)
+```
+
+---
+
+#### **5.2.5 Testimonials Carousel Section**
+
+```
+LAYOUT: Rotating testimonials (auto-play or manual)
+
+┌─────────────────────────────────────┐
+│                                     │
+│   "Outstanding quality and          │
+│    service. SS Garments is our       │
+│    go-to supplier for premium        │
+│    home textiles."                   │
+│                                     │
+│    - John Mitchell                   │
+│      Retail Director, UK             │
+│                                     │
+│   [●] [○] [○]  (Slide indicators)    │
+│                                     │
+└─────────────────────────────────────┘
+
+CARD STRUCTURE:
+- Background: Market-primary color at 10% opacity
+- Border: 2px solid market-primary color
+- Padding: 40px
+- Border-radius: 8px
+- Text color: Charcoal
+- Quote styling: Larger font, italics
+- Author: H4 weight, bold
+- Author title: Small text, #555555
+
+CAROUSEL CONTROLS:
+- Slide indicators: 3-4 dots at bottom (clickable)
+- Active dot: Market-primary color
+- Inactive dots: Light gray
+- Auto-advance: Every 5 seconds (optional)
+
+CONTAINER:
+- Padding: 60px horizontal (desktop) / 30px (mobile)
+- Max-width: 1000px (narrower than default)
+- Centered on page
+- Height: Auto (content driven)
+```
+
+---
+
+#### **5.2.6 Certifications Showcase Section**
+
+```
+LAYOUT: Badge display with explanations
+
+┌──────────────┐  ┌──────────────┐  ┌──────────────┐
+│              │  │              │  │              │
+│  OEKO-TEX    │  │    GOTS       │  │  Government  │
+│  CERTIFIED   │  │  CERTIFIED    │  │  Recognized  │
+│              │  │              │  │              │
+│ Sustainable  │  │  Organic      │  │  Export      │
+│ Manufacturing│  │  Cotton       │  │  House       │
+│              │  │              │  │              │
+└──────────────┘  └──────────────┘  └──────────────┘
+
+EACH BADGE:
+- Size: 180px x 180px (square)
+- Background: Cream (#F5F3EE)
+- Border: 2px solid market-primary color
+- Border-radius: 8px
+- Padding: 20px
+- Text align: Center
+- Icon/Logo: 80x80px (centered, top)
+- Title: H4, bold, market-primary color
+- Description: Small text, body color, 2 lines max
+- Hover: Scale up 1.05, shadow increases
+
+CONTAINER:
+- Display: Flex, justify-content: center
+- Gap: 30px
+- Padding: 60px horizontal, 40px vertical (desktop)
+- Max-width: 1200px
+- Flex-wrap: Wrap (responsive)
+
+OPTIONAL: Add expandable section
+- Clicking badge expands to show detailed explanation
+- Modal or inline expansion
+
+RESPONSIVE:
+- Desktop: 3 badges per row
+- Tablet: 2 badges per row
+- Mobile: 1 badge per row (full-width)
+```
+
+---
+
+#### **5.2.7 Market-Specific Benefits Table**
+
+```
+LAYOUT: Comparison table (different content per market)
+
+UK VERSION:
+┌──────────────────────┬──────────────────────┐
+│ What UK Buyers Want  │ SS Garments Solution │
+├──────────────────────┼──────────────────────┤
+│ Egyptian Cotton      │ 400-600 TC Authentic │
+│ Premium Quality      │ Long-staple fiber    │
+├──────────────────────┼──────────────────────┤
+│ Design Innovation    │ Contemporary + Trend │
+│ Contemporary Aesthetic│ Japandi, earth tones│
+├──────────────────────┼──────────────────────┤
+│ Private-Label        │ Complete            │
+│ Customization        │ Customization Offered│
+├──────────────────────┼──────────────────────┤
+│ OEKO-TEX            │ ✓ All Collections    │
+│ Certification       │ Certified            │
+├──────────────────────┼──────────────────────┤
+│ Competitive         │ Wholesale pricing    │
+│ Wholesale Pricing   │ with bulk discounts  │
+└──────────────────────┴──────────────────────┘
+
+TABLE STYLING:
+- Border: 1px solid #DDDDDD
+- Header background: Market-primary color
+- Header text: Cream, bold, H4
+- Row alternating: White / Light (#F9F9F9)
+- Cell padding: 20px
+- Text align: Left
+- Font: Body text
+
+CONTAINER:
+- Padding: 60px horizontal, 40px vertical (desktop)
+- Max-width: 1000px
+- Background: Transparent
+- Border-radius: 8px
+- Box-shadow: 0 2px 8px rgba(0,0,0,0.08)
+
+RESPONSIVE:
+- Mobile: Stack columns vertically, or horizontal scroll
+- Tablet: Full table, smaller padding
+```
+
+---
+
+#### **5.2.8 Private-Label Opportunity Section**
+
+```
+LAYOUT: Call-out section with expandable content
+
+┌─────────────────────────────────────────┐
+│                                         │
+│  PRIVATE-LABEL PARTNERSHIP              │
+│  Looking for Exclusive Collections?     │
+│                                         │
+│  We specialize in custom design         │
+│  and white-label solutions for          │
+│  retail differentiation...              │
+│                                         │
+│  [EXPLORE PRIVATE-LABEL] [CONTACT]     │
+│                                         │
+│  ▼ Learn More (expandable section)      │
+│                                         │
+└─────────────────────────────────────────┘
+
+EXPANDED CONTENT:
+- Customization capabilities (bullet points)
+- Minimum order quantities
+- Timeline for custom designs
+- Past success stories (2-3 examples)
+- Contact form or "Schedule Call" CTA
+
+STYLING:
+- Background: Market-primary color at 15% opacity
+- Border: 2px solid market-primary color
+- Border-radius: 8px
+- Padding: 40px
+- Text color: Charcoal
+
+CONTAINER:
+- Padding: 60px horizontal, 40px vertical (desktop)
+- Max-width: 1000px
+
+RESPONSIVE:
+- Mobile: Full-width with adjusted padding
+```
+
+---
+
+#### **5.2.9 Contact CTA Section**
+
+```
+LAYOUT: Large call-to-action with form or contact options
+
+OPTION A (Form-based):
+┌──────────────────────────────────────────┐
+│  READY TO PARTNER WITH US?               │
+│                                          │
+│  [Request Wholesale Quote Form]          │
+│  (See Form Component 4.6)                │
+│                                          │
+└──────────────────────────────────────────┘
+
+OPTION B (Contact options):
+┌──────────────────────────────────────────┐
+│  CONTACT US                              │
+│                                          │
+│  Email: office@sstextilehub.com         │
+│  WhatsApp: +91 7200033566               │
+│  Phone: [If available]                   │
+│                                          │
+│  [SEND EMAIL] [WHATSAPP CHAT]           │
+│                                          │
+│  Response guarantee: Within 24 hours     │
+│                                          │
+└──────────────────────────────────────────┘
+
+STYLING:
+- Background: Market-primary color at 5% opacity
+- Border-top: 4px solid market-primary color
+- Padding: 80px horizontal, 60px vertical (desktop)
+- Text align: Center
+
+ELEMENTS:
+- Headline: H2
+- Subheadline: H3
+- Content: Body text
+- CTA buttons: Primary style (see 4.4)
+- Guarantee text: Small text, italics
+
+RESPONSIVE:
+- Mobile: Reduced padding (40px/30px), stacked buttons
+```
+
+---
+
+## SECTION 6: PRODUCT CATEGORY PAGES
+
+### **6.1 PRODUCT CATEGORY PAGE STRUCTURE**
+
+```
+┌──────────────────────────────────────┐
+│         HEADER (Sticky)              │
+├──────────────────────────────────────┤
+│                                      │
+│   CATEGORY HERO SECTION              │
+│   (Market-specific headline)          │
+│                                      │
+├──────────────────────────────────────┤
+│                                      │
+│   CATEGORY OVERVIEW                  │
+│   (Benefits, key features)           │
+│                                      │
+├──────────────────────────────────────┤
+│                                      │
+│   MARKET-SPECIFIC GUIDANCE           │
+│   (Why this category for your market)│
+│                                      │
+├──────────────────────────────────────┤
+│                                      │
+│   PRODUCT SUBCATEGORIES              │
+│   (Tabs or pills for filtering)      │
+│                                      │
+├──────────────────────────────────────┤
+│                                      │
+│   PRODUCT GRID                       │
+│   (Product cards - see 4.3)          │
+│                                      │
+├──────────────────────────────────────┤
+│                                      │
+│   SPECIFICATION TABLE                │
+│   (Detailed specs comparison)        │
+│                                      │
+├──────────────────────────────────────┤
+│                                      │
+│   DESIGN SHOWCASE GALLERY            │
+│   (Lifestyle images)                 │
+│                                      │
+├──────────────────────────────────────┤
+│   TESTIMONIALS                       │
+│   (Market-specific buyer quotes)     │
+│                                      │
+├──────────────────────────────────────┤
+│   FAQ SECTION                        │
+│   (Expandable FAQs)                  │
+│                                      │
+├──────────────────────────────────────┤
+│   CTA SECTION                        │
+│   (Request quote / Contact)          │
+│                                      │
+├──────────────────────────────────────┤
+│         FOOTER                       │
+└──────────────────────────────────────┘
+```
+
+---
+
+### **6.2 CATEGORY HERO SECTION**
+
+```
+LAYOUT: Similar to homepage hero but category-focused
+
+HEADLINE: "[Market] Premium [Category] Solutions"
+
+SUBHEADLINE: "[Market-specific key benefit], [certifications], 
+[availability/specs]"
+
+SUPPORTING TEXT: 2-3 sentences explaining why this category 
+matters for the market
+
+BACKGROUND:
+- Market-primary color
+- Product category image overlay (30% opacity, right side)
+
+CTA BUTTONS:
+- "View All Products"
+- "Request Sample"
+
+HERO HEIGHT: 400px (desktop) / 250px (mobile)
+```
+
+---
+
+### **6.3 SUBCATEGORY FILTER TABS**
+
+```
+LAYOUT: Horizontal tabs above product grid
+
+[All Products] [Flat Sheets] [Fitted Sheets] [Duvet Covers] 
+[Pillowcases] [Premium Bundles]
+
+TAB STYLING:
+- Background: Transparent
+- Text: Charcoal
+- Border-bottom: 3px solid transparent
+- Padding: 12px 20px
+- Cursor: Pointer
+- Transition: all 0.2s ease
+
+ACTIVE TAB:
+- Border-bottom: 3px solid market-primary color
+- Text: Bold
+- Background: Cream (#F5F3EE)
+
+HOVER:
+- Background: Cream (#F5F3EE) if not active
+- Text: Market-primary color
+
+CONTAINER:
+- Padding: 20px horizontal
+- Border-bottom: 1px solid #DDDDDD
+- Overflow-x: auto (scrollable on mobile)
+- Sticky: Yes (stays at top when scrolling product grid)
+```
+
+---
+
+### **6.4 PRODUCT GRID LAYOUT**
+
+```
+STRUCTURE: Masonry or standard grid of product cards
+
+GRID:
+- 4 columns (desktop, 1200px+)
+- 3 columns (tablet, 768px-1200px)
+- 2 columns (mobile, <768px)
+- Gutter: 20px
+- Container padding: 40px horizontal (desktop) / 20px (mobile)
+- Max-width: 1400px
+
+PRODUCT CARDS: See Component 4.3
+
+PAGINATION:
+- Show 12 products per page
+- Pagination controls at bottom (Previous / 1 2 3 4 / Next)
+- Or: Infinite scroll with "Load More" button
+- Mobile: Prefer infinite scroll
+```
+
+---
+
+### **6.5 SPECIFICATION COMPARISON TABLE**
+
+```
+LAYOUT: Horizontal scrollable table (mobile: vertical stack)
+
+COLUMNS:
+| Material | Thread Count | Sizes | Colors | Certifications | MOQ | Lead Time |
+
+ROWS (one per product variant):
+| 100% Egyptian | 400-600 TC | Double, Queen | White, Grey... | OEKO-TEX | 100 | 30 days |
+
+TABLE STYLING:
+- Border: 1px solid #DDDDDD
+- Header: Market-primary background, cream text, bold
+- Rows alternating: White / Light gray
+- Cell padding: 15px
+- Font-size: 14px
+- Text-align: Center (except first column: left)
+
+RESPONSIVE:
+- Desktop: Standard table
+- Mobile: Horizontal scroll, or collapse to card-style layout
+  (Each product as a card with specs listed vertically)
+```
+
+---
+
+### **6.6 DESIGN SHOWCASE GALLERY**
+
+```
+LAYOUT: Gallery of 4-6 lifestyle images in grid
+
+DESKTOP: 2-3 columns, aspect ratio 4:3
+TABLET: 2 columns
+MOBILE: 1 column
+
+IMAGES:
+- Product in use (bedroom, bathroom, kitchen, living room)
+- Different color variants
+- Premium styling context
+- Market-specific aesthetic
+
+LIGHTBOX:
+- Click image to open fullscreen gallery
+- Navigation arrows (previous/next)
+- Close button (X)
+- Image counter (1 of 6)
+
+IMAGE STYLING:
+- Border-radius: 8px
+- Cursor: Pointer
+- Hover: Slight scale up (1.02), overlay with "Click to enlarge"
+- Box-shadow: 0 2px 8px rgba(0,0,0,0.1)
+
+CONTAINER:
+- Padding: 40px horizontal
+- Gap: 20px
+- Max-width: 1200px
+```
+
+---
+
+### **6.7 FAQ SECTION (Expandable Accordion)**
+
+```
+LAYOUT: Accordion-style FAQs
+
+┌────────────────────────────────────────────┐
+│ Q: What is the thread count and why does  │
+│    it matter?                              │
+│ ▼                                          │
+├────────────────────────────────────────────┤
+│ A: Thread count (TC) refers to the number  │
+│    of threads per square inch. Higher TC   │
+│    (400-600) indicates softer, more durable│
+│    cotton...                               │
+└────────────────────────────────────────────┘
+
+┌────────────────────────────────────────────┐
+│ Q: Are your products OEKO-TEX certified?  │
+│ ▲                                          │
+└────────────────────────────────────────────┘
+
+ACCORDION STYLING:
+- Background: Cream (#F5F3EE)
+- Question: Bold, H4, clickable
+- Answer: Normal weight, body text
+- Icon: Chevron (▲/▼) indicating open/closed
+- Border: 1px solid #DDDDDD between items
+- Padding: 20px
+
+ANIMATION:
+- Answer slides down/up on click (0.3s ease)
+- Icon rotates 180°
+- Smooth height transition
+
+CONTAINER:
+- Max-width: 1000px
+- Padding: 40px horizontal (desktop) / 20px (mobile)
+- Margin: 40px top/bottom
+
+FAQ ITEMS (Example - Bed Linen):
+1. "What is the thread count and why does it matter?"
+2. "Why Egyptian cotton vs other cotton types?"
+3. "What sizes do you offer?"
+4. "Can you customize colors or designs?"
+5. "What is the minimum order quantity?"
+6. "What is the lead time for orders?"
+7. "Do you offer wholesale pricing?"
+8. "Are your products sustainable/certified?"
+```
+
+---
+
+## SECTION 7: CONTENT TEMPLATES
+
+### **7.1 HOMEPAGE HERO COPY TEMPLATES**
+
+#### **UK Template**
+```
+HEADLINE (H1):
+"Premium Egyptian Cotton Home Textiles 
+Tailored for the UK Market"
+
+SUBHEADLINE (H3):
+"40+ Years of Manufacturing Excellence Meets 2025 Design Trends | 
+Contemporary Minimalist Aesthetic | OEKO-TEX Certified | 
+Perfect for UK Retailers & Importers"
+
+SUPPORTING TEXT:
+"Heritage-driven quality meets contemporary design. Our Egyptian cotton 
+bed linen (400-600 TC), luxury spa towels (800+ GSM), and sage/navy 
+kitchen linens are crafted for UK retailers seeking private-label 
+differentiation and wholesalers demanding premium quality."
+
+CTA BUTTON 1: "Explore Premium Collections"
+CTA BUTTON 2: "Request Wholesale Quote"
+```
+
+#### **Hong Kong Template**
+```
+HEADLINE:
+"Japandi Minimalist Home Textiles
+Design-Forward Wholesale from India"
+
+SUBHEADLINE:
+"Luxury Minimalist Aesthetic | Warm Neutral Palette | 
+Premium Re-Export Gateway to Mainland China & ASEAN | 
+Ultra-Premium Positioning"
+
+SUPPORTING TEXT:
+"Perfect for design-conscious Hong Kong importers. Our Japandi-inspired 
+collections feature minimalist beige/grey linens, warm tone accents 
+(burgundy, taupe), and ultra-luxury Egyptian cotton positioning. 
+Minimal design, maximum impact — designed for premium re-export markets."
+
+CTA BUTTON 1: "View Japandi Collections"
+CTA BUTTON 2: "Request Quote"
+```
+
+#### **New Zealand Template**
+```
+HEADLINE:
+"GOTS & OEKO-TEX Certified Organic Home Textiles
+Ethical Manufacturing for Conscious Buyers"
+
+SUBHEADLINE:
+"Certified Organic Cotton | Scandinavian Design | Artisan Craftsmanship | 
+Transparent Supply Chain | Premium NZ Market Positioning"
+
+SUPPORTING TEXT:
+"Sustainability isn't marketing — it's commitment. Our GOTS & OEKO-TEX 
+certified organic collections feature Scandinavian-inspired minimalist 
+design, hand-finished details, and complete supply chain transparency. 
+Perfect for NZ's eco-conscious premium market. 60% of our sales are gifts."
+
+CTA BUTTON 1: "Explore Certified Collections"
+CTA BUTTON 2: "Learn About Our Sustainability"
+```
+
+#### **Poland Template**
+```
+HEADLINE:
+"Mocha Mousse Earth Tone Home Textiles
+Leading the 2025 Trend"
+
+SUBHEADLINE:
+"Pantone 2025 Color Leader | Contemporary Modern Design | 
+Nature-Inspired Palette | Private-Label Partnerships | 
+Growing Polish Premium Market"
+
+SUPPORTING TEXT:
+"Poland's emerging premium market demands design-forward products. 
+Our mocha mousse, forest green, and coriander-inspired collections 
+lead the 2025 trend. Perfect for interior design retail, private-label 
+partnerships, and contemporary home décor positioning."
+
+CTA BUTTON 1: "Discover Earth Tone Collections"
+CTA BUTTON 2: "Request Wholesale Quote"
+```
+
+#### **Spain Template**
+```
+HEADLINE:
+"Mediterranean Meets Scandinavian
+Luxury Home Textiles for Spanish Retailers"
+
+SUBHEADLINE:
+"Design-Forward | Luxury Spa Aesthetic | Scandinavian Minimalism + 
+Mediterranean Warmth | Private-Label Specialist | Q4 Gifting Excellence"
+
+SUPPORTING TEXT:
+"Spain's luxury market demands sophisticated partnerships. Our 
+Mediterranean-inspired luxury collections blend Scandinavian minimalism 
+with warm, inviting tones. Perfect for retail differentiation, gifting 
+bundles, and private-label partnerships."
+
+CTA BUTTON 1: "Explore Luxury Collections"
+CTA BUTTON 2: "Discuss Private-Label Options"
+```
+
+---
+
+## SECTION 8: NAVIGATION & ROUTING
+
+### **8.1 MAIN NAVIGATION STRUCTURE**
+
+```
+PRIMARY MENU (Header):
+├── HOME (/)
+├── PRODUCTS
+│   ├── Bed Linen (/products/bed-linen/)
+│   ├── Bath Linen (/products/bath-linen/)
+│   ├── Kitchen Linen (/products/kitchen-linen/)
+│   └── Soft Furnishings (/products/soft-furnishings/)
+├── BY MARKET (Market-specific links)
+│   ├── United Kingdom (/market/uk/)
+│   ├── Hong Kong (/market/hk/)
+│   ├── New Zealand (/market/nz/)
+│   ├── Poland (/market/poland/)
+│   └── Spain (/market/spain/)
+├── BLOG (/blog/)
+├── SUSTAINABILITY (/sustainability/)
+├── ABOUT (/about/)
+└── CONTACT (/contact/)
+
+FOOTER LINKS:
+├── Quick Links
+│   ├── Products
+│   ├── Blog
+│   ├── FAQ
+│   └── Certifications
+├── Legal
+│   ├── Privacy Policy
+│   ├── Terms of Service
+│   └── Shipping Policy
+└── Connect
+    ├── Email
+    ├── WhatsApp
+    └── Social Media
+```
+
+---
+
+### **8.2 DYNAMIC MARKET ROUTING**
+
+```
+CONCEPT: Website detects visitor location → Customizes content
+
+IMPLEMENTATION:
+1. On page load, use JavaScript to detect visitor's country
+   (via IP address geolocation API or manual selection)
+
+2. Set URL with market parameter:
+   - /products/bed-linen/ → /products/bed-linen/uk/
+   - /products/bed-linen/?market=uk
+   - Or: Redirect to /uk/products/bed-linen/
+
+3. Dynamically update:
+   - Hero section headline & copy
+   - Color scheme
+   - Currency display (£, €, HK$, NZ$, etc.)
+   - Product pricing
+   - Testimonials
+   - Benefits table
+
+4. Store user's market preference in localStorage
+   - Remember selection across sessions
+   - Allow manual market switching via dropdown
+
+GEOLOCATION API:
+- Service: MaxMind (free tier), IP2Geolocation, or similar
+- Fallback: Manual market selector if detection fails
+
+MANUAL SELECTOR:
+```
+┌─────────────────────────────────┐
+│ Select Your Market:             │
+│ [ 🇬🇧 UK ]                       │
+│ [ 🇭🇰 Hong Kong ]                │
+│ [ 🇳🇿 New Zealand ]              │
+│ [ 🇵🇱 Poland ]                    │
+│ [ 🇪🇸 Spain ]                     │
+└─────────────────────────────────┘
+```
+---
+
+## SECTION 9: FORMS & LEAD CAPTURE
+
+### **9.1 REQUEST QUOTE FORM (Complete Specification)**
+
+```
+FORM ID: request-wholesale-quote
+
+FIELDS:
+
+1. COMPANY_NAME (required)
+   Type: Text input
+   Placeholder: "Your Company Name"
+   Min length: 3
+   Max length: 100
+   Validation: Non-empty
+
+2. CONTACT_NAME (required)
+   Type: Text input
+   Placeholder: "Your Full Name"
+   Min length: 3
+   Max length: 100
+
+3. EMAIL (required)
+   Type: Email input
+   Placeholder: "your@email.com"
+   Validation: Valid email format
+
+4. PHONE (required)
+   Type: Tel input with country code
+   Placeholder: "+91 7200033566"
+   Formatting: Allow +, -, (), spaces
+   Min length: 10
+
+5. COUNTRY (required)
+   Type: Dropdown/Select
+   Options:
+   - United Kingdom
+   - Hong Kong
+   - New Zealand
+   - Poland
+   - Spain
+   - Other
+   Action: Updates form color scheme, currency display
+
+6. PRODUCT_CATEGORY (required)
+   Type: Multi-select/Dropdown
+   Options:
+   - Bed Linen
+   - Bath Linen
+   - Kitchen Linen
+   - Soft Furnishings
+   - Ready-Made Garments
+   - All Categories
+
+7. ESTIMATED_VOLUME (optional)
+   Type: Dropdown
+   Options:
+   - 0-100 units/month
+   - 100-500 units/month
+   - 500-1000 units/month
+   - 1000+ units/month
+
+8. MESSAGE (optional)
+   Type: Textarea
+   Placeholder: "Tell us about your specific requirements..."
+   Max length: 500
+   Rows: 4
+
+BUTTONS:
+
+SUBMIT:
+- Label: "SUBMIT INQUIRY" or "REQUEST QUOTE"
+- Type: Submit
+- Style: Primary CTA (market-primary color)
+- Disabled state: Show spinner animation during submission
+- Success message: "Thank you! We'll contact you within 24 hours."
+
+RESET:
+- Label: "CLEAR"
+- Type: Reset
+- Style: Secondary
+- Hidden initially, shows on desktop
+
+FORM SUBMISSION:
+
+Handler: Formspree / Basin / Netlify Forms
+Recipient: office@sstextilehub.com
+
+Auto-Response Email Template:
+```
+Subject: "Thank you for your wholesale inquiry - SS Garments"
+
+Hi [CONTACT_NAME],
+
+Thank you for your interest in partnering with SS Garments & Hometextiles!
+
+We've received your inquiry and will review your requirements immediately.
+
+Here's what to expect:
+✓ Customized product catalog sent via email within 24 hours
+✓ Wholesale pricing tailored to your market & volume
+✓ Direct WhatsApp contact for quick questions: +91 7200033566
+
+If you need immediate assistance, feel free to WhatsApp us.
+
+Looking forward to a great partnership!
+
+Best regards,
+SS Garments & Hometextiles Team
+Narsapur, Andhra Pradesh, India
+
+office@sstextilehub.com
++91 7200033566
+```
+
+VALIDATION MESSAGES:
+- Empty required field: "This field is required"
+- Invalid email: "Please enter a valid email address"
+- Invalid phone: "Please enter a valid phone number"
+- Min length: "Must be at least X characters"
+- Success: Green checkmark with "Message sent successfully"
+
+FORM STYLING:
+- Background: Cream (#F5F3EE)
+- Border: 1px solid #DDDDDD
+- Border-radius: 8px
+- Padding: 40px (desktop) / 20px (mobile)
+- Box-shadow: 0 2px 8px rgba(0,0,0,0.08)
+- Max-width: 600px
+```
+
+---
+
+### **9.2 NEWSLETTER SIGNUP FORM (Footer)**
+
+```
+FORM ID: newsletter-signup
+
+FIELDS:
+
+1. EMAIL (required)
+   Type: Email input
+   Placeholder: "Your email address"
+   Inline with submit button
+
+BUTTON:
+- Label: "Subscribe"
+- Style: Secondary CTA
+- Inline or below email input
+
+SUCCESS MESSAGE:
+"Thank you for subscribing! Check your email for confirmation."
+
+EMAIL TEMPLATE:
+Subject: "Welcome to SS Garments Newsletter"
+
+Hi there!
+
+You're now subscribed to receive:
+✓ Weekly industry insights & design trends
+✓ Exclusive wholesale offers & early access to new collections
+✓ Market-specific updates for your region
+✓ Sustainability news & manufacturing updates
+
+Expected frequency: 1-2 emails per week
+
+Best regards,
+SS Garments & Hometextiles Team
+```
+
+---
+
+## SECTION 10: INTEGRATION POINTS
+
+### **10.1 THIRD-PARTY INTEGRATIONS**
+
+```
+1. FORM SUBMISSION:
+   - Service: Formspree.io or Basin.io
+   - Endpoint: https://formspree.io/f/[FORM_ID]
+   - Method: POST
+   - Email recipient: office@sstextilehub.com
+   - Redirect on success: /thank-you/ or modal
+
+2. GEOLOCATION:
+   - Service: MaxMind GeoIP2 (free tier: GeoLite2)
+   - API: Fetch via client-side JavaScript
+   - Cache: localStorage (1 week)
+
+3. ANALYTICS:
+   - Google Analytics 4 (GA4)
+   - Event tracking:
+     * Page views
+     * Button clicks (CTA, product view)
+     * Form submissions
+     * Market selection
+     * Product category view
+
+4. CRM:
+   - Service: HubSpot or Pipedrive (optional)
+   - Sync: Form submissions → Contact database
+   - Tag: market, product category, volume
+
+5. WHATSAPP INTEGRATION:
+   - Method: WhatsApp API or Click-to-Chat link
+   - Link format: https://wa.me/917200033566?text=Hello
+   - Usage: CTA buttons, contact section
+
+6. EMAIL SERVICE:
+   - Newsletter: ConvertKit or Mailchimp
+   - Subscription form in footer
+   - Auto-responder for form submissions
+
+7. SEO & METADATA:
+   - Yoast SEO or Moz integration (if on WordPress)
+   - Meta tags: Title, description, keywords per page
+   - Schema markup: Organization, Product, LocalBusiness
+   - Open Graph: Social sharing preview
+
+8. CDN:
+   - Service: Cloudflare or similar
+   - Purpose: Fast image delivery across 5 markets
+   - Auto-optimization: WebP conversion, lazy loading
+
+9. PAYMENT (Future):
+   - Gateway: Stripe or PayPal (when accepting deposits)
+   - Currency: Multi-currency support (£, €, HK$, NZ$)
+```
+
+---
+
+## SECTION 11: SEO META DATA STRUCTURE
+
+### **11.1 META TAGS PER PAGE TYPE**
+
+#### **Homepage**
+```
+<title>SS Garments & Hometextiles | Premium Home Textiles Manufacturer</title>
+
+<meta name="description" content="Premium home textiles manufacturer & exporter 
+with 40+ years expertise. Egyptian cotton bed linen, luxury bath towels, 
+contemporary kitchen linens. OEKO-TEX certified. B2B wholesale supplier.">
+
+<meta name="keywords" content="home textiles manufacturer, bed linen wholesale, 
+bath towels supplier, kitchen linen exporter, private label textiles, 
+Egyptian cotton">
+
+<meta property="og:title" content="SS Garments & Hometextiles | Premium Home Textiles">
+
+<meta property="og:description" content="Premium home textiles for UK, Hong Kong, 
+New Zealand, Poland, Spain. 40+ years manufacturing excellence.">
+
+<meta property="og:image" content="[URL to hero image]">
+
+<meta property="og:url" content="https://ssgarments.com/">
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta name="twitter:title" content="SS Garments & Hometextiles">
+
+<meta name="twitter:description" content="Premium home textiles manufacturer">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="author" content="SS Garments & Hometextiles">
+
+<meta name="robots" content="index, follow">
+
+<!-- SCHEMA MARKUP -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "SS Garments & Hometextiles",
+  "url": "https://ssgarments.com",
+  "logo": "[URL]",
+  "description": "Premium home textiles manufacturer",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Narsapur",
+    "addressLocality": "West Godavari",
+    "addressRegion": "Andhra Pradesh",
+    "postalCode": "[ZIP]",
+    "addressCountry": "India"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "Customer Service",
+    "telephone": "+91-7200033566",
+    "email": "office@sstextilehub.com"
+  },
+  "sameAs": [
+    "[LinkedIn URL]",
+    "[Instagram URL]"
+  ]
+}
+</script>
+```
+
+---
+
+#### **Product Category Page (Example: Bed Linen)**
+```
+<title>Premium Egyptian Cotton Bed Linen | Wholesale Supplier | SS Garments</title>
+
+<meta name="description" content="Premium Egyptian cotton bed linen (400-600 TC) 
+for UK, HK, NZ, Poland, Spain. Contemporary designs, OEKO-TEX certified, 
+wholesale pricing, private-label available.">
+
+<meta name="keywords" content="Egyptian cotton bed linen wholesale, 
+premium bed linen supplier, bed linen manufacturer India, 
+wholesale bedding supplier">
+
+<meta property="og:title" content="Premium Egyptian Cotton Bed Linen">
+
+<meta property="og:description" content="400-600 TC Egyptian cotton, 
+contemporary design, wholesale pricing">
+
+<meta property="og:url" content="https://ssgarments.com/products/bed-linen/">
+
+<!-- SCHEMA: Product Category -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProductCollection",
+  "name": "Bed Linen",
+  "url": "https://ssgarments.com/products/bed-linen/",
+  "description": "Premium Egyptian cotton bed linen collections",
+  "offers": {
+    "@type": "AggregateOffer",
+    "priceCurrency": "GBP",
+    "lowPrice": "14",
+    "highPrice": "45"
+  }
+}
+</script>
+```
+
+---
+
+### **11.2 CANONICAL TAGS**
+
+```
+For market-specific pages (e.g., /products/bed-linen/uk/):
+<link rel="canonical" href="https://ssgarments.com/products/bed-linen/">
+
+This tells search engines the main version, preventing duplicate content issues.
+```
+
+---
+
+### **11.3 STRUCTURED DATA (SCHEMA MARKUP)**
+
+```
+IMPLEMENT ON ALL PRODUCT PAGES:
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Premium Egyptian Cotton Bed Linen (Sage Green, 600 TC)",
+  "description": "Luxury Egyptian cotton bed linen...",
+  "image": "[Product image URL]",
+  "brand": {
+    "@type": "Brand",
+    "name": "SS Garments & Hometextiles"
+  },
+  "offers": {
+    "@type": "AggregateOffer",
+    "priceCurrency": "GBP",
+    "lowPrice": "14.00",
+    "highPrice": "18.00",
+    "availability": "InStock"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "24"
+  }
+}
+</script>
+```
+
+---
+
+## SECTION 12: MOBILE RESPONSIVENESS GUIDELINES
+
+### **12.1 RESPONSIVE BREAKPOINTS**
+
+```
+MOBILE (< 576px):
+- Single column layouts
+- Full-width elements with padding
+- Hamburger menu (hide desktop nav)
+- Touch-friendly buttons: min 44px x 44px
+- Font sizes: 14-16px (readable without zoom)
+- Images: Optimized for retina (2x pixel density)
+
+TABLET (576px - 1024px):
+- 2-column layouts where applicable
+- Condensed navigation (some dropdown items hidden)
+- Hero section: Side-by-side on wider tablets
+- Product grid: 2-3 columns
+- Form: Full-width with generous padding
+
+DESKTOP (> 1024px):
+- Full designs as specified
+- 4-column product grids
+- Horizontal navigation fully visible
+- Hero: Side-by-side layout
+- Multi-column layouts
+
+LARGE DESKTOP (> 1400px):
+- Max-width containers: 1400px (centered)
+- Wider spacing/padding
+- No text line length > 80 characters
+```
+
+---
+
+### **12.2 MOBILE-SPECIFIC OPTIMIZATIONS**
+
+```
+1. TOUCH INTERACTIONS:
+   - Minimum button size: 44x44px
+   - Spacing between clickable elements: 8px min
+   - No hover states (they don't exist on mobile)
+   - Tap feedback: Color change or scale-up
+   - Long-press: Show tooltip (optional)
+
+2. KEYBOARD:
+   - Ensure keyboard navigation works
+   - Focus states clearly visible
+   - Tab order logical (top to bottom)
+   - Input focus: Auto-zoom to 16px to prevent zoom
+   - Keyboard shortcuts: Avoid conflicting with device shortcuts
+
+3. IMAGES:
+   - Format: WebP for modern browsers, JPEG fallback
+   - Lazy loading: Load images on scroll
+   - Aspect ratio: Consistent (prevent layout shift)
+   - Responsive: srcset for different sizes
+   - File size: Optimize for 3G/4G networks
+
+4. FONTS:
+   - Min font size: 14px
+   - Line height: 1.6 or greater
+   - Font: Sans-serif, system fonts preferred (faster load)
+   - Weight: 400-600 (avoid ultra-light or ultra-bold)
+
+5. FORMS:
+   - Label above input (not beside)
+   - Input size: Minimum 44px height
+   - Autocomplete: Enabled for common fields
+   - Error messaging: Clear, not just color-based
+   - Mobile keyboard type: tel for phone, email for email, etc.
+
+6. NAVIGATION:
+   - Hamburger menu: Sticky or top-positioned
+   - Menu button: 44x44px minimum
+   - Overlay menu: Full-height, covers content
+   - Links: 44px tall, generous vertical spacing
+   - Search bar: Not hidden behind menu (accessible)
+
+7. VIEWPORT:
+   - Meta viewport tag: width=device-width, initial-scale=1.0
+   - Max-width: 100vw (no horizontal scroll)
+   - Avoid fixed widths: Use fluid layouts
+
+8. PERFORMANCE:
+   - Page load: <3 seconds (3G speeds)
+   - First contentful paint: <1.5 seconds
+   - Lighthouse score: Aim for 80+
+   - CSS/JS: Minimal blocking (async/defer JS)
+```
+
+---
+
+## SECTION 13: VISUAL ASSET REQUIREMENTS
+
+### **13.1 IMAGE SPECIFICATIONS**
+
+```
+HERO IMAGE:
+- Size: 1920x1080px minimum
+- Format: JPG or WebP
+- File size: <300KB (optimized)
+- Aspect ratio: 16:9
+- Subject: Product + lifestyle context
+- Alt text: Descriptive, keyword-included
+
+PRODUCT IMAGES:
+- Size: 800x1000px (portrait), 1200x800px (landscape)
+- Format: JPG or WebP
+- File size: <150KB each
+- Quantity: 3-4 per product (flat, lifestyle, detail, swatch)
+- Consistency: Consistent lighting, white/neutral background for flats
+- Alt text: Product name + key features
+
+CATEGORY ICON:
+- Size: 120x120px
+- Format: SVG (preferred) or PNG
+- File size: <20KB
+- Transparent background
+- Consistent style across all 4-5 category icons
+
+LOGO:
+- Size: 200x100px (horizontal), 100x100px (square)
+- Format: SVG (preferred) or PNG
+- File size: <30KB
+- Transparent background
+- Readable at small sizes
+
+CERTIFICATION BADGES:
+- Size: 180x180px
+- Format: PNG or SVG
+- File size: <50KB
+- Transparent background
+- Official logos (OEKO-TEX, GOTS, etc.)
+
+TESTIMONIAL IMAGES (optional):
+- Size: 100x100px (profile picture)
+- Format: JPG or PNG
+- File size: <30KB
+- Circular crop
+- Good quality/professional
+
+SOCIAL MEDIA THUMBNAILS:
+- LinkedIn: 1200x627px
+- Instagram: 1080x1080px (square), 1080x1350px (portrait)
+- Facebook: 1200x628px
+- File format: JPG or PNG
+
+RESPONSIVE IMAGES:
+- Provide 2x versions for retina displays
+- Use srcset: <img src="image.jpg" srcset="image-2x.jpg 2x">
+- Modern format fallback: <picture> with WebP + JPEG
+```
+
+---
+
+### **13.2 ICON REQUIREMENTS**
+
+```
+ICONS TO CREATE:
+- 4-5 category icons (Bed, Bath, Kitchen, Furnishing, Garments)
+- 6 trust indicator icons (Heritage, Workforce, Countries, Certs, Quality, etc.)
+- Navigation icons (Menu, Search, Close, Arrow, etc.)
+- Social media icons (LinkedIn, Instagram, Facebook)
+- Certification badges (OEKO-TEX, GOTS)
+
+ICON STYLE:
+- Consistent stroke weight: 2px
+- Size: 20-24px (for UI elements)
+- Color: Market-primary color or white
+- Format: SVG (preferred for scalability)
+- Fill style: Outline or solid (consistent across set)
+```
+
+---
+
+## IMPLEMENTATION CHECKLIST FOR BOLT.AI
+
+```
+PHASE 1: FOUNDATION (Week 1-2)
+☐ Create design system (colors, typography, spacing)
+☐ Build header component (logo, nav, sticky behavior)
+☐ Build footer component (3-column layout, links, newsletter)
+☐ Set up responsive grid system (4/3/2 columns breakpoints)
+☐ Create button component library (primary, secondary, states)
+☐ Set up color tokens for 5 markets
+
+PHASE 2: HOMEPAGE (Week 2-3)
+☐ Hero section (5 market variants)
+☐ Trust section (6 indicators)
+☐ Market-specific promise section
+☐ Product categories grid (4-5 cards)
+☐ Why choose section (5 items)
+☐ Featured products carousel
+☐ Testimonials carousel
+☐ Certifications section
+☐ Market-specific benefits table
+☐ Private-label opportunity section
+☐ Contact CTA section
+
+PHASE 3: PRODUCT PAGES (Week 3-4)
+☐ Category hero sections
+☐ Subcategory filter tabs
+☐ Product grid/cards (4-column layout)
+☐ Specification table
+☐ Design showcase gallery
+☐ FAQ accordion section
+☐ Contact CTA section
+
+PHASE 4: FORMS & INTERACTIONS (Week 4)
+☐ Request quote form (9 fields)
+☐ Form validation & error messages
+☐ Auto-response setup (Formspree/Basin)
+☐ Newsletter signup form
+☐ WhatsApp integration links
+☐ Thank you page
+
+PHASE 5: SEO & OPTIMIZATION (Week 5)
+☐ Meta tags per page
+☐ Schema markup (Organization, Product, ProductCollection)
+☐ Canonical tags for market variants
+☐ Image alt text
+☐ XML sitemap
+☐ Robots.txt
+☐ Google Analytics 4 setup
+☐ Google Search Console setup
+
+PHASE 6: POLISH & LAUNCH (Week 5-6)
+☐ Mobile testing (all breakpoints)
+☐ Form testing (all fields, validation)
+☐ Cross-browser testing
+☐ Performance optimization (images, CSS, JS)
+☐ Lighthouse audit (aim for 80+ score)
+☐ Security audit (HTTPS, no vulnerabilities)
+☐ Final content review
+☐ Go live!
+```
+
+---
+
+## END OF DOCUMENT
+
+**This architecture is ready to feed directly into Bolt.ai for website implementation.**
+
+**Next Steps:**
+1. Copy each section into Bolt.ai
+2. Start with Foundation Phase (colors, components)
+3. Build homepage
+4. Expand to product pages
+5. Add forms and integrations
+6. Optimize and launch
+
+Good luck! 🚀
+
+---
+
+**Document Version**: 1.0  
+**Date**: December 2025  
+**Status**: Ready for Implementation

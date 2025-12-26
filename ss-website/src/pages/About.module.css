@@ -1,0 +1,202 @@
+.hero {
+    background-color: var(--color-taupe);
+    color: var(--color-white);
+    padding: 6rem 20px 4rem;
+    /* Reduced bottom padding */
+    text-align: center;
+}
+
+.heroContent {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.heroTitle {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+.heroSubtitle {
+    font-size: 1.25rem;
+    opacity: 0.95;
+    line-height: 1.6;
+}
+
+/* Image Showcase Section */
+.imageShowcaseSection {
+    padding: 4rem 20px 0;
+    /* Minimized top padding to connect with Hero visually */
+    margin-top: -2rem;
+    /* Overlap effect? Or just close gap. Let's start with standard flow */
+    margin-top: 0;
+    background-color: var(--color-white);
+}
+
+.imageGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+.showcaseImage {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.showcaseImage:hover {
+    transform: scale(1.02);
+}
+
+/* Heritage Section */
+.heritageSection {
+    padding: 6rem 0;
+    background-color: var(--color-white);
+}
+
+.heritageContent {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.heritageContent h2 {
+    font-size: 2.5rem;
+    color: var(--color-charcoal);
+    margin-bottom: 2rem;
+}
+
+.heritageContent p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    font-size: 1.125rem;
+}
+
+/* Stats Section - Separate Row */
+.statsSection {
+    padding: 4rem 0;
+    background-color: var(--bg-secondary);
+    /* Light background for contrast */
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.statsRow {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.statItem {
+    text-align: center;
+    padding: 1rem;
+}
+
+.statIcon {
+    color: var(--color-taupe);
+    margin-bottom: 1rem;
+    /* Size handled by component props, but color here */
+}
+
+.statNumber {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-charcoal);
+    margin-bottom: 0.5rem;
+}
+
+.statLabel {
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Values Section */
+.valuesSection {
+    padding: 6rem 0;
+    background-color: var(--color-white);
+}
+
+.valuesGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.valueCard {
+    text-align: center;
+    padding: 2.5rem;
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.valueCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.iconWrapper {
+    width: 80px;
+    height: 80px;
+    background-color: var(--bg-secondary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    color: var(--color-taupe);
+}
+
+.valueCard h3 {
+    font-size: 1.5rem;
+    color: var(--color-charcoal);
+    margin-bottom: 1rem;
+}
+
+.valueCard p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+    .imageGrid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .statsRow {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .valuesGrid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .statsRow {
+        grid-template-columns: repeat(4, 1fr);
+        /* 4 in a row on desktop */
+    }
+}

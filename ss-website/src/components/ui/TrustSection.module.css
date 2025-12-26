@@ -1,0 +1,53 @@
+.section {
+    padding: 6rem 0;
+    background-color: var(--color-white);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-items: center;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.iconWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: var(--color-cream);
+    color: #C4A57B;
+    /* Taupe color for icon */
+}
+
+.text h3 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--color-charcoal);
+    margin: 0;
+}
+
+@media (min-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
