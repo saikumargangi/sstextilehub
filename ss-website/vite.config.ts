@@ -13,5 +13,5 @@ export default defineConfig({
       svgo: { plugins: [{ removeViewBox: false }] }
     })
   ],
-  base: '/sstextilehub/',
+  base: '/',
 })
