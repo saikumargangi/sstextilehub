@@ -7,6 +7,11 @@ const Contact = () => {
     const [isSubmitted, setIsSubmitted] = useState(false);
     const formRef = useRef<HTMLFormElement>(null);
 
+    const handleSubmit = () => {
+        // We don't prevent default, we let the form submit to the iframe
+        setIsSubmitted(true);
+    };
+
     const handleSuccessClose = () => {
         setIsSubmitted(false);
         if (formRef.current) formRef.current.reset();
@@ -104,66 +109,70 @@ const Contact = () => {
                                 </button>
                             </div>
                         ) : (
-                            <>
-                                <form
-                                    ref={formRef}
-                                    className={styles.formLayout}
-                                    action="https://docs.google.com/forms/d/e/1tPt6m4oL2ojWbl3jzBoB47i7E4flG8z7xIJpFiFok5k/formResponse"
-                                    method="POST"
-                                    target="hidden_iframe"
-                                >
-                                    <div className={styles.formGroup}>
-                                        <label className={styles.label}>Company Name *</label>
-                                        <input type="text" name="entry.933372866" className={styles.input} placeholder="Your Company" required />
-                                    </div>
+                            <form
+                                ref={formRef}
+                                className={styles.formLayout}
+                                action="https://docs.google.com/forms/d/e/1FAIpQLScl32BmNFhO_IGNTqVWjnAkwzEi6zE2gZ89jy9Rp8PYi_6y7Q/formResponse"
+                                method="POST"
+                                target="hidden_iframe"
+                                onSubmit={handleSubmit}
+                            >
+                                <div className={styles.formGroup}>
+                                    <label className={styles.label}>Company Name *</label>
+                                    <input type="text" name="entry.933372866" className={styles.input} placeholder="Your Company" required />
+                                </div>
 
-                                    <div className={styles.formGroup}>
-                                        <label className={styles.label}>Your Name *</label>
-                                        <input type="text" name="entry.167274565" className={styles.input} placeholder="Full Name" required />
-                                    </div>
+                                <div className={styles.formGroup}>
+                                    <label className={styles.label}>Your Name *</label>
+                                    <input type="text" name="entry.167274565" className={styles.input} placeholder="Full Name" required />
+                                </div>
 
-                                    <div className={styles.formGroup}>
-                                        <label className={styles.label}>Email Address *</label>
-                                        <input type="email" name="entry.184165100" className={styles.input} placeholder="name@company.com" required />
-                                    </div>
+                                <div className={styles.formGroup}>
+                                    <label className={styles.label}>Email Address *</label>
+                                    <input type="email" name="entry.184165100" className={styles.input} placeholder="name@company.com" required />
+                                </div>
 
-                                    <div className={styles.formGroup}>
-                                        <label className={styles.label}>WhatsApp / Phone *</label>
-                                        <input type="tel" name="entry.1214324252" className={styles.input} placeholder="+91 ..." required />
-                                    </div>
+                                <div className={styles.formGroup}>
+                                    <label className={styles.label}>WhatsApp / Phone *</label>
+                                    <input type="tel" name="entry.1214324252" className={styles.input} placeholder="+91 ..." required />
+                                </div>
 
-                                    <div className={styles.formGroup}>
-                                        <label className={styles.label}>Country *</label>
-                                        <input type="text" name="entry.269821045" className={styles.input} placeholder="Your Country" required />
-                                    </div>
+                                <div className={styles.formGroup}>
+                                    <label className={styles.label}>Country *</label>
+                                    <input type="text" name="entry.269821045" className={styles.input} placeholder="Your Country" required />
+                                </div>
 
-                                    <div className={styles.formGroup}>
-                                        <label className={styles.label}>Product Category *</label>
-                                        <input type="text" name="entry.753107625" className={styles.input} placeholder="Your answer" required />
-                                    </div>
+                                <div className={styles.formGroup}>
+                                    <label className={styles.label}>Product Category *</label>
+                                    <select name="entry.753107625" className={styles.select} required defaultValue="">
+                                        <option value="" disabled>Select Category</option>
+                                        <option value="Kitchen and Table Linen">Kitchen and Table Linen</option>
+                                        <option value="Bed Linen">Bed Linen</option>
+                                        <option value="Bath Linen">Bath Linen</option>
+                                        <option value="Soft Furnishing">Soft Furnishing</option>
+                                        <option value="Garments">Garments</option>
+                                        <option value="Accessories">Accessories</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
 
-                                    <div className={`${styles.formGroup} ${styles.fullWidth}`}>
-                                        <label className={styles.label}>Message (Optional)</label>
-                                        <textarea name="entry.914265994" className={styles.textarea} rows={5} placeholder="Tell us about your requirements, estimated volume, and specifications..."></textarea>
-                                    </div>
+                                <div className={`${styles.formGroup} ${styles.fullWidth}`}>
+                                    <label className={styles.label}>Message (Optional)</label>
+                                    <textarea name="entry.914265994" className={styles.textarea} rows={5} placeholder="Tell us about your requirements, estimated volume, and specifications..."></textarea>
+                                </div>
 
-                                    <div className={`${styles.formGroup} ${styles.fullWidth}`}>
-                                        <button type="submit" className={styles.submitButton}>
-                                            <span style={{ marginRight: '10px' }}>Submit Inquiry</span>
-                                            <Send size={18} style={{ display: 'inline', verticalAlign: 'middle' }} />
-                                        </button>
-                                        <p style={{ fontSize: '0.85rem', color: '#888', marginTop: '1rem', textAlign: 'center' }}>
-                                            Your data is processed securely. Queries sent to office@sstextilehub.com.
-                                        </p>
-                                    </div>
-                                </form>
-                                <iframe 
-                                    name="hidden_iframe" 
-                                    style={{ display: 'none' }}
-                                    onLoad={() => setIsSubmitted(true)}
-                                ></iframe>
-                            </>
+                                <div className={`${styles.formGroup} ${styles.fullWidth}`}>
+                                    <button type="submit" className={styles.submitButton}>
+                                        <span style={{ marginRight: '10px' }}>Submit Inquiry</span>
+                                        <Send size={18} style={{ display: 'inline', verticalAlign: 'middle' }} />
+                                    </button>
+                                    <p style={{ fontSize: '0.85rem', color: '#888', marginTop: '1rem', textAlign: 'center' }}>
+                                        Your data is processed securely. Queries sent to [office@sstextilehub.com](mailto:office@sstextilehub.com).
+                                    </p>
+                                </div>
+                            </form>
                         )}
+                        <iframe name="hidden_iframe" style={{ display: 'none' }}></iframe>
                     </div>
                 </div>
             </section>
