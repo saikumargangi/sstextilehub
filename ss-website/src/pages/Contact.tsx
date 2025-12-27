@@ -28,7 +28,7 @@ const Contact = () => {
             });
 
             // Submit to Google Forms using image beacon (bypass CORS)
-            const response = await fetch(
+             await fetch(
                 'https://docs.google.com/forms/d/e/1FAIpQLScl32BmNFhO_IGNTqVWjnAkwzEi6zE2gZ89jy9Rp8PYi_6y7Q/formResponse',
                 {
                     method: 'POST',
