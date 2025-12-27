@@ -20,7 +20,17 @@ const Contact = () => {
 
         try {
             const formElement = e.currentTarget;
-            const formData = new FormData(formElement);
+            
+            // MANUALLY GET ALL FIELD VALUES - THIS IS THE KEY FIX
+            const companyName = (formElement.querySelector('input[name="entry.98431382"]') as HTMLInputElement).value;
+            const contactName = (formElement.querySelector('input[name="entry.2138707235"]') as HTMLInputElement).value;
+            const email = (formElement.querySelector('input[name="entry.360969980"]') as HTMLInputElement).value;
+            const phone = (formElement.querySelector('input[name="entry.2133336110"]') as HTMLInputElement).value;
+            const country = (formElement.querySelector('input[name="entry.1777081057"]') as HTMLInputElement).value;
+            const productCategory = (formElement.querySelector('input[name="entry.1166514373"]') as HTMLInputElement).value;
+            const message = (formElement.querySelector('textarea[name="entry.914265994"]') as HTMLTextAreaElement).value;
+            
+            console.log('Form values:', { companyName, contactName, email, phone, country, productCategory, message });
 
             // Create an iframe to submit the form
             const iframe = document.createElement('iframe');
@@ -35,14 +45,23 @@ const Contact = () => {
             hiddenForm.target = iframe.name;
             hiddenForm.style.display = 'none';
 
-            // Add form fields - CAPTURE ALL VALUES INCLUDING MESSAGE
-            formData.forEach((value, key) => {
+            // ADD ALL FIELDS MANUALLY
+            const fields = [
+                { name: 'entry.98431382', value: companyName },
+                { name: 'entry.2138707235', value: contactName },
+                { name: 'entry.360969980', value: email },
+                { name: 'entry.2133336110', value: phone },
+                { name: 'entry.1777081057', value: country },
+                { name: 'entry.1166514373', value: productCategory },
+                { name: 'entry.914265994', value: message },
+            ];
+
+            fields.forEach(field => {
                 const input = document.createElement('input');
                 input.type = 'hidden';
-                input.name = key;
-                input.value = String(value); // Convert to string
+                input.name = field.name;
+                input.value = field.value;
                 hiddenForm.appendChild(input);
-                console.log(`Form field: ${key} = ${value}`); // Debug
             });
 
             document.body.appendChild(hiddenForm);
@@ -207,7 +226,7 @@ const Contact = () => {
                                             rows={5} 
                                             placeholder="Tell us about your requirements, estimated volume, and specifications..." 
                                             disabled={isLoading}
-                                        ></textarea>
+                                        />
                                     </div>
 
                                     <div className={`${styles.formGroup} ${styles.fullWidth}`}>
