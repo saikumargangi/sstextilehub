@@ -21,7 +21,7 @@ const Contact = () => {
         try {
             const formElement = e.currentTarget;
             
-            // MANUALLY GET ALL FIELD VALUES - THIS IS THE KEY FIX
+            // MANUALLY GET ALL FIELD VALUES
             const companyName = (formElement.querySelector('input[name="entry.98431382"]') as HTMLInputElement).value;
             const contactName = (formElement.querySelector('input[name="entry.2138707235"]') as HTMLInputElement).value;
             const email = (formElement.querySelector('input[name="entry.360969980"]') as HTMLInputElement).value;
@@ -30,7 +30,7 @@ const Contact = () => {
             const productCategory = (formElement.querySelector('input[name="entry.1166514373"]') as HTMLInputElement).value;
             const message = (formElement.querySelector('textarea[name="entry.914265994"]') as HTMLTextAreaElement).value;
             
-            console.log('Form values:', { companyName, contactName, email, phone, country, productCategory, message });
+            console.log('Submitting form with message:', message);
 
             // Create an iframe to submit the form
             const iframe = document.createElement('iframe');
@@ -38,10 +38,10 @@ const Contact = () => {
             iframe.name = 'hidden_iframe_' + Date.now();
             document.body.appendChild(iframe);
 
-            // Create a hidden form that submits to Google Forms
+            // Create a hidden form that submits to Google Forms - CORRECT URL
             const hiddenForm = document.createElement('form');
             hiddenForm.method = 'POST';
-            hiddenForm.action = 'https://docs.google.com/forms/d/e/1FAIpQLScl32BmNFhO_IGNTqVWjnAkwzEi6zE2gZ89jy9Rp8PYi_6y7Q/formResponse';
+            hiddenForm.action = 'https://docs.google.com/forms/d/1tPt6m4oL2ojWbl3jzBoB47i7E4flG8z7xIJpFiFok5k/formResponse';
             hiddenForm.target = iframe.name;
             hiddenForm.style.display = 'none';
 
