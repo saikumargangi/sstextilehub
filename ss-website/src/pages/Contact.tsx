@@ -30,7 +30,16 @@ const Contact = () => {
             const productCategory = (formElement.querySelector('input[name="entry.1166514373"]') as HTMLInputElement).value;
             const message = (formElement.querySelector('textarea[name="entry.914265994"]') as HTMLTextAreaElement).value;
             
-            console.log('Submitting form with message:', message);
+            console.log('=== FORM SUBMISSION DEBUG ===');
+            console.log('Company Name:', companyName);
+            console.log('Contact Name:', contactName);
+            console.log('Email:', email);
+            console.log('Phone:', phone);
+            console.log('Country:', country);
+            console.log('Product Category:', productCategory);
+            console.log('Message:', message);
+            console.log('Message length:', message.length);
+            console.log('Message is empty?', message === '');
 
             // Create an iframe to submit the form
             const iframe = document.createElement('iframe');
@@ -65,13 +74,17 @@ const Contact = () => {
             });
 
             document.body.appendChild(hiddenForm);
+            console.log('Form HTML before submit:');
+            console.log(hiddenForm.innerHTML);
+            console.log('Submitting form...');
             hiddenForm.submit();
 
-            // Clean up
+            // Clean up - WAIT 3 SECONDS
             setTimeout(() => {
                 document.body.removeChild(hiddenForm);
                 document.body.removeChild(iframe);
-            }, 1000);
+                console.log('Cleanup complete');
+            }, 3000);
 
             // Track form submission
             trackEvent('contact_form_submission', {
