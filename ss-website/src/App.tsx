@@ -1,4 +1,6 @@
+import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { initGA } from './lib/googleAnalytics';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import Home from './pages/Home';
@@ -14,7 +16,14 @@ import SoftFurnishing from './pages/products/SoftFurnishing';
 import Garments from './pages/products/Garments';
 import Accessories from './pages/products/Accessories';
 
+const MEASUREMENT_ID = 'G-SRF74Q5FCL';
+
 function App() {
+  useEffect(() => {
+    // Initialize Google Analytics when app loads
+    initGA(MEASUREMENT_ID);
+  }, []);
+
   return (
     <>
       <Header />
@@ -37,3 +46,4 @@ function App() {
 }
 
 export default App;
+
