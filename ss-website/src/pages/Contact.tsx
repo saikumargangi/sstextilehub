@@ -119,32 +119,32 @@ const Contact = () => {
                             >
                                 <div className={styles.formGroup}>
                                     <label className={styles.label}>Company Name *</label>
-                                    <input type="text" name="entry.98431382" className={styles.input} placeholder="Your Company" required />
+                                    <input type="text" name="entry.933372866" className={styles.input} placeholder="Your Company" required />
                                 </div>
 
                                 <div className={styles.formGroup}>
                                     <label className={styles.label}>Your Name *</label>
-                                    <input type="text" name="entry.2138707235" className={styles.input} placeholder="Full Name" required />
+                                    <input type="text" name="entry.167274565" className={styles.input} placeholder="Full Name" required />
                                 </div>
 
                                 <div className={styles.formGroup}>
                                     <label className={styles.label}>Email Address *</label>
-                                    <input type="email" name="entry.360969980" className={styles.input} placeholder="name@company.com" required />
+                                    <input type="email" name="entry.184165100" className={styles.input} placeholder="name@company.com" required />
                                 </div>
 
                                 <div className={styles.formGroup}>
                                     <label className={styles.label}>WhatsApp / Phone *</label>
-                                    <input type="tel" name="entry.2133336110" className={styles.input} placeholder="+91 ..." required />
+                                    <input type="tel" name="entry.1214324252" className={styles.input} placeholder="+91 ..." required />
                                 </div>
 
                                 <div className={styles.formGroup}>
                                     <label className={styles.label}>Country *</label>
-                                    <input type="text" name="entry.1777081057" className={styles.input} placeholder="Your Country" required />
+                                    <input type="text" name="entry.269821045" className={styles.input} placeholder="Your Country" required />
                                 </div>
 
                                 <div className={styles.formGroup}>
                                     <label className={styles.label}>Product Category *</label>
-                                    <select name="entry.1166514373" className={styles.select} required defaultValue="">
+                                    <select name="entry.753107625" className={styles.select} required defaultValue="">
                                         <option value="" disabled>Select Category</option>
                                         <option value="Kitchen and Table Linen">Kitchen and Table Linen</option>
                                         <option value="Bed Linen">Bed Linen</option>
@@ -158,7 +158,7 @@ const Contact = () => {
 
                                 <div className={`${styles.formGroup} ${styles.fullWidth}`}>
                                     <label className={styles.label}>Message (Optional)</label>
-                                    <textarea name="entry.1696899708" className={styles.textarea} rows={5} placeholder="Tell us about your requirements, estimated volume, and specifications..."></textarea>
+                                    <textarea name="entry.914265994" className={styles.textarea} rows={5} placeholder="Tell us about your requirements, estimated volume, and specifications..."></textarea>
                                 </div>
 
                                 <div className={`${styles.formGroup} ${styles.fullWidth}`}>
@@ -167,7 +167,7 @@ const Contact = () => {
                                         <Send size={18} style={{ display: 'inline', verticalAlign: 'middle' }} />
                                     </button>
                                     <p style={{ fontSize: '0.85rem', color: '#888', marginTop: '1rem', textAlign: 'center' }}>
-                                        Your data is processed securely. Queries sent to office@sstextilehub.com.
+                                        Your data is processed securely. Queries sent to [office@sstextilehub.com](mailto:office@sstextilehub.com).
                                     </p>
                                 </div>
                             </form>
@@ -181,3 +181,4 @@ const Contact = () => {
 };
 
 export default Contact;
+
