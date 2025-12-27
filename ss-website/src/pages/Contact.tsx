@@ -5,11 +5,55 @@ import contactBg from '../assets/contact-bg.jpg';
 
 const Contact = () => {
     const [isSubmitted, setIsSubmitted] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const formRef = useRef<HTMLFormElement>(null);
 
     const handleSuccessClose = () => {
         setIsSubmitted(false);
         if (formRef.current) formRef.current.reset();
+    };
+
+    const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setIsLoading(true);
+
+        try {
+            const formElement = e.currentTarget;
+            const formData = new FormData(formElement);
+
+            // Convert FormData to URLSearchParams format that Google Forms expects
+            const params = new URLSearchParams();
+            formData.forEach((value, key) => {
+                params.append(key, value as string);
+            });
+
+            // Submit to Google Forms using image beacon (bypass CORS)
+            const response = await fetch(
+                'https://docs.google.com/forms/d/e/1FAIpQLScl32BmNFhO_IGNTqVWjnAkwzEi6zE2gZ89jy9Rp8PYi_6y7Q/formResponse',
+                {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: params.toString(),
+                }
+            );
+
+            // Even though response is opaque due to no-cors, if no error was thrown, submission likely succeeded
+            console.log('Form submitted successfully');
+            setIsSubmitted(true);
+            setIsLoading(false);
+
+            // Reset form after 2 seconds
+            setTimeout(() => {
+                if (formRef.current) formRef.current.reset();
+            }, 500);
+        } catch (error) {
+            console.error('Form submission error:', error);
+            setIsLoading(false);
+            alert('There was an error submitting the form. Please try again.');
+        }
     };
 
     return (
@@ -108,60 +152,55 @@ const Contact = () => {
                                 <form
                                     ref={formRef}
                                     className={styles.formLayout}
-                                    action="https://docs.google.com/forms/d/e/1tPt6m4oL2ojWbl3jzBoB47i7E4flG8z7xIJpFiFok5k/formResponse"
-                                    method="POST"
-                                    target="hidden_iframe"
+                                    onSubmit={handleFormSubmit}
                                 >
                                     <div className={styles.formGroup}>
                                         <label className={styles.label}>Company Name *</label>
-                                        <input type="text" name="entry.933372866" className={styles.input} placeholder="Your Company" required />
+                                        <input type="text" name="entry.98431382" className={styles.input} placeholder="Your Company" required disabled={isLoading} />
                                     </div>
 
                                     <div className={styles.formGroup}>
                                         <label className={styles.label}>Your Name *</label>
-                                        <input type="text" name="entry.167274565" className={styles.input} placeholder="Full Name" required />
+                                        <input type="text" name="entry.2138707235" className={styles.input} placeholder="Full Name" required disabled={isLoading} />
                                     </div>
 
                                     <div className={styles.formGroup}>
                                         <label className={styles.label}>Email Address *</label>
-                                        <input type="email" name="entry.184165100" className={styles.input} placeholder="name@company.com" required />
+                                        <input type="email" name="entry.360969980" className={styles.input} placeholder="name@company.com" required disabled={isLoading} />
                                     </div>
 
                                     <div className={styles.formGroup}>
                                         <label className={styles.label}>WhatsApp / Phone *</label>
-                                        <input type="tel" name="entry.1214324252" className={styles.input} placeholder="+91 ..." required />
+                                        <input type="tel" name="entry.2133336110" className={styles.input} placeholder="+91 ..." required disabled={isLoading} />
                                     </div>
 
                                     <div className={styles.formGroup}>
                                         <label className={styles.label}>Country *</label>
-                                        <input type="text" name="entry.269821045" className={styles.input} placeholder="Your Country" required />
+                                        <input type="text" name="entry.1777081057" className={styles.input} placeholder="Your Country" required disabled={isLoading} />
                                     </div>
 
                                     <div className={styles.formGroup}>
                                         <label className={styles.label}>Product Category *</label>
-                                        <input type="text" name="entry.753107625" className={styles.input} placeholder="Your answer" required />
+                                        <input type="text" name="entry.1166514373" className={styles.input} placeholder="Your answer" required disabled={isLoading} />
                                     </div>
 
                                     <div className={`${styles.formGroup} ${styles.fullWidth}`}>
                                         <label className={styles.label}>Message (Optional)</label>
-                                        <textarea name="entry.914265994" className={styles.textarea} rows={5} placeholder="Tell us about your requirements, estimated volume, and specifications..."></textarea>
+                                        <textarea name="entry.914265994" className={styles.textarea} rows={5} placeholder="Tell us about your requirements, estimated volume, and specifications..." disabled={isLoading}></textarea>
                                     </div>
 
                                     <div className={`${styles.formGroup} ${styles.fullWidth}`}>
-                                        <button type="submit" className={styles.submitButton}>
-                                            <span style={{ marginRight: '10px' }}>Submit Inquiry</span>
+                                        <button type="submit" className={styles.submitButton} disabled={isLoading}>
+                                            <span style={{ marginRight: '10px' }}>
+                                                {isLoading ? 'Submitting...' : 'Submit Inquiry'}
+                                            </span>
                                             <Send size={18} style={{ display: 'inline', verticalAlign: 'middle' }} />
                                         </button>
                                         <p style={{ fontSize: '0.85rem', color: '#888', marginTop: '1rem', textAlign: 'center' }}>
-                                            Your data is processed securely. Queries sent to office@sstextilehub.com.
+                                            Your data is processed securely. Queries sent to <a href="mailto:office@sstextilehub.com" style={{ color: '#666', textDecoration: 'underline' }}>office@sstextilehub.com</a>.
                                         </p>
                                     </div>
                                 </form>
-                                <iframe 
-                                    name="hidden_iframe" 
-                                    style={{ display: 'none' }}
-                                    onLoad={() => setIsSubmitted(true)}
-                                ></iframe>
                             </>
                         )}
                     </div>
