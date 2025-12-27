@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import { Phone, Mail, Linkedin, Calendar, Instagram, Send, CheckCircle } from 'lucide-react';
+import { trackEvent } from '../lib/googleAnalytics';
 import styles from './Contact.module.css';
 import contactBg from '../assets/contact-bg.jpg';
 
@@ -21,31 +22,30 @@ const Contact = () => {
             const formElement = e.currentTarget;
             const formData = new FormData(formElement);
 
-            // Create an iframe to submit the form (bypasses CORS issues)
+            // Create an iframe to submit the form
             const iframe = document.createElement('iframe');
             iframe.style.display = 'none';
             iframe.name = 'hidden_iframe_' + Date.now();
             document.body.appendChild(iframe);
 
-            // Create a hidden form that submits to Google Forms via iframe
+            // Create a hidden form that submits to Google Forms
             const hiddenForm = document.createElement('form');
             hiddenForm.method = 'POST';
             hiddenForm.action = 'https://docs.google.com/forms/d/e/1FAIpQLScl32BmNFhO_IGNTqVWjnAkwzEi6zE2gZ89jy9Rp8PYi_6y7Q/formResponse';
             hiddenForm.target = iframe.name;
             hiddenForm.style.display = 'none';
 
-            // Add form fields to hidden form
+            // Add form fields - CAPTURE ALL VALUES INCLUDING MESSAGE
             formData.forEach((value, key) => {
                 const input = document.createElement('input');
                 input.type = 'hidden';
                 input.name = key;
-                input.value = value as string;
+                input.value = String(value); // Convert to string
                 hiddenForm.appendChild(input);
+                console.log(`Form field: ${key} = ${value}`); // Debug
             });
 
             document.body.appendChild(hiddenForm);
-
-            // Submit the hidden form
             hiddenForm.submit();
 
             // Clean up
@@ -54,11 +54,15 @@ const Contact = () => {
                 document.body.removeChild(iframe);
             }, 1000);
 
-            // Show success message
+            // Track form submission
+            trackEvent('contact_form_submission', {
+                form_name: 'contact_inquiry',
+                timestamp: new Date().toISOString(),
+            });
+
             setIsSubmitted(true);
             setIsLoading(false);
 
-            // Reset form
             setTimeout(() => {
                 if (formRef.current) formRef.current.reset();
             }, 500);
@@ -84,7 +88,6 @@ const Contact = () => {
 
             <section className={styles.contactSection}>
                 <div className={styles.container}>
-                    {/* Floating Channel Grid */}
                     <div className={styles.channelGrid}>
                         <a href="https://wa.me/917200033566" target="_blank" rel="noopener noreferrer" className={styles.channelCard}>
                             <div className={styles.iconWrapper}>
@@ -127,7 +130,6 @@ const Contact = () => {
                         </a>
                     </div>
 
-                    {/* Form Section */}
                     <div className={styles.formContainer}>
                         <div className={styles.formHeader}>
                             <h2>We are happy to get in touch</h2>
@@ -199,7 +201,13 @@ const Contact = () => {
 
                                     <div className={`${styles.formGroup} ${styles.fullWidth}`}>
                                         <label className={styles.label}>Message (Optional)</label>
-                                        <textarea name="entry.914265994" className={styles.textarea} rows={5} placeholder="Tell us about your requirements, estimated volume, and specifications..." disabled={isLoading}></textarea>
+                                        <textarea 
+                                            name="entry.914265994" 
+                                            className={styles.textarea} 
+                                            rows={5} 
+                                            placeholder="Tell us about your requirements, estimated volume, and specifications..." 
+                                            disabled={isLoading}
+                                        ></textarea>
                                     </div>
 
                                     <div className={`${styles.formGroup} ${styles.fullWidth}`}>
@@ -224,4 +232,3 @@ const Contact = () => {
 };
 
 export default Contact;
-
