@@ -71,3 +71,4 @@ export default defineConfig([
   },
 ])
 ```
+Note: npm audit warnings are in build-time dependencies only and do not affect the deployed site.
