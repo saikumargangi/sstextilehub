@@ -21,31 +21,44 @@ const Contact = () => {
             const formElement = e.currentTarget;
             const formData = new FormData(formElement);
 
-            // Convert FormData to URLSearchParams format that Google Forms expects
-            const params = new URLSearchParams();
+            // Create an iframe to submit the form (bypasses CORS issues)
+            const iframe = document.createElement('iframe');
+            iframe.style.display = 'none';
+            iframe.name = 'hidden_iframe_' + Date.now();
+            document.body.appendChild(iframe);
+
+            // Create a hidden form that submits to Google Forms via iframe
+            const hiddenForm = document.createElement('form');
+            hiddenForm.method = 'POST';
+            hiddenForm.action = 'https://docs.google.com/forms/d/e/1FAIpQLScl32BmNFhO_IGNTqVWjnAkwzEi6zE2gZ89jy9Rp8PYi_6y7Q/formResponse';
+            hiddenForm.target = iframe.name;
+            hiddenForm.style.display = 'none';
+
+            // Add form fields to hidden form
             formData.forEach((value, key) => {
-                params.append(key, value as string);
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = key;
+                input.value = value as string;
+                hiddenForm.appendChild(input);
             });
 
-            // Submit to Google Forms using image beacon (bypass CORS)
-             await fetch(
-                'https://docs.google.com/forms/d/e/1FAIpQLScl32BmNFhO_IGNTqVWjnAkwzEi6zE2gZ89jy9Rp8PYi_6y7Q/formResponse',
-                {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                    },
-                    body: params.toString(),
-                }
-            );
+            document.body.appendChild(hiddenForm);
 
-            // Even though response is opaque due to no-cors, if no error was thrown, submission likely succeeded
-            console.log('Form submitted successfully');
+            // Submit the hidden form
+            hiddenForm.submit();
+
+            // Clean up
+            setTimeout(() => {
+                document.body.removeChild(hiddenForm);
+                document.body.removeChild(iframe);
+            }, 1000);
+
+            // Show success message
             setIsSubmitted(true);
             setIsLoading(false);
 
-            // Reset form after 2 seconds
+            // Reset form
             setTimeout(() => {
                 if (formRef.current) formRef.current.reset();
             }, 500);
