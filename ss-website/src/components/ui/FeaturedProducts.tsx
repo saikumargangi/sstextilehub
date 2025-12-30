@@ -15,7 +15,7 @@ const categories = [
     {
         id: 'kitchen-linen',
         title: 'Kitchen and Table Linen',
-        sub: 'Aprons, Oven Mitts, Cloth, Napkins, Table Runners, And Tablecloths.',
+        sub: 'Aprons, Oven Mitts, Cloth, Napkins, Table Runners, and Tablecloths.',
         count: '40+ Products',
         image: kitchenLinenImg,
         link: '/products/kitchen-linen'
@@ -23,7 +23,7 @@ const categories = [
     {
         id: 'bed-linen',
         title: 'Bed Linen',
-        sub: 'Flat And Fitted Sheets, Duvet Covers, Pillow Cases, And Bed Spreads',
+        sub: 'Flat and Fitted Sheets, Duvet Covers, Pillow Cases, and Bed Spreads',
         count: '50+ Products',
         image: bedLinenImg,
         link: '/products/bed-linen'
@@ -31,7 +31,7 @@ const categories = [
     {
         id: 'bath-linen',
         title: 'Bath Linen',
-        sub: 'Terry Towels (Hand, Face, And Bath), Bathrobes, And Anti-Skid Bath Mats.',
+        sub: 'Terry Towels (Hand, Face, and Bath), Bathrobes, and Anti-Skid Bath Mats.',
         count: '30+ Products',
         image: bathLinenImg,
         link: '/products/bath-linen'
@@ -39,7 +39,7 @@ const categories = [
     {
         id: 'soft-furnishing',
         title: 'Soft Furnishing',
-        sub: 'Curtains, Cushion Covers, And Throws.',
+        sub: 'Curtains, Cushion Covers, and Throws.',
         count: '15+ Products',
         image: softFurnishingImg,
         link: '/products/soft-furnishing'
@@ -115,6 +115,11 @@ const FeaturedProducts = () => {
                 >
                     <ChevronRight size={24} />
                 </button>
+            </div>
+            <div className={styles.ctaContainer}>
+                <Link to="/catalogue" className={styles.catalogueButton}>
+                    Download Product Catalogue
+                </Link>
             </div>
         </section>
     );

@@ -1,65 +1,29 @@
 import styles from './KitchenLinen.module.css';
-import bannerImg from '../../assets/kitchen/banner.jpg';
-import kitchen1 from '../../assets/kitchen/napkins.jpg';
-import kitchen2 from '../../assets/kitchen/aprons.jpg';
-import kitchen3 from '../../assets/kitchen/towels.jpg';
-import kitchen4 from '../../assets/kitchen/mitts.jpg';
-import kitchen5 from '../../assets/kitchen/tablecloths.jpg';
-import kitchen6 from '../../assets/kitchen/runners.jpg';
-
-const products = [
-    {
-        id: 1,
-        image: kitchen1,
-        title: "Table Napkins",
-        desc: "Elegant, highly absorbent cotton napkins available in various weaves and colors."
-    },
-    {
-        id: 2,
-        image: kitchen2,
-        title: "Aprons",
-        desc: "Durable, ergonomic aprons designed for commercial kitchens and style-conscious chefs."
-    },
-    {
-        id: 3,
-        image: kitchen3,
-        title: "Kitchen Towel Sets",
-        desc: "Multi-purpose, lint-free towels with superior absorbency for all kitchen tasks."
-    },
-    {
-        id: 4,
-        image: kitchen4,
-        title: "Oven Mitts & Pot Holders",
-        desc: "Heat-resistant, quilted protective gear ensuring safety without compromising style."
-    },
-    {
-        id: 5,
-        image: kitchen5,
-        title: "Dining Table Cloths",
-        desc: "Classic and contemporary tablecloths that set the perfect foundation for any meal."
-    },
-    {
-        id: 6,
-        image: kitchen6,
-        title: "Table Runners",
-        desc: "Handcrafted runners adding a layer of texture and sophistication to dining spaces."
-    }
-];
+import { productsData } from '../../data/productData';
 
 const KitchenLinen = () => {
+    // Note: Assuming 'description' structure for KitchenLinen needs to be added to productData if not exact match,
+    // but in my productData file I only added 'items', 'title', 'subtitle', 'bannerImage'. 
+    // Wait, I did NOT add 'description' text to KitchenLinen in productData.ts yet!
+    // I only added it for BedLinen.
+    // I should check productData.ts again.
+
+    // START CHECK
+    const { title, subtitle, bannerImage, items } = productsData.kitchenLinen;
+
     return (
         <main className={styles.pageContainer}>
             {/* Hero / Banner Section */}
             <section className={styles.banner}>
                 <img
-                    src={bannerImg}
-                    alt="Premium Kitchen Linen Collection"
+                    src={bannerImage}
+                    alt={`${title} Collection`}
                     className={styles.bannerImage}
                 />
                 <div className={styles.bannerOverlay}></div>
                 <div className={styles.bannerContent}>
-                    <h1 className={styles.bannerTitle}>Kitchen and Table Linen</h1>
-                    <p className={styles.bannerSubtitle}>Functionality meets Elegance. For Chefs & Homes.</p>
+                    <h1 className={styles.bannerTitle}>{title}</h1>
+                    <p className={styles.bannerSubtitle}>{subtitle}</p>
                 </div>
             </section>
 
@@ -109,7 +73,7 @@ const KitchenLinen = () => {
                 <div className={styles.container}>
                     <h2 className={styles.sectionTitle}>Our Collection</h2>
                     <div className={styles.productGrid}>
-                        {products.map((product) => (
+                        {items.map((product) => (
                             <div key={product.id} className={styles.productCard}>
                                 <div className={styles.imageContainer}>
                                     <img

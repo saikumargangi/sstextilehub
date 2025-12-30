@@ -74,7 +74,12 @@
     color: var(--text-secondary);
     line-height: 1.8;
     margin-bottom: 1.5rem;
-    font-size: 1.125rem;
+    font-size: 1rem;
+    text-align: justify;
+    max-width: 800px;
+    /* constraining width helps readability when justified */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Stats Section - Separate Row */
@@ -198,5 +203,74 @@
     .statsRow {
         grid-template-columns: repeat(4, 1fr);
         /* 4 in a row on desktop */
+    }
+}
+
+@media (max-width: 640px) {
+    .heroTitle {
+        font-size: 2rem;
+    }
+
+    .showcaseImage {
+        height: 250px;
+    }
+
+    .statsRow {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem 0.5rem;
+    }
+
+    .statItem {
+        padding: 0.5rem;
+    }
+
+    .statIcon {
+        width: 24px;
+        height: 24px;
+        margin-bottom: 0.5rem;
+    }
+
+    .statNumber {
+        font-size: 1.75rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .statLabel {
+        font-size: 0.7rem;
+        line-height: 1.2;
+    }
+
+    .valueCard {
+        padding: 1.5rem;
+        max-width: 320px;
+        margin: 0 auto;
+    }
+
+    .iconWrapper {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 1rem;
+    }
+
+    .valueCard h3 {
+        font-size: 1.25rem;
+    }
+
+    .hero {
+        padding: 4rem 20px 2rem;
+    }
+
+    .valuesSection,
+    .heritageSection {
+        padding: 3rem 0;
+    }
+
+    .valuesGrid {
+        gap: 1.5rem;
+    }
+
+    .heritageContent h2 {
+        font-size: 1.75rem;
+        margin-bottom: 1.5rem;
     }
 }

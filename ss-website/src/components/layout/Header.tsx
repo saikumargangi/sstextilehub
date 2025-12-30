@@ -16,8 +16,12 @@ const Header = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+
+
     return (
         <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`}>
+
+
             <div className={`container ${styles.container}`}>
                 <Link to="/" className={styles.logo}>
                     <img src={logoIcon} alt="SS Garments Icon" className={styles.logoImage} />
@@ -42,11 +46,13 @@ const Header = () => {
                         </div>
                     </div>
 
-                    <Link to="/about" className={styles.navLink}>About</Link>
+                    <Link to="/about" className={styles.navLink}>About Us</Link>
                     <Link to="/contact" className={styles.navLink}>Contact</Link>
                 </nav>
 
                 <div className={styles.actions}>
+
+
                     <Link to="/contact" className={styles.ctaButton}>
                         Get in Touch
                     </Link>
@@ -61,15 +67,19 @@ const Header = () => {
 
             {/* Mobile Menu Overlay - Simplistic Implementation for now */}
             {isMobileMenuOpen && (
-                <div style={{
-                    position: 'absolute', top: '80px', left: 0, width: '100%', background: '#fff',
-                    padding: '20px', boxShadow: '0 4px 10px rgba(0,0,0,0.1)', display: 'flex', flexDirection: 'column', gap: '15px'
-                }}>
+                <div className={styles.mobileMenu}>
                     <Link to="/" onClick={() => setIsMobileMenuOpen(false)}>Home</Link>
-                    <Link to="/products/bed-linen" onClick={() => setIsMobileMenuOpen(false)}>Bed Linen</Link>
-                    <Link to="/products/bath-linen" onClick={() => setIsMobileMenuOpen(false)}>Bath Linen</Link>
-                    <Link to="/products/kitchen-linen" onClick={() => setIsMobileMenuOpen(false)}>Kitchen Linen</Link>
-                    <Link to="/about" onClick={() => setIsMobileMenuOpen(false)}>About</Link>
+
+                    <div className={styles.mobileProductHeader}>Our Products</div>
+                    <Link to="/products/kitchen-linen" className={styles.mobileProductLink} onClick={() => setIsMobileMenuOpen(false)}>Kitchen & Table Linen</Link>
+                    <Link to="/products/bed-linen" className={styles.mobileProductLink} onClick={() => setIsMobileMenuOpen(false)}>Bed Linen</Link>
+                    <Link to="/products/bath-linen" className={styles.mobileProductLink} onClick={() => setIsMobileMenuOpen(false)}>Bath Linen</Link>
+                    <Link to="/products/soft-furnishing" className={styles.mobileProductLink} onClick={() => setIsMobileMenuOpen(false)}>Soft Furnishing</Link>
+                    <Link to="/products/garments" className={styles.mobileProductLink} onClick={() => setIsMobileMenuOpen(false)}>Garments</Link>
+                    <Link to="/products/accessories" className={styles.mobileProductLink} onClick={() => setIsMobileMenuOpen(false)}>Accessories</Link>
+
+                    <div style={{ marginTop: '10px' }}></div>
+                    <Link to="/about" onClick={() => setIsMobileMenuOpen(false)}>About Us</Link>
                     <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>Contact</Link>
                 </div>
             )}

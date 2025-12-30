@@ -1,5 +1,5 @@
 .section {
-    padding: 6rem 0;
+    padding: 4rem 0;
     background-color: var(--color-white);
 }
 
@@ -49,5 +49,31 @@
 @media (min-width: 1024px) {
     .grid {
         grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .section {
+        padding: 2rem 0;
+    }
+
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem 0.5rem;
+        padding: 0 10px;
+    }
+
+    .iconWrapper {
+        width: 45px;
+        height: 45px;
+    }
+
+    .text h3 {
+        font-size: 0.75rem;
+        line-height: 1.2;
+    }
+
+    .item {
+        gap: 0.5rem;
     }
 }

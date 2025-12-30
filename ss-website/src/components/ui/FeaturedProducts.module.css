@@ -1,5 +1,5 @@
 .section {
-    padding: 5rem 0;
+    padding: 3rem 0;
     background-color: var(--color-white);
     overflow: hidden;
 }
@@ -109,6 +109,7 @@
     font-size: 0.95rem;
     color: rgba(255, 255, 255, 0.9);
     line-height: 1.4;
+    text-align: justify;
 }
 
 .scrollButton {
@@ -145,8 +146,8 @@
 
 @media (max-width: 768px) {
     .categoryCard {
-        flex: 0 0 280px;
-        height: 400px;
+        flex: 0 0 240px;
+        height: 320px;
     }
 
     .carouselContainer {
@@ -156,4 +157,62 @@
     .scrollButton {
         display: none;
     }
+
+    .headline {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+        word-break: keep-all;
+        /* Try to keep words together */
+    }
+
+    .header {
+        margin-bottom: 2rem;
+        padding: 0 10px;
+    }
+
+    .section {
+        padding: 2rem 0;
+    }
+
+    .categoryTitle {
+        font-size: 1.25rem;
+    }
+
+    .overlay {
+        padding: 15px;
+    }
+
+    .subheadline {
+        font-size: 0.95rem;
+        white-space: normal;
+    }
+}
+
+.ctaContainer {
+    margin-top: 3rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    padding: 0 20px;
+}
+
+.catalogueButton {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: var(--color-navy, #1A3A52);
+    /* Fallback if var not there */
+    color: #FFFFFF;
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.catalogueButton:hover {
+    background-color: #234b69;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }

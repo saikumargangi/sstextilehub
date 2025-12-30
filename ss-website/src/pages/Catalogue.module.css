@@ -1,0 +1,608 @@
+:root {
+    --color-navy: #1A3A52;
+    --color-cream: #F5F1ED;
+    --color-teal: #4A9B8E;
+    --color-gray: #6B7280;
+    --color-gold: #D4AF37;
+    --color-white: #FFFFFF;
+
+    --font-head: 'Montserrat', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-accent: 'Playfair Display', serif;
+}
+
+/* Global Reset for Catalogue */
+.catalogueContainer {
+    width: 210mm;
+    max-width: 100%;
+    margin: 0 auto;
+    background-color: #555;
+    padding: 2rem 0;
+    font-family: var(--font-body);
+    box-sizing: border-box;
+}
+
+.page {
+    position: relative;
+    width: 8.5in;
+    height: 11in;
+    margin: 0 auto 2rem;
+    padding: 0.5in;
+    background-color: var(--color-cream);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+/* Print Specifics */
+@media print {
+    @page {
+        size: 8.5in 11in;
+        margin: 0;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: var(--color-cream);
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .catalogueContainer {
+        width: 8.5in;
+        max-width: none;
+        background-color: transparent;
+        padding: 0;
+        margin: 0;
+    }
+
+    .page {
+        margin: 0;
+        padding: 0.5in;
+        /* Keep padding consistent with screen view if needed, or adjust */
+        box-shadow: none;
+        page-break-after: always;
+        break-after: page;
+        width: 8.5in;
+        height: 11in;
+        overflow: hidden;
+        border: none;
+    }
+
+    .controls {
+        display: none !important;
+    }
+}
+
+/* Controls */
+.controls {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    gap: 10px;
+}
+
+.controlButton {
+    background-color: var(--color-navy);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-family: var(--font-body);
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+
+.controlButton:hover {
+    background-color: #234b69;
+}
+
+/* --- PAGE 1: COVER --- */
+.coverLayout {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-cream);
+    padding-top: 1.55in;
+    /* Adjusted to 1.55in */
+}
+
+.coverHeader {
+    text-align: left;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    /* Aligns logo and text in same row */
+}
+
+.logoWrapper {
+    margin-bottom: 0;
+    flex-shrink: 0;
+}
+
+.coverLogo {
+    height: 100px;
+    /* Slightly larger for side-by-side */
+    width: auto;
+    object-fit: contain;
+}
+
+.headerTextGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+.coverTitle {
+    font-family: var(--font-head);
+    font-weight: 800;
+    font-size: 52pt;
+    /* Restored to previous large size */
+    color: var(--color-navy);
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.03em;
+}
+
+.coverTagline {
+    font-family: var(--font-accent);
+    font-weight: 700;
+    font-size: 18pt;
+    color: var(--color-teal);
+    margin: 0;
+    line-height: 1.3;
+}
+
+.coverTagline {
+    font-family: var(--font-accent);
+    font-weight: 700;
+    font-size: 22pt;
+    color: var(--color-teal);
+    margin: 0;
+    line-height: 1.3;
+}
+
+.coverImageWrapper {
+    margin-top: auto;
+    height: 70%;
+    /* Reverted to 70% */
+    width: calc(100% + 1in);
+    margin-left: -0.5in;
+    margin-bottom: -0.5in;
+    overflow: hidden;
+}
+
+.coverImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* Logo on internal pages */
+.pageLogo {
+    position: absolute;
+    top: 0.4in;
+    right: 0.5in;
+    width: 50px;
+    height: auto;
+    object-fit: contain;
+    z-index: 20;
+    opacity: 0.9;
+}
+
+/* Page Header for Product Categories */
+.pageHeader {
+    font-family: var(--font-head);
+    font-size: 14pt;
+    font-weight: 700;
+    color: var(--color-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color-cream);
+    /* Subtle divider */
+    display: inline-block;
+    align-self: flex-start;
+    /* Align left or center? User said "header in all 3 pages", let's keep top leftish but nicely styled */
+    width: 100%;
+    text-align: left;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+/* --- PAGE 2: COMPANY & SOLUTIONS --- */
+.page2Layout {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 1in;
+    /* Reduced from 1.5in to move top section up */
+    gap: 1.5rem;
+    padding-bottom: 1.5in;
+    justify-content: space-between;
+}
+
+.companySection {
+    display: flex;
+    flex: 0 0 auto;
+}
+
+.csColumn {
+    flex: 1;
+    padding: 0 1rem;
+}
+
+.verticalDivider {
+    width: 1px;
+    background-color: #ddd;
+    margin: 0 1rem;
+}
+
+.sectionHeader {
+    font-family: var(--font-head);
+    font-weight: 800;
+    font-size: 20pt;
+    /* Slightly smaller to fit */
+    color: var(--color-navy);
+    margin-bottom: 1rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+.companyDesc {
+    font-family: var(--font-body);
+    font-size: 11pt;
+    /* Adjusted for better fit */
+    color: var(--color-gray);
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    text-align: justify;
+}
+
+.iconGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.iconItem {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-family: var(--font-head);
+    font-weight: 700;
+    color: var(--color-navy);
+    font-size: 10pt;
+}
+
+.iconBrand {
+    color: var(--color-teal);
+    margin-bottom: 0.25rem;
+}
+
+.benefitList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.benefitList li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-family: var(--font-body);
+    font-size: 11pt;
+    color: var(--color-gray);
+    line-height: 1.4;
+}
+
+.checkIcon {
+    color: var(--color-teal);
+    margin-top: 3px;
+    flex-shrink: 0;
+}
+
+.horizontalDivider {
+    height: 1px;
+    background-color: #ddd;
+    width: 100%;
+}
+
+.solutionsSection {
+    flex: 0 0 auto;
+    /* Stop it from stretching too much if not needed, use justification of parent */
+    /* margin-top: auto; REMOVED to allow justify-content: space-between to handle it */
+}
+
+.solutionsGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+.solutionCard {
+    background: #fff;
+    border: 1px solid #eee;
+    padding: 1.5rem 1rem;
+    /* Increased padding slightly */
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+    height: 100%;
+    /* Make cards fill height */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.solIconBg {
+    width: 50px;
+    /* Bigger icons */
+    height: 50px;
+    background-color: rgba(74, 155, 142, 0.1);
+    color: var(--color-teal);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+}
+
+.solutionCard h3 {
+    font-family: var(--font-head);
+    font-size: 11pt;
+    color: var(--color-navy);
+    font-weight: 700;
+    margin: 0 0 0.5rem;
+}
+
+.solutionCard p {
+    font-family: var(--font-body);
+    font-size: 10pt;
+    color: var(--color-gray);
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* --- PAGES 3-5: COLLECTION PAGES --- */
+.collectionPage {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 1rem;
+}
+
+.categorySection {
+    margin-bottom: 2rem;
+}
+
+.catHeader {
+    font-family: var(--font-head);
+    font-size: 20pt;
+    font-weight: 800;
+    color: var(--color-navy);
+    margin-bottom: 0.5rem;
+    border-left: 5px solid var(--color-teal);
+    padding-left: 1rem;
+}
+
+.catDesc {
+    font-family: var(--font-body);
+    font-size: 11pt;
+    color: var(--color-gray);
+    margin-bottom: 1.5rem;
+    max-width: 90%;
+    /* Keep it slightly restrained but wider than 80% if needed, or 100% */
+    line-height: 1.5;
+    padding-left: 1rem;
+}
+
+.imageRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.5in;
+}
+
+.catImgWrap {
+    aspect-ratio: 4/5;
+    /* Portrait orientation */
+    overflow: hidden;
+    background: #f9f9f9;
+    border: 1px solid #e5e5e5;
+}
+
+.catImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.spacer {
+    flex: 1;
+    min-height: 2rem;
+    display: block;
+}
+
+/* --- PAGE 6: HOOK & SOCIAL --- */
+.hookLayout {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(to bottom, var(--color-cream) 60%, var(--color-navy) 60%);
+    margin: -0.5in;
+    padding: 0.5in;
+    width: calc(100% + 1in);
+    height: calc(100% + 1in);
+}
+
+.hookContent {
+    z-index: 2;
+    max-width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.hookHeadline {
+    font-family: var(--font-head);
+    font-size: 34pt;
+    font-weight: 800;
+    color: var(--color-navy);
+    line-height: 1.1;
+    margin: 0;
+}
+
+.hookSub {
+    font-family: var(--font-accent);
+    font-size: 28pt;
+    color: var(--color-teal);
+    margin: 0;
+}
+
+.contactBox {
+    background-color: var(--color-gold);
+    border: 3px solid var(--color-navy);
+    border-radius: 12px;
+    padding: 2rem 4rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    color: var(--color-navy);
+    margin: 1rem 0;
+}
+
+.contactRow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    font-family: var(--font-head);
+    font-size: 15pt;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.contactRow:last-child {
+    margin-bottom: 0;
+}
+
+.socialSection {
+    margin-top: 3rem;
+    width: 100%;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: flex-start;
+    /* Align left or center? maybe center looks better in this box */
+    align-items: center;
+}
+
+.socialItem {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-align: left;
+    width: 100%;
+    max-width: 400px;
+    /* constrain width */
+}
+
+.socialIconBox {
+    width: 50px;
+    height: 50px;
+    background-color: #f0f0f0;
+    color: var(--color-navy);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.socialText {
+    display: flex;
+    flex-direction: column;
+}
+
+.socialLabel {
+    font-family: var(--font-body);
+    font-size: 9pt;
+    color: var(--color-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.socialHandle {
+    font-family: var(--font-head);
+    font-size: 12pt;
+    color: var(--color-navy);
+    font-weight: 700;
+}
+
+/* --- BACK PAGE (Page 7) - Unused/Removed in TSX but keeping clear just in case --- */
+.backLayout {
+    display: none;
+}
+
+.subCategoryList {
+    font-family: var(--font-body);
+    font-size: 10pt;
+    color: var(--color-teal);
+    margin-top: -1rem;
+    margin-bottom: 1.5rem;
+    padding-left: 1rem;
+    font-style: italic;
+    line-height: 1.4;
+    max-width: 90%;
+}
+
+.catalogueFooter {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    width: 100%;
+    background-color: var(--color-navy);
+    color: var(--color-white);
+    padding: 0.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-body);
+    font-size: 9pt;
+    border-radius: 0;
+    height: 1.2cm;
+    box-sizing: border-box;
+    z-index: 50;
+}
+
+.footerInfoItem {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #FFFFFF;
+}

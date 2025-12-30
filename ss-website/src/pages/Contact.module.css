@@ -63,9 +63,10 @@
     z-index: 5;
 }
 
+
 .channelCard {
     background: #fff;
-    padding: 2.5rem 1.5rem;
+    padding: 1.5rem 1rem;
     border-radius: 12px;
     text-align: center;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
@@ -78,6 +79,8 @@
     /* For links */
     cursor: pointer;
 }
+
+
 
 .channelCard:hover {
     transform: translateY(-8px);
@@ -251,7 +254,8 @@
 
     .channelGrid {
         grid-template-columns: repeat(5, 1fr);
-        /* 5 items now */
+        gap: 1rem;
+        /* 5 items in one row */
     }
 }
 
@@ -267,6 +271,43 @@
     .channelGrid {
         grid-template-columns: 1fr 1fr;
         margin-top: -2rem;
+        gap: 1rem;
+    }
+
+    .channelCard {
+        padding: 1.25rem 0.5rem;
+        /* Tighter padding for uniform look */
+    }
+
+    .iconWrapper {
+        width: 45px;
+        height: 45px;
+        margin-bottom: 0.75rem;
+    }
+
+    .channelTitle {
+        font-size: 0.9rem;
+    }
+
+    .channelLink {
+        font-size: 0.8rem;
+    }
+
+    .formContainer {
+        padding: 1.5rem;
+        margin-top: 2rem;
+    }
+
+    .formHeader h2 {
+        font-size: 1.75rem;
+    }
+
+    .heroTitle {
+        font-size: 2.5rem;
+    }
+
+    .hero {
+        padding: 6rem 20px 4rem;
     }
 
     /* Custom Multi-Select Styles */
@@ -340,8 +381,71 @@
         text-overflow: ellipsis;
         padding-right: 10px;
     }
+}
 
-    .heroTitle {
-        font-size: 2.5rem;
+.catalogueSection {
+    margin-top: 4rem;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.catalogueButton {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    background: linear-gradient(135deg, #1A3A52, #2c5270);
+    color: #fff;
+    padding: 1.5rem 3rem;
+    border-radius: 12px;
+    text-decoration: none;
+    box-shadow: 0 10px 25px rgba(26, 58, 82, 0.2);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 600px;
+    width: 100%;
+}
+
+.catalogueButton:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(26, 58, 82, 0.3);
+    background: linear-gradient(135deg, #234b69, #366285);
+}
+
+.catalogueIcon {
+    background-color: rgba(255, 255, 255, 0.15);
+    padding: 1rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.catalogueText {
+    text-align: left;
+}
+
+.catalogueText h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.25rem;
+}
+
+.catalogueText p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+@media (max-width: 768px) {
+    .catalogueButton {
+        padding: 1.25rem;
+        gap: 1rem;
+    }
+
+    .catalogueText h3 {
+        font-size: 1.1rem;
     }
 }

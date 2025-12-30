@@ -14,95 +14,17 @@ const Contact = () => {
         if (formRef.current) formRef.current.reset();
     };
 
-    const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+    const handleFormSubmit = () => {
+        // Allow native submission to hidden_iframe
+        // e.preventDefault(); 
         setIsLoading(true);
 
-        try {
-            const formElement = e.currentTarget;
-            
-            // MANUALLY GET ALL FIELD VALUES
-            const companyName = (formElement.querySelector('input[name="entry.98431382"]') as HTMLInputElement).value;
-            const contactName = (formElement.querySelector('input[name="entry.2138707235"]') as HTMLInputElement).value;
-            const email = (formElement.querySelector('input[name="entry.360969980"]') as HTMLInputElement).value;
-            const phone = (formElement.querySelector('input[name="entry.2133336110"]') as HTMLInputElement).value;
-            const country = (formElement.querySelector('input[name="entry.1777081057"]') as HTMLInputElement).value;
-            const productCategory = (formElement.querySelector('input[name="entry.1166514373"]') as HTMLInputElement).value;
-            const message = (formElement.querySelector('textarea[name="entry.914265994"]') as HTMLTextAreaElement).value;
-            
-            console.log('=== FORM SUBMISSION DEBUG ===');
-            console.log('Company Name:', companyName);
-            console.log('Contact Name:', contactName);
-            console.log('Email:', email);
-            console.log('Phone:', phone);
-            console.log('Country:', country);
-            console.log('Product Category:', productCategory);
-            console.log('Message:', message);
-            console.log('Message length:', message.length);
-            console.log('Message is empty?', message === '');
+        trackEvent('contact_form_submission', {
+            form_name: 'contact_inquiry',
+            timestamp: new Date().toISOString(),
+        });
 
-            // Create an iframe to submit the form
-            const iframe = document.createElement('iframe');
-            iframe.style.display = 'none';
-            iframe.name = 'hidden_iframe_' + Date.now();
-            document.body.appendChild(iframe);
-
-            // Create a hidden form that submits to Google Forms - CORRECT URL
-            const hiddenForm = document.createElement('form');
-            hiddenForm.method = 'POST';
-            hiddenForm.action = 'https://docs.google.com/forms/d/1tPt6m4oL2ojWbl3jzBoB47i7E4flG8z7xIJpFiFok5k/formResponse';
-            hiddenForm.target = iframe.name;
-            hiddenForm.style.display = 'none';
-
-            // ADD ALL FIELDS MANUALLY
-            const fields = [
-                { name: 'entry.98431382', value: companyName },
-                { name: 'entry.2138707235', value: contactName },
-                { name: 'entry.360969980', value: email },
-                { name: 'entry.2133336110', value: phone },
-                { name: 'entry.1777081057', value: country },
-                { name: 'entry.1166514373', value: productCategory },
-                { name: 'entry.914265994', value: message },
-            ];
-
-            fields.forEach(field => {
-                const input = document.createElement('input');
-                input.type = 'hidden';
-                input.name = field.name;
-                input.value = field.value;
-                hiddenForm.appendChild(input);
-            });
-
-            document.body.appendChild(hiddenForm);
-            console.log('Form HTML before submit:');
-            console.log(hiddenForm.innerHTML);
-            console.log('Submitting form...');
-            hiddenForm.submit();
-
-            // Clean up - WAIT 3 SECONDS
-            setTimeout(() => {
-                document.body.removeChild(hiddenForm);
-                document.body.removeChild(iframe);
-                console.log('Cleanup complete');
-            }, 3000);
-
-            // Track form submission
-            trackEvent('contact_form_submission', {
-                form_name: 'contact_inquiry',
-                timestamp: new Date().toISOString(),
-            });
-
-            setIsSubmitted(true);
-            setIsLoading(false);
-
-            setTimeout(() => {
-                if (formRef.current) formRef.current.reset();
-            }, 500);
-        } catch (error) {
-            console.error('Form submission error:', error);
-            setIsLoading(false);
-            alert('There was an error submitting the form. Please try again.');
-        }
+        // The iframe onLoad will handle the success state transition
     };
 
     return (
@@ -160,6 +82,7 @@ const Contact = () => {
                             <h3 className={styles.channelTitle}>Instagram</h3>
                             <span className={styles.channelLink}>Follow Us</span>
                         </a>
+
                     </div>
 
                     <div className={styles.formContainer}>
@@ -199,6 +122,9 @@ const Contact = () => {
                                 <form
                                     ref={formRef}
                                     className={styles.formLayout}
+                                    action="https://docs.google.com/forms/d/e/1FAIpQLScl32BmNFhO_IGNTqVWjnAkwzEi6zE2gZ89jy9Rp8PYi_6y7Q/formResponse"
+                                    method="POST"
+                                    target="hidden_iframe"
                                     onSubmit={handleFormSubmit}
                                 >
                                     <div className={styles.formGroup}>
@@ -233,11 +159,11 @@ const Contact = () => {
 
                                     <div className={`${styles.formGroup} ${styles.fullWidth}`}>
                                         <label className={styles.label}>Message (Optional)</label>
-                                        <textarea 
-                                            name="entry.914265994" 
-                                            className={styles.textarea} 
-                                            rows={5} 
-                                            placeholder="Tell us about your requirements, estimated volume, and specifications..." 
+                                        <textarea
+                                            name="entry.1696899708"
+                                            className={styles.textarea}
+                                            rows={5}
+                                            placeholder="Tell us about your requirements, estimated volume, and specifications..."
                                             disabled={isLoading}
                                         />
                                     </div>
@@ -257,6 +183,19 @@ const Contact = () => {
                             </>
                         )}
                     </div>
+                    {/* Hidden iframe for handling Google Form submission without redirect */}
+                    <iframe
+                        name="hidden_iframe"
+                        style={{ display: 'none' }}
+                        onLoad={() => {
+                            if (isLoading) {
+                                setIsSubmitted(true);
+                                setIsLoading(false);
+                            }
+                        }}
+                    />
+
+
                 </div>
             </section>
         </main>

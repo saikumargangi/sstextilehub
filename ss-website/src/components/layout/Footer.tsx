@@ -103,7 +103,7 @@ const Footer = () => {
                 </div>
 
                 <div className={styles.bottom}>
-                    <p>&copy; {new Date().getFullYear()} SS Garments & HomeTextiles. All rights reserved.</p>
+                    <p>&copy; {new Date().getFullYear()} SS Garments & HomeTextiles. <span className={styles.copyrightBlock}>All rights reserved.</span></p>
                     <div className={styles.bottomLinks}>
                         <Link to="#">Privacy Policy</Link>
                         <Link to="#">Terms of Service</Link>

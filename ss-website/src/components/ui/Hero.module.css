@@ -134,16 +134,41 @@
 }
 
 @media (max-width: 768px) {
+    .hero {
+        min-height: 500px;
+        height: auto;
+        padding: 100px 0 60px;
+    }
+
     .headline {
-        font-size: 2.5rem;
+        font-size: 2.25rem;
+        margin-bottom: 1rem;
+    }
+
+    .subheadline {
+        font-size: 1rem;
+        margin-bottom: 2rem;
     }
 
     .textContainer {
         padding-left: 0;
+        text-align: center;
     }
 
     .ctaGroup {
-        flex-direction: column;
+        flex-direction: row;
+        justify-content: center;
+        gap: 0.75rem;
+    }
+
+    .primaryButton,
+    .secondaryButton {
+        width: auto;
+        flex: 1;
+        max-width: none;
+        min-width: 0;
+        padding: 12px 16px;
+        font-size: 0.9rem;
     }
 
     .backgroundImage {

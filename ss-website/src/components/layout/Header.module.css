@@ -141,6 +141,8 @@
     gap: 1rem;
 }
 
+
+
 .ctaButton {
     background-color: var(--color-taupe);
     color: var(--color-white);
@@ -168,5 +170,90 @@
 
     .mobileMenuBtn {
         display: none;
+    }
+}
+
+/* Mobile Menu */
+.mobileMenu {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+    border-top: 1px solid #f0f0f0;
+}
+
+.mobileMenu a,
+.mobileMenu div {
+    /* Added div for headers if needed */
+    text-decoration: none;
+    padding: 15px 0;
+    border-bottom: 1px solid #f9f9f9;
+    color: var(--color-charcoal);
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+/* Specific style for product links to indent or separate */
+.mobileProductLink {
+    padding-left: 20px !important;
+    font-size: 0.95rem !important;
+    color: var(--text-secondary) !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    border-bottom: 1px solid #fafafa !important;
+}
+
+.mobileProductHeader {
+    font-weight: 700;
+    color: var(--color-charcoal);
+    padding-top: 20px;
+    padding-bottom: 10px;
+    background-color: #fafafa;
+    padding-left: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 640px) {
+    .container {
+        height: 60px;
+        padding: 0 15px;
+    }
+
+    .logo {
+        gap: 8px;
+    }
+
+    .logoImage {
+        height: 32px;
+    }
+
+    .logoText {
+        font-size: 0.85rem;
+        max-width: 140px;
+        line-height: 1.1;
+    }
+
+    .ctaButton {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+        white-space: nowrap;
+    }
+
+    .actions {
+        gap: 0.5rem;
+    }
+
+    .mobileMenuBtn {
+        font-size: 1.25rem;
     }
 }
