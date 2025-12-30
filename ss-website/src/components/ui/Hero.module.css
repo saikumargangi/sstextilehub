@@ -55,7 +55,8 @@
 }
 
 .headline {
-    font-size: 4rem;
+    font-size: clamp(2.5rem, 5vw + 1rem, 4.5rem);
+    /* Fluid Hero Title */
     font-weight: 700;
     color: #FFFFFF;
     margin-bottom: 1.5rem;
