@@ -24,8 +24,10 @@
 
 .page {
     position: relative;
-    width: 8.5in;
-    height: 11in;
+    width: 210mm;
+    /* A4 Width */
+    height: 297mm;
+    /* A4 Height */
     margin: 0 auto 2rem;
     padding: 0.5in;
     background-color: var(--color-cream);
@@ -34,12 +36,13 @@
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
+    /* Ensure padding doesn't affect standard width */
 }
 
 /* Print Specifics */
 @media print {
     @page {
-        size: 8.5in 11in;
+        size: A4;
         margin: 0;
     }
 
@@ -52,7 +55,7 @@
     }
 
     .catalogueContainer {
-        width: 8.5in;
+        width: 210mm;
         max-width: none;
         background-color: transparent;
         padding: 0;
@@ -66,8 +69,8 @@
         box-shadow: none;
         page-break-after: always;
         break-after: page;
-        width: 8.5in;
-        height: 11in;
+        width: 210mm;
+        height: 297mm;
         overflow: hidden;
         border: none;
     }
