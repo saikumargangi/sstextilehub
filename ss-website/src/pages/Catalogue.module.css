@@ -71,7 +71,8 @@
         width: 210mm !important;
         height: 297mm !important;
         margin: 0 !important;
-        padding: 0.5in !important;
+        padding: 0.25in !important;
+        /* Reduced padding to fit Letter content into A4 width */
         border: none !important;
         box-shadow: none !important;
         page-break-after: always;
@@ -80,7 +81,9 @@
         overflow: hidden !important;
         background-color: var(--color-cream) !important;
         float: none !important;
-        transform: none !important;
+        transform: scale(0.98) !important;
+        /* Slight shrink to ensure borders don't trigger overflow */
+        transform-origin: top center !important;
     }
 
     .controls {
