@@ -605,7 +605,9 @@
     align-items: center;
     gap: 0.5rem;
     color: #FFFFFF;
-}@media (max-width: 768px) {
+}
+
+@media only screen and (max-width: 768px) {
 
     /* Reset Container */
     .catalogueContainer {
