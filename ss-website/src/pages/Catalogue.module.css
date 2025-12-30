@@ -40,39 +40,41 @@
 }
 
 /* Print Specifics: STRICT ENFORCEMENT */
+/* Print Specifics: SAFE AREA OPTIMIZATION */
 @media print {
     @page {
-        size: 210mm 297mm;
+        size: A4 portrait;
         margin: 0;
     }
 
     html,
     body {
-        width: 210mm;
-        height: 297mm;
+        width: 100%;
+        height: 100%;
         margin: 0 !important;
         padding: 0 !important;
-        background-color: var(--color-cream);
-        overflow: visible !important;
+        background-color: var(--color-cream) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
     }
 
     .catalogueContainer {
-        width: 210mm;
-        height: 297mm;
+        width: 100%;
         margin: 0 !important;
         padding: 0 !important;
         background-color: transparent;
         position: absolute;
         top: 0;
         left: 0;
+        display: block;
     }
 
     .page {
-        width: 210mm !important;
-        height: 297mm !important;
-        margin: 0 !important;
-        padding: 0.25in !important;
-        /* Reduced padding to fit Letter content into A4 width */
+        width: 100% !important;
+        height: 100% !important;
+        min-height: 290mm;
+        margin: 0 auto !important;
+        padding: 1rem !important;
         border: none !important;
         box-shadow: none !important;
         page-break-after: always;
@@ -81,44 +83,125 @@
         overflow: hidden !important;
         background-color: var(--color-cream) !important;
         float: none !important;
-        transform: scale(0.98) !important;
-        /* Slight shrink to ensure borders don't trigger overflow */
-        transform-origin: top center !important;
+        transform: none !important;
     }
 
     .controls {
         display: none !important;
     }
 
-    /* OVERRIDE FLUID TYPOGRAPHY FOR PRINT */
-    /* Force fixed sizes to match Desktop design exactly */
+    /* FORCE DESKTOP LAYOUT STRUCTURE */
+    .coverLayout {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        padding-top: 10% !important;
+        height: 100% !important;
+    }
+
+    .coverHeader {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 2rem !important;
+        justify-content: flex-start !important;
+        margin-bottom: 2rem !important;
+        text-align: left !important;
+    }
+
+    .logoWrapper {
+        margin: 0 !important;
+        flex: 0 0 auto !important;
+    }
+
+    .headerTextGroup {
+        align-items: flex-start !important;
+        text-align: left !important;
+    }
+
+    /* REDUCED FONTS FOR SAFE FIT */
     .coverTitle {
-        font-size: 52pt !important;
+        font-size: 42pt !important;
+        line-height: 1 !important;
         margin-bottom: 0.5rem !important;
     }
 
     .coverTagline {
-        font-size: 18pt !important;
+        font-size: 16pt !important;
+    }
+
+    .coverImageWrapper {
+        height: 65% !important;
+        width: 110% !important;
+        margin-left: -5% !important;
+        margin-bottom: -5% !important;
+        aspect-ratio: auto !important;
+    }
+
+    /* Page 2 Layout Enforcement */
+    .page2Layout {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        height: 100% !important;
+        padding-top: 1rem !important;
+        padding-bottom: 5rem !important;
+    }
+
+    .companySection {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 2rem !important;
+    }
+
+    .csColumn {
+        flex: 1 !important;
+    }
+
+    .solutionsGrid {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 1rem !important;
+    }
+
+    .solutionCard h3 {
+        font-size: 11pt !important;
+    }
+
+    .solutionCard p {
+        font-size: 11pt !important;
+    }
+
+    /* Page 3-5 Layout Enforcement */
+    .collectionPage {
+        display: block !important;
+        height: 100% !important;
     }
 
     .pageHeader {
         font-size: 14pt !important;
     }
 
+    .imageRow {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 1rem !important;
+    }
+
+    .catImgWrap {
+        aspect-ratio: 4/5 !important;
+    }
+
     .catHeader,
     .sectionHeader {
-        font-size: 20pt !important;
+        font-size: 18pt !important;
     }
 
     .catDesc,
     .companyDesc,
-    .benefitList li,
-    .solutionCard p {
-        font-size: 11pt !important;
-    }
-
-    .solutionCard h3 {
-        font-size: 11pt !important;
+    .benefitList li {
+        font-size: 10pt !important;
+        line-height: 1.4 !important;
     }
 
     .hookHeadline {
@@ -137,38 +220,23 @@
         font-size: 10pt !important;
     }
 
-    /* Restore Layouts if Mobile fluid width broke them */
-    .coverHeader {
-        display: flex !important;
-        flex-direction: row !important;
-        align-items: center !important;
-        gap: 1.5rem !important;
-        text-align: left !important;
-    }
-
-    .coverImageWrapper {
-        height: 70% !important;
-        aspect-ratio: auto !important;
-    }
-
-    .companySection {
-        flex-direction: row !important;
-    }
-
-    .imageRow {
-        grid-template-columns: 1fr 1fr 1fr !important;
-    }
-
-    .catImgWrap {
-        aspect-ratio: 4/5 !important;
-    }
-
+    /* Footer Enforcement */
     .catalogueFooter {
         position: absolute !important;
         bottom: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        display: flex !important;
         flex-direction: row !important;
-        height: 1.2cm !important;
-        padding: 0.5rem 2rem !important;
+        justify-content: space-between !important;
+        padding: 1rem 2rem !important;
+        background-color: var(--color-navy) !important;
+        color: white !important;
+        height: auto !important;
+    }
+
+    .footerInfoItem {
+        font-size: 9pt !important;
     }
 }
 
