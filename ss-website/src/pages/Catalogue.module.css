@@ -605,4 +605,166 @@
     align-items: center;
     gap: 0.5rem;
     color: #FFFFFF;
+}@media (max-width: 768px) {
+
+    /* Reset Container */
+    .catalogueContainer {
+        width: 100%;
+        margin: 0;
+        padding: 1rem;
+        background-color: var(--color-white);
+    }
+
+    /* Reset Page Dimensions */
+    .page {
+        width: 100%;
+        height: auto;
+        min-height: 0;
+        margin: 0 0 2rem 0;
+        padding: 1rem;
+        box-shadow: none;
+        border: 1px solid #eee;
+        border-radius: 8px;
+    }
+
+    /* Page 1: Cover Mobile */
+    .coverLayout {
+        padding-top: 2rem;
+        height: auto;
+        min-height: 80vh;
+        /* Ensure some height for hero feel */
+    }
+
+    .coverHeader {
+        flex-direction: column;
+        align-items: center;
+        /* Center on mobile */
+        text-align: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        display: flex;
+        /* Override block if needed */
+    }
+
+    .logoWrapper {
+        margin-bottom: 0.5rem;
+    }
+
+    .headerTextGroup {
+        align-items: center;
+    }
+
+    .coverTitle {
+        font-size: 28pt;
+        /* Reduced from 52pt */
+    }
+
+    .coverTagline {
+        font-size: 14pt;
+        /* Reduced from 22pt */
+    }
+
+    .coverImageWrapper {
+        height: 300px;
+        /* Fixed height for mobile */
+        width: 100%;
+        margin: 0;
+        /* Reset negative margins */
+        border-radius: 8px;
+    }
+
+    /* Page 2: Mobile */
+    .page2Layout {
+        padding: 1rem 0;
+        height: auto;
+        gap: 2rem;
+    }
+
+    .companySection {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .verticalDivider {
+        display: none;
+    }
+
+    .horizontalDivider {
+        display: none;
+    }
+
+    .solutionsGrid {
+        grid-template-columns: 1fr;
+        /* Stack cards */
+    }
+
+    /* Page 3-5: Collections Mobile */
+    .collectionPage {
+        padding: 0;
+    }
+
+    .catHeader {
+        font-size: 16pt;
+    }
+
+    .imageRow {
+        grid-template-columns: 1fr;
+        /* Stack images */
+        gap: 1rem;
+    }
+
+    .catImgWrap {
+        aspect-ratio: 4/3;
+        /* Landscape aspect for mobile efficiency */
+    }
+
+    .spacer {
+        display: none;
+    }
+
+    /* Page 6: Hook */
+    .hookLayout {
+        width: 100%;
+        height: auto;
+        margin: 0;
+        padding: 2rem 1rem;
+        background: linear-gradient(to bottom, var(--color-cream) 90%, var(--color-navy) 90%);
+    }
+
+    .hookHeadline {
+        font-size: 20pt;
+    }
+
+    .hookSub {
+        font-size: 16pt;
+    }
+
+    .contactBox {
+        padding: 1rem;
+        width: 100%;
+    }
+
+    .contactRow {
+        font-size: 12pt;
+        flex-wrap: wrap;
+    }
+
+    .catalogueFooter {
+        position: relative;
+        /* Static flow */
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 1rem;
+        text-align: center;
+    }
+
+    .pageLogo {
+        position: static;
+        margin-bottom: 1rem;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
