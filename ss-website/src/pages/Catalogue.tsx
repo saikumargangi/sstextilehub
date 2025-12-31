@@ -1,5 +1,4 @@
 import { useRef } from 'react';
-import { useReactToPrint } from 'react-to-print';
 import { Download, ArrowLeft, Mail, Phone, Check, Globe, ShieldCheck, Users, Scissors, Box, Layers, Instagram, Linkedin, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -25,22 +24,9 @@ import logoIcon from '../assets/ss-logo-icon.png'; // Corrected path
 const Catalogue = () => {
     const componentRef = useRef<HTMLDivElement>(null);
 
-    const handlePrint = useReactToPrint({
-        contentRef: componentRef,
-        documentTitle: 'SS-Garments-Catalogue',
-        pageStyle: `
-        @page {
-            size: A4 portrait;
-            margin: 0;
-        }
-        @media print {
-            html, body {
-                width: 210mm;
-                height: 297mm;
-            }
-        }
-        `,
-    });
+    const handlePrint = () => {
+        window.print();
+    };
 
     return (
         <div className={styles.catalogueContainer} ref={componentRef}>
