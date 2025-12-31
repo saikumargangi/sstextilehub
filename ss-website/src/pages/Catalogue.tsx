@@ -1,3 +1,5 @@
+import { useRef } from 'react';
+import { useReactToPrint } from 'react-to-print';
 import { Download, ArrowLeft, Mail, Phone, Check, Globe, ShieldCheck, Users, Scissors, Box, Layers, Instagram, Linkedin, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -21,19 +23,34 @@ import logoIcon from '../assets/ss-logo-icon.png'; // Corrected path
 
 
 const Catalogue = () => {
-    const handlePrint = () => {
-        window.print();
-    };
+    const componentRef = useRef<HTMLDivElement>(null);
+
+    const handlePrint = useReactToPrint({
+        contentRef: componentRef,
+        documentTitle: 'SS-Garments-Catalogue',
+        pageStyle: `
+        @page {
+            size: A4 portrait;
+            margin: 0;
+        }
+        @media print {
+            html, body {
+                width: 210mm;
+                height: 297mm;
+            }
+        }
+        `,
+    });
 
     return (
-        <div className={styles.catalogueContainer}>
+        <div className={styles.catalogueContainer} ref={componentRef}>
             {/* Controls */}
-            <div className={styles.controls}>
+            <div className={styles.controls} data-html2canvas-ignore="true">
                 <Link to="/contact" className={styles.controlButton}>
                     <ArrowLeft size={18} />
                     Back
                 </Link>
-                <button onClick={handlePrint} className={styles.controlButton}>
+                <button onClick={() => handlePrint && handlePrint()} className={styles.controlButton}>
                     <Download size={18} />
                     Save as PDF
                 </button>
