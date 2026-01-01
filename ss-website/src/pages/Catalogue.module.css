@@ -887,32 +887,64 @@
         flex-direction: column !important;
         justify-content: space-between !important;
         height: 100% !important;
-        padding-top: 1rem !important;
-        padding-bottom: 5rem !important;
+        padding-top: 0.5in !important;
+        /* Reduced from 1rem to 0.5in (approx 1.27cm) - actually 1rem is smaller than 0.5in. Let's make it 0.5rem */
+        padding-top: 0.5rem !important;
+        padding-bottom: 4rem !important;
+        /* Reduced from 5rem */
     }
 
     .companySection {
         display: flex !important;
         flex-direction: row !important;
-        gap: 2rem !important;
+        gap: 1.5rem !important;
+        /* Reduced gap */
     }
 
     .csColumn {
         flex: 1 !important;
     }
 
+    .companyDesc {
+        font-size: 9pt !important;
+        /* Reduced from 10pt */
+        line-height: 1.3 !important;
+        margin-bottom: 1rem !important;
+    }
+
     .solutionsGrid {
         display: grid !important;
         grid-template-columns: repeat(4, 1fr) !important;
-        gap: 1rem !important;
+        gap: 0.75rem !important;
+        /* Reduced gap */
+    }
+
+    .solutionCard {
+        padding: 1rem 0.5rem !important;
+        /* Reduced padding */
     }
 
     .solutionCard h3 {
-        font-size: 11pt !important;
+        font-size: 10pt !important;
+        /* Reduced size */
+        margin-bottom: 0.25rem !important;
     }
 
     .solutionCard p {
-        font-size: 11pt !important;
+        font-size: 9pt !important;
+        /* Reduced size */
+    }
+
+    .sectionHeader {
+        font-size: 16pt !important;
+        /* Slightly smaller headers */
+        margin-bottom: 0.5rem !important;
+    }
+
+    .benefitList li {
+        font-size: 9pt !important;
+        line-height: 1.3 !important;
+        margin-bottom: 0.5rem !important;
     }
 
     /* Page 3-5 Layout Enforcement */
