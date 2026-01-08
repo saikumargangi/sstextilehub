@@ -21,9 +21,7 @@ import logoIcon from '../assets/ss-logo-icon.png'; // Corrected path
 
 
 const Catalogue = () => {
-    const handlePrint = () => {
-        window.print();
-    };
+
 
     return (
         <div className={styles.catalogueContainer}>
@@ -33,10 +31,10 @@ const Catalogue = () => {
                     <ArrowLeft size={18} />
                     Back
                 </Link>
-                <button onClick={handlePrint} className={styles.controlButton}>
+                <a href="/catalog.pdf" download="SS_Garments_and_Home_Textiles_Catalogue.pdf" className={styles.controlButton}>
                     <Download size={18} />
                     Save as PDF
-                </button>
+                </a>
             </div>
 
             {/* PAGE 1: COVER */}
