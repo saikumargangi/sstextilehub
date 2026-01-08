@@ -39,7 +39,44 @@
     /* Ensure padding doesn't affect standard width */
 }
 
+/* Print Specifics */
+@media print {
+    @page {
+        size: A4 portrait;
+        margin: 0;
+    }
 
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: var(--color-cream);
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .catalogueContainer {
+        width: 210mm;
+        margin: 0;
+        padding: 0;
+        background-color: transparent;
+    }
+
+    .page {
+        margin: 0;
+        padding: 0.5in;
+        box-shadow: none;
+        page-break-after: always;
+        break-after: page;
+        width: 210mm;
+        height: 297mm;
+        overflow: hidden;
+        border: none;
+    }
+
+    .controls {
+        display: none !important;
+    }
+}
 
 /* Controls */
 .controls {
@@ -81,12 +118,14 @@
 }
 
 .coverHeader {
-    text-align: left;
+    text-align: center;
     margin-bottom: 2rem;
     position: relative;
     z-index: 10;
     display: flex;
     align-items: center;
+    justify-content: center;
+    /* Aligns block to center */
     gap: 1.5rem;
     /* Aligns logo and text in same row */
 }
@@ -573,7 +612,7 @@
 
 @media only screen and (max-width: 768px) {
 
-    /* Reset Container: Fluid width */
+    /* Reset Container */
     .catalogueContainer {
         width: 100%;
         margin: 0;
@@ -581,7 +620,7 @@
         background-color: var(--color-white);
     }
 
-    /* Reset Page Dimensions: Auto height */
+    /* Reset Page Dimensions */
     .page {
         width: 100%;
         height: auto;
@@ -595,74 +634,66 @@
 
     /* Page 1: Cover Mobile */
     .coverLayout {
-        padding-top: 1.5rem;
+        padding-top: 2rem;
         height: auto;
-        min-height: auto;
-        gap: 1.5rem;
+        min-height: 80vh;
+        /* Ensure some height for hero feel */
     }
 
     .coverHeader {
         flex-direction: column;
         align-items: center;
+        /* Center on mobile */
         text-align: center;
         gap: 1rem;
-        margin-bottom: 1rem;
+        margin-bottom: 2rem;
         display: flex;
-        width: 100%;
+        /* Override block if needed */
     }
 
     .logoWrapper {
         margin-bottom: 0.5rem;
     }
 
-    .coverLogo {
-        height: 60px;
-        /* Smaller logo for mobile */
-    }
-
     .headerTextGroup {
         align-items: center;
-        width: 100%;
     }
 
     .coverTitle {
-        font-size: clamp(20pt, 7vw, 28pt);
-        /* Fluid scaling */
-        white-space: normal;
-        margin-bottom: 0.25rem;
+        font-size: 28pt;
+        /* Reduced from 52pt */
     }
 
     .coverTagline {
-        font-size: clamp(12pt, 4vw, 16pt);
-        /* Fluid scaling */
+        font-size: 14pt;
+        /* Reduced from 22pt */
     }
 
     .coverImageWrapper {
-        height: auto;
-        aspect-ratio: 16/10;
-        /* Adaptable landscape */
+        height: 300px;
+        /* Fixed height for mobile */
         width: 100%;
         margin: 0;
+        /* Reset negative margins */
         border-radius: 8px;
     }
 
     /* Page 2: Mobile */
     .page2Layout {
-        padding: 0;
+        padding: 1rem 0;
         height: auto;
         gap: 2rem;
     }
 
     .companySection {
         flex-direction: column;
-        gap: 1.5rem;
+        gap: 2rem;
     }
 
-    .csColumn {
-        padding: 0;
+    .verticalDivider {
+        display: none;
     }
 
-    .verticalDivider,
     .horizontalDivider {
         display: none;
     }
@@ -672,35 +703,13 @@
         /* Stack cards */
     }
 
-    .sectionHeader {
-        font-size: 16pt;
-        text-align: center;
-    }
-
-    .companyDesc {
-        font-size: 10pt;
-        text-align: left;
-    }
-
     /* Page 3-5: Collections Mobile */
     .collectionPage {
         padding: 0;
     }
 
-    .pageHeader {
-        font-size: 12pt;
-        margin-bottom: 1.5rem;
-    }
-
     .catHeader {
-        font-size: 14pt;
-        border-left-width: 3px;
-    }
-
-    .catDesc {
-        max-width: 100%;
-        padding-left: 0.75rem;
-        font-size: 10pt;
+        font-size: 16pt;
     }
 
     .imageRow {
@@ -711,7 +720,7 @@
 
     .catImgWrap {
         aspect-ratio: 4/3;
-        /* good mobile aspect */
+        /* Landscape aspect for mobile efficiency */
     }
 
     .spacer {
@@ -725,20 +734,14 @@
         margin: 0;
         padding: 2rem 1rem;
         background: linear-gradient(to bottom, var(--color-cream) 90%, var(--color-navy) 90%);
-        border-radius: 8px;
-    }
-
-    .hookContent {
-        max-width: 100%;
-        gap: 1.5rem;
     }
 
     .hookHeadline {
-        font-size: clamp(18pt, 6vw, 24pt);
+        font-size: 20pt;
     }
 
     .hookSub {
-        font-size: clamp(14pt, 5vw, 18pt);
+        font-size: 16pt;
     }
 
     .contactBox {
@@ -747,270 +750,26 @@
     }
 
     .contactRow {
-        font-size: clamp(10pt, 4vw, 13pt);
+        font-size: 12pt;
         flex-wrap: wrap;
-        word-break: break-all;
-        /* prevent overflow of long emails */
     }
 
     .catalogueFooter {
         position: relative;
+        /* Static flow */
         width: 100%;
         height: auto;
         flex-direction: column;
-        gap: 0.75rem;
-        padding: 1.5rem 1rem;
+        gap: 0.5rem;
+        padding: 1rem;
         text-align: center;
-        background-color: var(--color-navy);
-        color: white;
-        margin-top: 1rem;
     }
 
     .pageLogo {
         position: static;
-        margin: 0 auto 1.5rem;
+        margin-bottom: 1rem;
         display: block;
-        width: 40px;
-    }
-
-    .socialSection {
-        padding: 1.5rem;
-    }
-}
-
-/* Print Specifics: STRICT ENFORCEMENT moved to bottom */
-@media print {
-    @page {
-        size: A4 portrait;
-        margin: 0;
-    }
-
-    html,
-    body {
-        width: 210mm;
-        height: 297mm;
-        min-width: 210mm !important;
-        /* Force desktop-like width interpretation */
-        margin: 0 !important;
-        padding: 0 !important;
-        background-color: var(--color-cream) !important;
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-        overflow: visible !important;
-        zoom: 1 !important;
-    }
-
-    .catalogueContainer {
-        width: 210mm !important;
-        max-width: none !important;
-        height: 297mm;
-        margin: 0 !important;
-        padding: 0 !important;
-        background-color: transparent;
-        position: relative;
-        left: 0;
-        top: 0;
-    }
-
-    .page {
-        width: 210mm !important;
-        height: 297mm !important;
-        margin: 0 !important;
-        padding: 0.5in !important;
-        border: none !important;
-        box-shadow: none !important;
-        page-break-after: always;
-        break-after: page;
-        position: relative;
-        overflow: hidden !important;
-        background-color: var(--color-cream) !important;
-        display: block !important;
-        float: none !important;
-    }
-
-    .controls {
-        display: none !important;
-    }
-
-    /* Restore Desktop Layouts */
-    .coverLayout {
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: flex-start !important;
-        gap: 3rem !important;
-        padding-top: 1.7in !important;
-        height: auto !important;
-    }
-
-    .coverHeader {
-        display: flex !important;
-        flex-direction: row !important;
-        align-items: center !important;
-        gap: 1.5rem !important;
-        text-align: left !important;
-        margin-bottom: 2rem !important;
-    }
-
-    .logoWrapper {
-        margin: 0 !important;
-        flex: 0 0 auto !important;
-    }
-
-    .headerTextGroup {
-        align-items: flex-start !important;
-        text-align: left !important;
-    }
-
-    /* REDUCED FONTS FOR SAFE FIT */
-    .coverTitle {
-        font-size: 42pt !important;
-        line-height: 1 !important;
-        margin-bottom: 0.5rem !important;
-    }
-
-    .coverTagline {
-        font-size: 16pt !important;
-    }
-
-    .coverImageWrapper {
-        position: absolute !important;
-        bottom: 0 !important;
-        left: -0.5in !important;
-        width: calc(100% + 1in) !important;
-        height: 70% !important;
-        margin: 0 !important;
-    }
-
-    /* Page 2 Layout Enforcement */
-    .page2Layout {
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: space-between !important;
-        height: 100% !important;
-        padding-top: 0.5in !important;
-        /* Reduced from 1rem to 0.5in (approx 1.27cm) - actually 1rem is smaller than 0.5in. Let's make it 0.5rem */
-        padding-top: 0.5rem !important;
-        padding-bottom: 4rem !important;
-        /* Reduced from 5rem */
-    }
-
-    .companySection {
-        display: flex !important;
-        flex-direction: row !important;
-        gap: 1.5rem !important;
-        /* Reduced gap */
-    }
-
-    .csColumn {
-        flex: 1 !important;
-    }
-
-    .companyDesc {
-        font-size: 9pt !important;
-        /* Reduced from 10pt */
-        line-height: 1.3 !important;
-        margin-bottom: 1rem !important;
-    }
-
-    .solutionsGrid {
-        display: grid !important;
-        grid-template-columns: repeat(4, 1fr) !important;
-        gap: 0.75rem !important;
-        /* Reduced gap */
-    }
-
-    .solutionCard {
-        padding: 1rem 0.5rem !important;
-        /* Reduced padding */
-    }
-
-    .solutionCard h3 {
-        font-size: 10pt !important;
-        /* Reduced size */
-        margin-bottom: 0.25rem !important;
-    }
-
-    .solutionCard p {
-        font-size: 9pt !important;
-        /* Reduced size */
-    }
-
-    .sectionHeader {
-        font-size: 16pt !important;
-        /* Slightly smaller headers */
-        margin-bottom: 0.5rem !important;
-    }
-
-    .benefitList li {
-        font-size: 9pt !important;
-        line-height: 1.3 !important;
-        margin-bottom: 0.5rem !important;
-    }
-
-    /* Page 3-5 Layout Enforcement */
-    .collectionPage {
-        display: block !important;
-        height: 100% !important;
-    }
-
-    .pageHeader {
-        font-size: 14pt !important;
-    }
-
-    .imageRow {
-        display: grid !important;
-        grid-template-columns: repeat(3, 1fr) !important;
-        gap: 1rem !important;
-    }
-
-    .catImgWrap {
-        aspect-ratio: 4/5 !important;
-    }
-
-    .catHeader,
-    .sectionHeader {
-        font-size: 18pt !important;
-    }
-
-    .catDesc,
-    .companyDesc,
-    .benefitList li {
-        font-size: 10pt !important;
-        line-height: 1.4 !important;
-    }
-
-    .hookHeadline {
-        font-size: 34pt !important;
-    }
-
-    .hookSub {
-        font-size: 28pt !important;
-    }
-
-    .contactRow {
-        font-size: 15pt !important;
-    }
-
-    .subCategoryList {
-        font-size: 10pt !important;
-    }
-
-    /* Footer Enforcement */
-    .catalogueFooter {
-        position: absolute !important;
-        bottom: 0 !important;
-        left: 0 !important;
-        width: 100% !important;
-        display: flex !important;
-        flex-direction: row !important;
-        justify-content: space-between !important;
-        padding: 1rem 2rem !important;
-        background-color: var(--color-navy) !important;
-        color: white !important;
-        height: auto !important;
-    }
-
-    .footerInfoItem {
-        font-size: 9pt !important;
+        margin-left: auto;
+        margin-right: auto;
     }
 }

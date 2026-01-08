@@ -1,4 +1,3 @@
-import { useRef } from 'react';
 import { Download, ArrowLeft, Mail, Phone, Check, Globe, ShieldCheck, Users, Scissors, Box, Layers, Instagram, Linkedin, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -22,21 +21,19 @@ import logoIcon from '../assets/ss-logo-icon.png'; // Corrected path
 
 
 const Catalogue = () => {
-    const componentRef = useRef<HTMLDivElement>(null);
-
     const handlePrint = () => {
         window.print();
     };
 
     return (
-        <div className={styles.catalogueContainer} ref={componentRef}>
+        <div className={styles.catalogueContainer}>
             {/* Controls */}
-            <div className={styles.controls} data-html2canvas-ignore="true">
+            <div className={styles.controls}>
                 <Link to="/contact" className={styles.controlButton}>
                     <ArrowLeft size={18} />
                     Back
                 </Link>
-                <button onClick={() => handlePrint && handlePrint()} className={styles.controlButton}>
+                <button onClick={handlePrint} className={styles.controlButton}>
                     <Download size={18} />
                     Save as PDF
                 </button>
