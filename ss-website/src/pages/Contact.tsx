@@ -1,6 +1,8 @@
 import { useState, useRef } from 'react';
 import { Phone, Mail, Linkedin, Calendar, Instagram, Send, CheckCircle } from 'lucide-react';
 import { trackEvent } from '../lib/googleAnalytics';
+import SEO from '../components/layout/SEO';
+import { Helmet } from 'react-helmet-async';
 import styles from './Contact.module.css';
 import contactBg from '../assets/contact-bg.jpg';
 
@@ -29,6 +31,27 @@ const Contact = () => {
 
     return (
         <main>
+            <SEO
+                title="Contact SS Garments | Home Textiles Manufacturer India | Get Quote"
+                description="Contact SS Garments for export-quality home textiles. Email: office@sstextilehub.com | WhatsApp: +91 7200033566. Request samples, quotes, or schedule factory visit."
+                url="https://sstextilehub.com/contact"
+            />
+            <Helmet>
+                <script type="application/ld+json">
+                    {`
+                    {
+                        "@context": "https://schema.org",
+                        "@type": "ContactPage",
+                        "mainEntity": {
+                            "@type": "Organization",
+                            "name": "SS Garments & Hometextiles",
+                            "telephone": "+91-7200033566",
+                            "email": "office@sstextilehub.com"
+                        }
+                    }
+                    `}
+                </script>
+            </Helmet>
             <section className={styles.hero}>
                 <img src={contactBg} alt="Contact Support" className={styles.heroBackground} />
                 <div className={styles.heroContent}>

@@ -1,3 +1,4 @@
+import SEO from '../components/layout/SEO';
 import styles from './About.module.css';
 import { Target, Eye, Heart, Shield, Award, Users, Globe } from 'lucide-react';
 import manufacturing1 from '../assets/manufacturing_1.jpg';
@@ -6,6 +7,11 @@ import manufacturing2 from '../assets/manufacturing_2.jpg';
 const About = () => {
     return (
         <main>
+            <SEO
+                title="About SS Garments | 35+ Years Hand-Crocheted Textiles Manufacturing"
+                description="Family-owned textile manufacturer since 1990. 100+ skilled artisans in Narsapur, India. Vertically integrated facility serving global B2B buyers with export-quality products."
+                url="https://sstextilehub.com/about"
+            />
             <section className={styles.hero}>
                 <div className={styles.heroContent}>
                     <h1 className={styles.heroTitle}>About Us</h1>
@@ -61,7 +67,7 @@ const About = () => {
                     <div className={styles.statsRow}>
                         <div className={styles.statItem}>
                             <Award className={styles.statIcon} size={32} />
-                            <span className={styles.statNumber}>40+</span>
+                            <span className={styles.statNumber}>35+</span>
                             <span className={styles.statLabel}>Years of Excellence</span>
                         </div>
                         <div className={styles.statItem}>

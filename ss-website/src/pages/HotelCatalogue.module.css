@@ -1,0 +1,480 @@
+@import './Catalogue.module.css';
+
+/* --- LANDSCAPE OVERRIDES --- */
+
+/* Container & Page Dimensions (A4 Landscape) */
+.catalogueContainer {
+    width: 297mm !important;
+    /* Force override */
+    padding: 2rem 0;
+}
+
+.page {
+    width: 297mm !important;
+    min-height: 210mm !important;
+    /* A4 height */
+    height: auto !important;
+    /* Allow growth if content overflows, generally 210mm */
+    padding: 0.5in !important;
+    margin-bottom: 2rem;
+    position: relative !important;
+    /* Ensure footer absolute positioning works relative to page */
+    background: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+    box-sizing: border-box;
+    /* Deterministic sizing */
+}
+
+.catalogueFooter {
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    /* Fix width calculation */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.4rem 0.5in;
+    background-color: #2b3a4a;
+    color: white;
+    font-size: 9pt;
+    z-index: 10;
+}
+
+.footerInfoItem {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Layout Containers */
+.layoutTwoCol {
+    display: flex;
+    gap: 3rem;
+    /* More horizontal space */
+    margin-bottom: 2rem;
+    align-items: flex-start;
+    flex: 1;
+    /* Allow it to fill the page height */
+}
+
+.imgSidebar {
+    width: 28%;
+    /* Wider sidebar for landscape */
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    flex-shrink: 0;
+    padding-top: 0.5rem;
+}
+
+.contentCol {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    /* Turn into flex column */
+    flex-direction: column;
+    height: 100%;
+    /* Take full height */
+}
+
+/* Sidebar Images */
+.sidebarImgWrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebarImg {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    border: 1px solid #ddd;
+    padding: 3px;
+    background: #fff;
+    margin-bottom: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.imgCaption {
+    font-family: var(--font-body);
+    font-size: 9.5pt;
+    font-weight: 700;
+    text-decoration: underline;
+    color: #333;
+    text-align: left;
+}
+
+/* Grey Header Bar */
+.greyHeaderBar {
+    background-color: #d9d9d9;
+    color: #fff;
+    font-family: var(--font-head);
+    font-weight: 800;
+    font-size: 16pt;
+    padding: 0.75rem 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+    margin-bottom: 4.5rem;
+    /* Increased from 2rem to push content down */
+    width: 100%;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+}
+
+/* Dark Header Table */
+.darkTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+    font-family: var(--font-body);
+    font-size: 9pt;
+    border: 1px solid #444;
+}
+
+.darkTable th,
+.darkTable td {
+    border: 1px solid #444;
+    padding: 0.4rem 0.5rem;
+    /* More horizontal padding allowed now */
+    text-align: center;
+    vertical-align: middle;
+    line-height: 1.3;
+}
+
+.darkTable thead th {
+    background-color: #333;
+    color: #fff;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 8.5pt;
+    letter-spacing: 0.5px;
+}
+
+.darkTable thead th span {
+    display: block;
+    font-size: 7.5pt;
+    font-weight: 400;
+    margin-top: 2px;
+}
+
+.darkTable tbody th {
+    background-color: #444;
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+    white-space: nowrap;
+    width: 12%;
+}
+
+.darkTable tbody td {
+    background-color: #fff;
+    font-weight: 500;
+    color: #333;
+}
+
+/* Text & Typography */
+.productDescription {
+    font-family: var(--font-body);
+    font-size: 12.5pt;
+    /* INCREASED from 11.5pt */
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 1.5rem;
+    text-align: justify;
+}
+
+.subHeading {
+    font-family: var(--font-body);
+    font-weight: 800;
+    font-size: 12pt;
+    /* Increased to match flow */
+    color: #222;
+    margin-bottom: 0.5rem;
+    text-decoration: underline;
+    display: inline-block;
+}
+
+.fabricList {
+    margin-bottom: 2rem;
+    list-style-type: none;
+    padding: 0;
+}
+
+.fabricList li {
+    font-size: 12pt;
+    /* INCREASED from 11pt */
+    margin-bottom: 0.35rem;
+    color: #444;
+    line-height: 1.4;
+}
+
+.notesList {
+    font-size: 7pt;
+    /* REDUCED from 8pt */
+    color: #555;
+    /* Slightly darker for better readability if smaller */
+    font-style: italic;
+    margin-top: auto;
+    /* Push to bottom */
+    line-height: 1.25;
+    /* Reduced spacing */
+    font-family: "Georgia", serif;
+    padding-top: 1rem;
+    /* Separation from content above */
+}
+
+.notesList p {
+    margin-bottom: 0.25rem;
+    /* Reduced paragraph spacing */
+}
+
+/* COVER PAGE LANDSCAPE FIXES */
+.coverLayout {
+    /* Full page absolute container to ignore parent padding */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0 !important;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.coverHeader {
+    /* Centered Content Overlay */
+    position: relative;
+    z-index: 2;
+    /* Above image */
+    width: 90%;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: row !important;
+    /* Side by side */
+    align-items: center !important;
+    justify-content: center;
+    text-align: left !important;
+    padding: 0;
+    background: transparent;
+    /* Remove white container */
+    backdrop-filter: none;
+    border-radius: 0;
+    margin: 0 !important;
+    gap: 2rem;
+}
+
+.coverImageWrapper {
+    /* Background Image Positioning */
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    /* Reset */
+    z-index: 0;
+    border: none !important;
+    opacity: 0.35;
+    /* Keep it light */
+}
+
+.coverImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.coverTitle {
+    font-size: 48pt !important;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+    color: var(--color-primary);
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+}
+
+.coverTagline {
+    font-size: 20pt;
+    font-family: var(--font-body);
+    color: #333;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.logoWrapper {
+    margin-bottom: 0;
+    flex-shrink: 0;
+}
+
+.coverLogo {
+    height: 120px;
+    /* Larger logo for side layout */
+    width: auto;
+}
+
+/* Logo Fix for internal pages */
+.pageLogo {
+    top: 0.15in !important;
+    /* Move higher to avoid overlap with header */
+    right: 0.5in;
+    /* Keep right alignment */
+    width: 2rem;
+}
+
+.pageNumber {
+    position: absolute;
+    bottom: 0.5in;
+    left: 0.5in;
+    font-family: var(--font-head);
+    font-size: 11pt;
+    font-weight: 600;
+    color: #444;
+    z-index: 50;
+}
+
+/* Print Utilities */
+@media print {
+    @page {
+        size: landscape;
+        margin: 0;
+    }
+
+    body {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    /* STRICT A4 LANDSCAPE - NO TRICKS */
+    .page {
+        break-after: page;
+        width: 297mm !important;
+        height: 210mm !important;
+        min-height: 210mm !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        /* Managed by container */
+        box-shadow: none;
+        overflow: hidden !important;
+        position: relative;
+        transform: none !important;
+        /* No scaling */
+    }
+
+    .catalogueContainer {
+        width: 100% !important;
+        height: 100% !important;
+        margin: 0 !important;
+        /* Padding inside: Top/Side standard, Bottom huge for footer clearance */
+        padding: 0.4in 0.5in 0.8in 0.5in !important;
+    }
+
+    /* PREVENT COLLAPSE WITH FLEX-SHRINK: 0 */
+    .layoutTwoCol {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        /* No wrapping */
+        gap: 2rem !important;
+        height: 100% !important;
+        align-items: flex-start !important;
+    }
+
+    .imgSidebar {
+        width: 26% !important;
+        min-width: 26% !important;
+        flex-shrink: 0 !important;
+        gap: 0.6rem !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .contentCol {
+        flex: 1 !important;
+        min-width: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .sidebarImg {
+        width: 100% !important;
+        height: auto !important;
+        margin-bottom: 0.4rem !important;
+        border: 1px solid #eee !important;
+    }
+
+    /* Manually Resized Fonts/Spacing (Mimicking Scale) */
+    .greyHeaderBar {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        margin-bottom: 1.25rem !important;
+        padding: 0.4rem 0 !important;
+        font-size: 13pt !important;
+        /* Scaled down */
+    }
+
+    /* Fonts */
+    .productDescription {
+        font-size: 10.5pt !important;
+        /* Scaled down */
+        margin-bottom: 0.75rem !important;
+        line-height: 1.4 !important;
+    }
+
+    .subHeading {
+        font-size: 10.5pt !important;
+        margin-bottom: 0.2rem !important;
+    }
+
+    .fabricList li {
+        font-size: 10.5pt !important;
+        margin-bottom: 0.15rem !important;
+    }
+
+    /* Tables */
+    .darkTable {
+        margin-bottom: 0.75rem !important;
+        font-size: 8.5pt !important;
+        /* Scaled down */
+    }
+
+    .darkTable th,
+    .darkTable td {
+        padding: 0.25rem 0.5rem !important;
+    }
+
+    .darkTable thead th,
+    .darkTable tbody th {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    /* Footer & Page Number */
+    .catalogueFooter {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 0.4rem 0.5in;
+        background-color: #2b3a4a !important;
+        color: white !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        font-size: 9pt !important;
+    }
+
+    .pageNumber {
+        display: block !important;
+        bottom: 3rem !important;
+        left: 0.5in !important;
+        font-size: 11pt !important;
+    }
+
+    .controls {
+        display: none !important;
+    }
+}

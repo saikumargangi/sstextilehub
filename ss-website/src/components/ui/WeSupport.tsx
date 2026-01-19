@@ -23,7 +23,7 @@ const WeSupport = () => {
     return (
         <section className={styles.section}>
             <div className={styles.header}>
-                <h2 className={styles.headline}>We Support</h2>
+                <h2 className={styles.headline}>Certified & Sustainable Manufacturing</h2>
                 <p className={styles.subheadline}>
                     Tailored solutions to meet your unique business requirements and help you succeed.
                 </p>

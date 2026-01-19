@@ -35,16 +35,22 @@ const Footer = () => {
 
                     {/* Column 2: Quick Links */}
                     <div className={styles.column}>
-                        <h3>Quick Links</h3>
+                        <h3>Company</h3>
                         <ul className={styles.linkList}>
-                            <li>
-                                <Link to="/"><ChevronRight size={16} /> Home</Link>
-                            </li>
                             <li>
                                 <Link to="/about"><ChevronRight size={16} /> About Us</Link>
                             </li>
                             <li>
-                                <Link to="/contact"><ChevronRight size={16} /> Contact</Link>
+                                <Link to="/contact"><ChevronRight size={16} /> Contact Us</Link>
+                            </li>
+                            <li>
+                                <Link to="/why-choose-us"><ChevronRight size={16} /> Why Choose Us</Link>
+                            </li>
+                            <li>
+                                <Link to="/custom-design"><ChevronRight size={16} /> Custom Design</Link>
+                            </li>
+                            <li>
+                                <Link to="/export-markets"><ChevronRight size={16} /> Export Markets</Link>
                             </li>
                         </ul>
                     </div>
@@ -69,7 +75,7 @@ const Footer = () => {
                                 <Link to="/products/garments"><ChevronRight size={16} /> Garments</Link>
                             </li>
                             <li>
-                                <Link to="/products/accessories"><ChevronRight size={16} /> Accessories</Link>
+                                <Link to="/products/accessories"><ChevronRight size={16} /> Accessories - Bags</Link>
                             </li>
                         </ul>
                     </div>
@@ -105,8 +111,9 @@ const Footer = () => {
                 <div className={styles.bottom}>
                     <p>&copy; {new Date().getFullYear()} SS Garments & HomeTextiles. <span className={styles.copyrightBlock}>All rights reserved.</span></p>
                     <div className={styles.bottomLinks}>
-                        <Link to="#">Privacy Policy</Link>
-                        <Link to="#">Terms of Service</Link>
+                        <Link to="/privacy-policy">Privacy Policy</Link>
+                        <span className={styles.divider}>|</span>
+                        <Link to="/terms-of-service">Terms of Service</Link>
                     </div>
                 </div>
             </div>

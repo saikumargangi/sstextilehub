@@ -80,7 +80,7 @@ const FeaturedProducts = () => {
     return (
         <section className={styles.section} id="featured-categories">
             <div className={styles.header}>
-                <h2 className={styles.headline}>Featured Categories</h2>
+                <h2 className={styles.headline}>Our Export-Ready Collections</h2>
                 <p className={styles.subheadline}>
                     Explore our wide range of premium textile products designed for global markets.
                 </p>

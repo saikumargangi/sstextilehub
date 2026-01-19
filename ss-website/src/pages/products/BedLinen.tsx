@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+import SEO from '../../components/layout/SEO';
 import styles from './BedLinen.module.css';
 import { productsData } from '../../data/productData';
 
@@ -6,6 +8,11 @@ const BedLinen = () => {
 
     return (
         <main className={styles.pageContainer}>
+            <SEO
+                title="Hand-Crocheted Bed Linens Manufacturer | Export Quality | SS Garments"
+                description="Custom hand-crocheted bed linens for B2B buyers. Duvet covers, bedspreads, pillow shams. MOQ 1000 pcs/SKU. 35+ years export experience. Request samples."
+                url="https://sstextilehub.com/products/bed-linen"
+            />
             {/* Hero / Banner Section */}
             <section className={styles.banner}>
                 <img
@@ -17,6 +24,9 @@ const BedLinen = () => {
                 <div className={styles.bannerContent}>
                     <h1 className={styles.bannerTitle}>{title}</h1>
                     <p className={styles.bannerSubtitle}>{subtitle}</p>
+                    <Link to="/hotel-catalogue" className={styles.bannerButton}>
+                        Product Catalogue - Hotel Linen
+                    </Link>
                 </div>
             </section>
 

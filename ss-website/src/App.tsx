@@ -9,14 +9,19 @@ import Products from './pages/Products';
 import ProductCategory from './pages/ProductCategory';
 import BathLinen from './pages/products/BathLinen';
 import KitchenLinen from './pages/products/KitchenLinen';
+import BedLinen from './pages/products/BedLinen';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Catalogue from './pages/Catalogue';
+import HotelCatalogue from './pages/HotelCatalogue';
+import BagsCatalogue from './pages/BagsCatalogue';
 
-import BedLinen from './pages/products/BedLinen'; // Assuming BedLinen component exists or will be created
 import SoftFurnishing from './pages/products/SoftFurnishing';
 import Garments from './pages/products/Garments';
 import Accessories from './pages/products/Accessories';
+import WhyChooseUs from './pages/WhyChooseUs';
+import CustomDesign from './pages/CustomDesign';
+import ExportMarkets from './pages/ExportMarkets';
 
 const MEASUREMENT_ID = 'G-SRF74Q5FCL';
 
@@ -82,10 +87,15 @@ function App() {
         <Route path="/products/soft-furnishing" element={<SoftFurnishing />} />
         <Route path="/products/garments" element={<Garments />} />
         <Route path="/products/accessories" element={<Accessories />} />
+        <Route path="/why-choose-us" element={<WhyChooseUs />} />
+        <Route path="/custom-design" element={<CustomDesign />} />
+        <Route path="/export-markets" element={<ExportMarkets />} />
         <Route path="/products/:categoryId" element={<ProductCategory />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/catalogue" element={<Catalogue />} />
+        <Route path="/hotel-catalogue" element={<HotelCatalogue />} />
+        <Route path="/bags-catalogue" element={<BagsCatalogue />} />
       </Routes>
       {!isCataloguePage && <div className="no-print"><Footer /></div>}
     </>
@@ -93,4 +103,3 @@ function App() {
 }
 
 export default App;
-

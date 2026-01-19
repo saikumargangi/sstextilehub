@@ -18,8 +18,7 @@ const Hero = () => {
                 <div className={styles.textContainer}>
                     <h1 className={styles.headline}>
                         Crafting Premium <br />
-                        <span className={styles.highlight}>Home Textiles</span>
-                        for Global Markets
+                        <span className={styles.highlight}>Home Textiles</span> for Global Markets
                     </h1>
 
                     <p className={styles.subheadline}>

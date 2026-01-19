@@ -1,3 +1,4 @@
+import SEO from '../../components/layout/SEO';
 import styles from './SoftFurnishing.module.css';
 import bannerImg from '../../assets/soft-furnishing/curtains.jpg'; // Using curtains as hero background
 import soft1 from '../../assets/soft-furnishing/curtains.jpg';
@@ -28,6 +29,11 @@ const products = [
 const SoftFurnishing = () => {
     return (
         <main className={styles.pageContainer}>
+            <SEO
+                title="Hand-Crocheted Cushion Covers Manufacturer | Export Quality | SS Garments"
+                description="Premium cushion covers, throws, and soft furnishings. Hand-crocheted by skilled artisans. Custom designs, bulk orders. Serving USA, UK, EU markets for 35+ years."
+                url="https://sstextilehub.com/products/soft-furnishing"
+            />
             {/* Hero / Banner Section */}
             <section className={styles.banner}>
                 <img

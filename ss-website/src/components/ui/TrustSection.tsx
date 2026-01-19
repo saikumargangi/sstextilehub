@@ -4,7 +4,7 @@ import styles from './TrustSection.module.css';
 const trustItems = [
     {
         icon: <Award size={32} strokeWidth={1.5} />,
-        title: "40+ Years Excellence",
+        title: "35+ Years Excellence",
         desc: ""
     },
     {
@@ -32,6 +32,11 @@ const trustItems = [
 const TrustSection = () => {
     return (
         <section className={styles.section}>
+            <div className={`container ${styles.sectionHeader}`}>
+                <h2 className={styles.sectionTitle}>
+                    35+ Years of Artisan Craftsmanship & Export Excellence
+                </h2>
+            </div>
             <div className={`container ${styles.grid}`}>
                 {trustItems.map((item, index) => (
                     <div key={index} className={styles.item}>

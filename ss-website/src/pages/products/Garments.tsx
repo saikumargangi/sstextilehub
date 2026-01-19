@@ -1,9 +1,13 @@
+import SEO from '../../components/layout/SEO';
 import styles from './Garments.module.css';
 import bannerImg from '../../assets/garments/banner.png';
 import garment1 from '../../assets/garments/uniforms.jpg';
 import garment2 from '../../assets/garments/beachwear.jpg';
 import garment3 from '../../assets/garments/crochet_dress.jpg';
 import garment4 from '../../assets/garments/knitwear_top.jpg';
+import access3 from '../../assets/accessories/crochet_hat.png';
+import access4 from '../../assets/accessories/crochet_scarf.jpg';
+import access5 from '../../assets/accessories/crochet_shawl.jpg';
 
 const products = [
     {
@@ -29,12 +33,35 @@ const products = [
         image: garment4,
         title: "Crochet Tops",
         desc: "Versatile knitted tops and ensembles designed for modern, everyday elegance."
+    },
+    {
+        id: 5,
+        image: access3,
+        title: "Crochet Hats",
+        desc: "Trendy, handcrafted hats available in a variety of colorful geometric designs."
+    },
+    {
+        id: 6,
+        image: access4,
+        title: "Seasonal Scarves",
+        desc: "Soft, warm, and stylish scarves and mufflers woven for comfort and elegance."
+    },
+    {
+        id: 7,
+        image: access5,
+        title: "Elegant Shawls",
+        desc: "Lightweight yet cozy shawls and ponchos, adding a layer of sophistication to any outfit."
     }
 ];
 
 const Garments = () => {
     return (
         <main className={styles.pageContainer}>
+            <SEO
+                title="Ready-Made Garments & Crochet Wear Manufacturer | Export Quality"
+                description="High-quality ready-made garments and hand-crocheted wear. Uniforms, beachwear, and fashion apparel. Ethical manufacturing for global brands."
+                url="https://sstextilehub.com/products/garments"
+            />
             {/* Hero / Banner Section */}
             <section className={styles.banner}>
                 <img

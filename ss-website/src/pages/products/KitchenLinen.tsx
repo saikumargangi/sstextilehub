@@ -1,3 +1,4 @@
+import SEO from '../../components/layout/SEO';
 import styles from './KitchenLinen.module.css';
 import { productsData } from '../../data/productData';
 
@@ -13,6 +14,11 @@ const KitchenLinen = () => {
 
     return (
         <main className={styles.pageContainer}>
+            <SEO
+                title="Hand-Crocheted Kitchen & Table Linens Manufacturer | SS Garments"
+                description="Export-quality kitchen and table linens. Tablecloths, runners, placemats, aprons, tea towels. Custom designs, bulk orders. ISO certified facility in Narsapur, India."
+                url="https://sstextilehub.com/products/kitchen-linen"
+            />
             {/* Hero / Banner Section */}
             <section className={styles.banner}>
                 <img

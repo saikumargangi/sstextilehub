@@ -42,7 +42,7 @@ const Header = () => {
                             <Link to="/products/bath-linen" className={styles.dropdownLink}>Bath Linen</Link>
                             <Link to="/products/soft-furnishing" className={styles.dropdownLink}>Soft Furnishing</Link>
                             <Link to="/products/garments" className={styles.dropdownLink}>Garments</Link>
-                            <Link to="/products/accessories" className={styles.dropdownLink}>Accessories</Link>
+                            <Link to="/products/accessories" className={styles.dropdownLink}>Accessories - Bags</Link>
                         </div>
                     </div>
 
@@ -76,7 +76,7 @@ const Header = () => {
                     <Link to="/products/bath-linen" className={styles.mobileProductLink} onClick={() => setIsMobileMenuOpen(false)}>Bath Linen</Link>
                     <Link to="/products/soft-furnishing" className={styles.mobileProductLink} onClick={() => setIsMobileMenuOpen(false)}>Soft Furnishing</Link>
                     <Link to="/products/garments" className={styles.mobileProductLink} onClick={() => setIsMobileMenuOpen(false)}>Garments</Link>
-                    <Link to="/products/accessories" className={styles.mobileProductLink} onClick={() => setIsMobileMenuOpen(false)}>Accessories</Link>
+                    <Link to="/products/accessories" className={styles.mobileProductLink} onClick={() => setIsMobileMenuOpen(false)}>Accessories - Bags</Link>
 
                     <div style={{ marginTop: '10px' }}></div>
                     <Link to="/about" onClick={() => setIsMobileMenuOpen(false)}>About Us</Link>

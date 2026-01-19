@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styles from './BathLinen.module.css';
 import bannerImg from '../../assets/bath/banner.jpg';
 import bath1 from '../../assets/bath/towels_stack.jpg';
@@ -46,6 +47,9 @@ const BathLinen = () => {
                 <div className={styles.bannerContent}>
                     <h1 className={styles.bannerTitle}>Bath Linen</h1>
                     <p className={styles.bannerSubtitle}>Indulge in Softness. Experience Luxury.</p>
+                    <Link to="/hotel-catalogue" className={styles.bannerButton}>
+                        Product Catalogue - Hotel Linen
+                    </Link>
                 </div>
             </section>
 

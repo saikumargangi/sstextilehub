@@ -44,6 +44,13 @@ import access3 from '../assets/accessories/crochet_hat.png';
 import access4 from '../assets/accessories/crochet_scarf.jpg';
 import access5 from '../assets/accessories/crochet_shawl.jpg';
 
+// Hotel Linen Images (Reused from Catalogue)
+import plainBedsheetImg from '../assets/catalogue/plain_bedsheet.jpg';
+import hotelDuvet1 from '../assets/catalogue/duvet_0.jpg';
+import hotelBath1 from '../assets/catalogue/bath_0.jpg';
+import hotelFiller1 from '../assets/catalogue/filler_0.jpg';
+import hotelMattressProtector1 from '../assets/catalogue/mattress_protector_1.jpg';
+
 export const productsData = {
     bedLinen: {
         title: "Bed Linen",
@@ -162,7 +169,7 @@ export const productsData = {
         ]
     },
     softFurnishing: {
-        title: "Soft Furnishings",
+        title: "Hand-Crocheted Cushion Covers & Soft Furnishings",
         subtitle: "Texture. Warmth. Style. For Every Room.",
         bannerImage: softBanner,
         items: [
@@ -187,7 +194,7 @@ export const productsData = {
         ]
     },
     garments: {
-        title: "Garments",
+        title: "Export-Quality Ready-Made Garments & Crochet Wear",
         subtitle: "Ready-to-Wear Excellence. Handcrafted Artistry.",
         bannerImage: garmentBanner,
         items: [
@@ -214,11 +221,29 @@ export const productsData = {
                 image: garment4,
                 title: "Crochet Tops",
                 desc: "Versatile knitted tops and ensembles designed for modern, everyday elegance."
+            },
+            {
+                id: 5,
+                image: access3,
+                title: "Crochet Hats",
+                desc: "Trendy, handcrafted hats available in a variety of colorful geometric designs."
+            },
+            {
+                id: 6,
+                image: access4,
+                title: "Seasonal Scarves",
+                desc: "Soft, warm, and stylish scarves and mufflers woven for comfort and elegance."
+            },
+            {
+                id: 7,
+                image: access5,
+                title: "Elegant Shawls",
+                desc: "Lightweight yet cozy shawls and ponchos, adding a layer of sophistication to any outfit."
             }
         ]
     },
     accessories: {
-        title: "Accessories",
+        title: "Handcrafted Sustainable Accessories",
         subtitle: "Handcrafted Details. Sustainable Style.",
         bannerImage: accessBanner,
         items: [
@@ -233,24 +258,48 @@ export const productsData = {
                 image: access2,
                 title: "Hand-Crocheted Bags",
                 desc: "Artisanal crochet bags featuring vibrant patterns and sturdy construction for a boho-chic look."
+            }
+        ]
+    },
+    hotelLinen: {
+        title: "Hotel Linen",
+        subtitle: "5-Star Comfort. Industrial Durability. Global Standards.",
+        bannerImage: bedBanner, // Using Bed Banner for now as placeholder or primary
+        description: {
+            title: "Hospitality Excellence",
+            text1: "Our Hotel Linen collection is specifically engineered for the rigorous demands of the hospitality industry. From 5-star hotels to boutique resorts, we deliver linens that withstand frequent industrial laundering while retaining their luxurious feel. ",
+            text2: "We offer a comprehensive range including high thread-count percales and satins, durable bath linens, and premium duvet inserts. Customization options like logo weaving and embroidery are available to reinforce your brand identity."
+        },
+        items: [
+            {
+                id: 1,
+                image: plainBedsheetImg,
+                title: "Hotel Bedsheets",
+                desc: "Crisp percales and silky satins (180TC - 400TC) designed for durability and comfort."
+            },
+            {
+                id: 2,
+                image: hotelDuvet1,
+                title: "Duvets & Comforters",
+                desc: "Hypoallergenic, micropolyester filled duvets providing weightless warmth for all seasons."
             },
             {
                 id: 3,
-                image: access3,
-                title: "Crochet Hats",
-                desc: "Trendy, handcrafted hats available in a variety of colorful geometric designs."
+                image: hotelBath1,
+                title: "Bath Linen",
+                desc: "High-GSM, ultra-absorbent towels and bathrobes that stay soft wash after wash."
             },
             {
                 id: 4,
-                image: access4,
-                title: "Seasonal Scarves",
-                desc: "Soft, warm, and stylish scarves and mufflers woven for comfort and elegance."
+                image: hotelFiller1,
+                title: "Pillow & Cushion Fillers",
+                desc: "Resilient, shape-retaining fillers ensuring lasting support and guest comfort."
             },
             {
                 id: 5,
-                image: access5,
-                title: "Elegant Shawls",
-                desc: "Lightweight yet cozy shawls and ponchos, adding a layer of sophistication to any outfit."
+                image: hotelMattressProtector1,
+                title: "Mattress Protectors",
+                desc: "Waterproof, breathable protectors extending mattress life and ensuring hygiene."
             }
         ]
     }

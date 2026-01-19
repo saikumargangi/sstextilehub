@@ -1,0 +1,444 @@
+@import './Catalogue.module.css';
+
+/* --- STRICT PORTRAIT A4 --- */
+.catalogueContainer {
+    width: 210mm !important;
+    padding: 2rem 0;
+}
+
+.page {
+    width: 210mm !important;
+    height: 297mm !important;
+    padding: 0.5in !important;
+    margin-bottom: 2rem;
+    position: relative !important;
+    background: #fcf8f3;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.catalogueFooter {
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0.5in;
+    height: 35px;
+    background-color: #2b3a4a;
+    color: #ffffff;
+    font-size: 9pt;
+    z-index: 100;
+}
+
+.footerInfoItem a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.pageNumber {
+    position: absolute;
+    bottom: 4rem;
+    /* Moved up from 2rem to avoid footer overlap */
+    right: 2rem;
+    font-size: 10pt;
+    font-weight: 800;
+    color: #2b3a4a;
+    z-index: 5;
+}
+
+.footerInfoItem {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    /* line-height: 1; Removed to allow flexbox centering */
+}
+
+.footerInfoItem span {
+    line-height: 1;
+    display: inline-block;
+}
+
+/* --- COMMON TYPOGRAPHY & LAYOUT --- */
+.greyHeaderBar {
+    background-color: #2b3a4a;
+    /* Darker color for visibility */
+    color: #fff;
+    font-family: var(--font-head);
+    font-weight: 800;
+    font-size: 14pt;
+    padding: 0.6rem 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+    margin-bottom: 1rem;
+    margin-top: 3.5rem;
+    /* Pushed down to avoid logo overlap */
+    width: 100%;
+    flex-shrink: 0;
+}
+
+.subHeader {
+    text-align: center;
+    font-size: 10pt;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    flex-shrink: 0;
+}
+
+.sectionDescription {
+    margin-bottom: 0.5rem;
+    text-align: justify;
+    font-size: 10pt;
+    color: #333;
+    line-height: 1.4;
+}
+
+/* --- TABLES --- */
+.darkTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+    font-size: 8pt;
+    border: 1px solid #444;
+    table-layout: fixed;
+}
+
+.darkTable th,
+.darkTable td {
+    border: 1px solid #444;
+    padding: 0.3rem;
+    text-align: center;
+    vertical-align: middle;
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+.darkTable thead th {
+    background-color: #333;
+    color: #fff;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 8pt;
+}
+
+.darkTable tbody th {
+    background-color: #f4f4f4;
+    font-weight: 600;
+    text-align: left;
+    padding-left: 0.4rem;
+    width: 25%;
+}
+
+/* --- PRODUCT ROW LAYOUT --- */
+.productRow {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+    /* Reduced from 1rem */
+    padding-bottom: 0.5rem;
+    /* Reduced from 1rem */
+    border-bottom: none;
+    /* Removed border */
+}
+
+.productRow:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.productInfo {
+    flex: 2;
+    min-width: 0;
+}
+
+.imagePlaceholder {
+    flex: 1;
+    height: 150px;
+    background-color: #f8f9fa;
+    border: 1px dashed #cbd5e1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #94a3b8;
+    font-size: 9pt;
+    font-weight: 500;
+    border-radius: 6px;
+}
+
+.productTitle {
+    font-size: 12pt;
+    font-weight: 700;
+    color: #2b3a4a;
+    margin-bottom: 0.4rem;
+    text-transform: uppercase;
+}
+
+/* --- PAGE 1: COVER --- */
+.coverLayout {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.coverImageWrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0.35;
+}
+
+.coverImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.coverHeader {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+    max-width: 85%;
+}
+
+.coverLogo {
+    height: 120px;
+    margin-bottom: 1rem;
+}
+
+.coverTitle {
+    font-size: 36pt;
+    color: #2b3a4a;
+    line-height: 1.1;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+}
+
+.coverTagline {
+    font-size: 14pt;
+    color: #333;
+    font-weight: 700;
+}
+
+/* --- PAGE 2: COMPANY PROFILE --- */
+.page2Layout {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 0.5in;
+    padding-bottom: 2rem;
+    /* Removed justify-content: space-between to fix huge gap */
+    gap: 3rem;
+    /* Natural spacing */
+}
+
+.companySection {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    align-items: stretch;
+    /* Match height */
+}
+
+.csColumn {
+    flex: 1;
+}
+
+.sectionHeader {
+    font-weight: 800;
+    font-size: 16pt;
+    color: #2b3a4a;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    position: relative;
+    padding-bottom: 0.4rem;
+    line-height: 1.2;
+}
+
+.sectionHeader::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background-color: #4A9B8E;
+}
+
+.companyDesc {
+    font-size: 9.5pt;
+    color: #4b5563;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    text-align: justify;
+}
+
+.iconGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.iconItem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.8rem;
+    font-weight: 700;
+    font-size: 9pt;
+    color: #2b3a4a;
+    background: #f8fafc;
+    padding: 0.8rem;
+    border-radius: 6px;
+    border: 1px solid #e2e8f0;
+}
+
+.iconBrand {
+    color: #4A9B8E;
+}
+
+/* Why Us Container */
+.whyUsContainer {
+    background-color: #f0f7f6;
+    /* Very light teal/grey */
+    padding: 1.5rem;
+    border-radius: 8px;
+    height: 100%;
+    /* Fill column */
+    border-left: 4px solid #4A9B8E;
+}
+
+.benefitList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.benefitList li {
+    display: flex;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+    font-size: 9.5pt;
+    color: #334155;
+    line-height: 1.4;
+}
+
+.checkIcon {
+    color: #4A9B8E;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+/* Solution Cards */
+.solutionsGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+.solutionCard {
+    border: 1px solid #e2e8f0;
+    padding: 1.2rem;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    background: white;
+    transition: transform 0.2s;
+}
+
+.solIconBg {
+    width: 44px;
+    height: 44px;
+    background: #e0f2f1;
+    color: #26a69a;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 0.8rem;
+}
+
+.solutionCard h3 {
+    font-size: 9.5pt;
+    color: #1e293b;
+    margin-bottom: 0.4rem;
+    font-weight: 700;
+}
+
+.solutionCard p {
+    font-size: 8.5pt;
+    color: #64748b;
+    line-height: 1.4;
+}
+
+/* --- PAGE 7: NOTES --- */
+.notesList {
+    margin-top: 1rem;
+    background: #f9f9f9;
+    padding: 1rem;
+    border-left: 4px solid #2b3a4a;
+}
+
+.notesList ul {
+    list-style: none;
+    padding: 0;
+}
+
+.notesList li {
+    margin-bottom: 0.4rem;
+    font-size: 10pt;
+    color: #444;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* --- PRINT --- */
+@media print {
+    @page {
+        size: portrait;
+        margin: 0;
+    }
+
+    .page {
+        break-after: page;
+        margin: 0 !important;
+        box-shadow: none;
+        border: none;
+    }
+
+    .catalogueContainer {
+        padding: 0 !important;
+        width: 210mm !important;
+    }
+
+    .controls {
+        display: none !important;
+    }
+
+    body {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}
