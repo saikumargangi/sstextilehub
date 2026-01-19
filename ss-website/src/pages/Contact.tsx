@@ -16,17 +16,36 @@ const Contact = () => {
         if (formRef.current) formRef.current.reset();
     };
 
-    const handleFormSubmit = () => {
-        // Allow native submission to hidden_iframe
-        // e.preventDefault(); 
+    const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
         setIsLoading(true);
 
-        trackEvent('contact_form_submission', {
-            form_name: 'contact_inquiry',
-            timestamp: new Date().toISOString(),
-        });
+        const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLScl32BmNFhO_IGNTqVWjnAkwzEi6zE2gZ89jy9Rp8PYi_6y7Q/formResponse";
 
-        // The iframe onLoad will handle the success state transition
+        if (!formRef.current) return;
+        const formData = new FormData(formRef.current);
+
+        try {
+            await fetch(GOOGLE_FORM_URL, {
+                method: "POST",
+                mode: "no-cors",
+                body: formData
+            });
+
+            trackEvent('contact_form_submission', {
+                form_name: 'contact_inquiry',
+                timestamp: new Date().toISOString(),
+            });
+
+            setIsSubmitted(true);
+        } catch (error) {
+            console.error("Form submission error:", error);
+            // Even if fetch fails (rare with no-cors), we might want to show success or a specific error.
+            // With no-cors, we can't really read the error status properly, but we assume success if network didn't throw.
+            setIsSubmitted(true);
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     return (
@@ -145,9 +164,6 @@ const Contact = () => {
                                 <form
                                     ref={formRef}
                                     className={styles.formLayout}
-                                    action="https://docs.google.com/forms/d/e/1FAIpQLScl32BmNFhO_IGNTqVWjnAkwzEi6zE2gZ89jy9Rp8PYi_6y7Q/formResponse"
-                                    method="POST"
-                                    target="hidden_iframe"
                                     onSubmit={handleFormSubmit}
                                 >
                                     <div className={styles.formGroup}>
@@ -206,19 +222,6 @@ const Contact = () => {
                             </>
                         )}
                     </div>
-                    {/* Hidden iframe for handling Google Form submission without redirect */}
-                    <iframe
-                        name="hidden_iframe"
-                        style={{ display: 'none' }}
-                        onLoad={() => {
-                            if (isLoading) {
-                                setIsSubmitted(true);
-                                setIsLoading(false);
-                            }
-                        }}
-                    />
-
-
                 </div>
             </section>
         </main>
