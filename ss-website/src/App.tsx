@@ -22,6 +22,7 @@ import Accessories from './pages/products/Accessories';
 import WhyChooseUs from './pages/WhyChooseUs';
 import CustomDesign from './pages/CustomDesign';
 import ExportMarkets from './pages/ExportMarkets';
+import PrivacyPolicy from './pages/PrivacyPolicy';
 
 const MEASUREMENT_ID = 'G-SRF74Q5FCL';
 
@@ -96,6 +97,7 @@ function App() {
         <Route path="/catalogue" element={<Catalogue />} />
         <Route path="/hotel-catalogue" element={<HotelCatalogue />} />
         <Route path="/bags-catalogue" element={<BagsCatalogue />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       </Routes>
       {!isCataloguePage && <div className="no-print"><Footer /></div>}
     </>

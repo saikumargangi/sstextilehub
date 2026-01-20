@@ -1,0 +1,105 @@
+.privacyContainer {
+    width: 100%;
+}
+
+.hero {
+    background-color: var(--color-taupe);
+    color: var(--color-white);
+    padding: 6rem 20px 4rem;
+    text-align: center;
+}
+
+.heroContent {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.heroContent h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+.heroSubtitle {
+    font-size: 1.25rem;
+    opacity: 0.95;
+    line-height: 1.6;
+}
+
+.lastUpdated {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.contentSection {
+    padding: 4rem 20px;
+    background-color: var(--color-white);
+}
+
+.storyContainer {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    gap: 2rem;
+}
+
+.valueCard {
+    background: #fff;
+    padding: 2.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    text-align: left;
+}
+
+.iconWrapper {
+    width: 60px;
+    height: 60px;
+    background-color: var(--bg-secondary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    color: var(--color-taupe);
+}
+
+.valueIcon {
+    width: 24px;
+    height: 24px;
+}
+
+.valueCard h3 {
+    font-size: 1.5rem;
+    color: var(--color-charcoal);
+    margin-bottom: 1rem;
+}
+
+.valueCard p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.list {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-top: 10px;
+}
+
+.list li {
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+    color: var(--text-secondary);
+}
+
+@media (max-width: 640px) {
+    .heroContent h1 {
+        font-size: 2rem;
+    }
+
+    .valueCard {
+        padding: 1.5rem;
+    }
+}
