@@ -13,5 +13,5 @@ export default defineConfig(({ mode }) => ({
       svgo: { plugins: [{ removeViewBox: false }] }
     })
   ],
-  base: mode === 'github' ? '/sstextilehub/' : '/',
+  base: '/',
 }))
